@@ -50,7 +50,40 @@ export function selectEvent(state: GameState, allEvents: GameEvent[]): GameEvent
 
   if (valid.length === 0) return null;
 
-  const weights = valid.map(e => e.weight);
+  const traits = state.player.traits;
+  const age = state.player.age;
+
+  const weights = valid.map(e => {
+    let w = e.weight;
+
+    // Trait-based weighting
+    if (traits.includes('creative')) {
+      if (e.category === 'absurd' || e.category === 'social') w *= 2;
+    }
+    if (traits.includes('athletic')) {
+      if (e.category === 'health') w *= 1.8;
+    }
+    if (traits.includes('introverted')) {
+      if (e.category === 'social' || e.category === 'romance') w *= 0.5;
+      if (e.category === 'school' || e.category === 'work') w *= 1.5;
+    }
+    if (traits.includes('rebellious')) {
+      if (e.category === 'absurd') w *= 2;
+      if (age >= 13 && age <= 19) w *= 1.5; // higher drama in teen years
+    }
+    if (traits.includes('ambitious')) {
+      if (e.category === 'work' || e.category === 'money') w *= 2;
+    }
+    if (traits.includes('dramatic')) {
+      if (e.category === 'romance' || e.category === 'family') w *= 1.5;
+    }
+    if (traits.includes('anxious')) {
+      if (e.category === 'health') w *= 1.3;
+    }
+
+    return w;
+  });
+
   return weightedRandom(valid, weights);
 }
 

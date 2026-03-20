@@ -68,8 +68,10 @@ export function ageUp(state: GameState): GameState {
     p.happiness = clampStat(p.happiness - 3);
     p.health = clampStat(p.health - 1);
   }
-  if (p.conditions.includes('addicted')) {
-    p.health = clampStat(p.health - 4);
+  if (p.conditions.includes('addicted') || p.conditions.includes('Addiction')) {
+    p.health = clampStat(p.health - 5);
+    p.happiness = clampStat(p.happiness - 5);
+    p.stress = clampStat(p.stress + 10);
     p.money -= 2000;
   }
   if (p.conditions.includes('fit')) {
@@ -79,6 +81,60 @@ export function ageUp(state: GameState): GameState {
   if (p.conditions.includes('studying')) {
     p.smarts = clampStat(p.smarts + 3);
     p.stress = clampStat(p.stress + 2);
+  }
+  if (p.conditions.includes('Caffeine Dependent')) {
+    p.health = clampStat(p.health - 2);
+    p.smarts = clampStat(p.smarts + 3);
+  }
+  if (p.conditions.includes('Fitness Buff')) {
+    p.health = clampStat(p.health + 3);
+    p.looks = clampStat(p.looks + 2);
+    p.stress = clampStat(p.stress - 2);
+  }
+  if (p.conditions.includes('In Therapy')) {
+    p.stress = clampStat(p.stress - 5);
+    p.happiness = clampStat(p.happiness + 3);
+  }
+  if (p.conditions.includes('Student Loans')) {
+    if (p.age < 40) {
+      p.money -= 2000;
+    } else {
+      p.conditions = p.conditions.filter(c => c !== 'Student Loans');
+    }
+  }
+  if (p.conditions.includes('Social Media Famous')) {
+    p.reputation = clampStat(p.reputation + 10);
+    p.stress = clampStat(p.stress + 5);
+  }
+  if (p.conditions.includes('Heartbroken')) {
+    p.happiness = clampStat(p.happiness - 10);
+    // Track heartbroken duration via a hidden counter condition
+    const hbYears = p.conditions.filter(c => c === '_heartbroken_year').length;
+    if (hbYears >= 1) {
+      p.conditions = p.conditions.filter(c => c !== 'Heartbroken' && c !== '_heartbroken_year');
+    } else {
+      p.conditions = [...p.conditions, '_heartbroken_year'];
+    }
+  }
+  if (p.conditions.includes('Pregnant')) {
+    p.health = clampStat(p.health - 5);
+    p.stress = clampStat(p.stress + 10);
+    p.happiness = clampStat(p.happiness + 5);
+    // Auto-transition to New Parent after 1 year
+    p.conditions = p.conditions.filter(c => c !== 'Pregnant');
+    p.conditions.push('New Parent');
+  }
+  if (p.conditions.includes('New Parent')) {
+    p.stress = clampStat(p.stress + 15);
+    p.happiness = clampStat(p.happiness + 5);
+    p.money -= 5000;
+    // Remove after 2 years
+    const npYears = p.conditions.filter(c => c === '_newparent_year').length;
+    if (npYears >= 1) {
+      p.conditions = p.conditions.filter(c => c !== 'New Parent' && c !== '_newparent_year');
+    } else {
+      p.conditions = [...p.conditions, '_newparent_year'];
+    }
   }
 
   // Stress natural decay — base -2, plus bonuses
@@ -246,12 +302,49 @@ export function ageUp(state: GameState): GameState {
     return true;
   });
 
+  // Achievement tracking
+  const achievements = [...(state.achievements || [])];
+  const addAchievement = (a: string) => { if (!achievements.includes(a)) achievements.push(a); };
+
+  if (p.smarts >= 90) addAchievement('🧠 Bookworm');
+  if (p.reputation >= 80) addAchievement('⭐ Famous');
+  if (p.money >= 100000) addAchievement('💰 Self-Made');
+  if (p.health < 10 && p.alive) addAchievement('🩹 Survivor (health dropped below 10)');
+  if (p.familyWealth === 'wealthy' && p.age <= 1) addAchievement('🥄 Silver Spoon');
+
+  const romanticCount = finalRelationships.filter(r => r.type === 'romantic' || r.type === 'exPartner').length;
+  if (romanticCount >= 3) addAchievement('💔 Heartbreaker');
+
+  const friendCount = finalRelationships.filter(r => r.type === 'friend' && r.status === 'alive').length;
+  if (friendCount >= 5) addAchievement('🤝 People Person');
+
+  // Track consecutive low/high stress years via state metadata
+  // Simple check: if stress is above 70, count it
+  if (p.stress > 70) {
+    const prevHighStress = (state as any)._highStressYears || 0;
+    (state as any)._highStressYears = prevHighStress + 1;
+    if (prevHighStress + 1 >= 10) addAchievement('😰 Workaholic');
+  } else {
+    (state as any)._highStressYears = 0;
+  }
+
+  if (p.stress < 20) {
+    const prevLowStress = (state as any)._lowStressYears || 0;
+    (state as any)._lowStressYears = prevLowStress + 1;
+    if (prevLowStress + 1 >= 5) addAchievement('🧘 Zen Master');
+  } else {
+    (state as any)._lowStressYears = 0;
+  }
+
+  if (p.familyWealth === 'poor' && p.money >= 50000) addAchievement('📈 Rags to Riches');
+
   return {
     ...state,
     player: p,
     relationships: finalRelationships,
     timeline: newTimeline,
     currentYear: year,
+    achievements,
   };
 }
 

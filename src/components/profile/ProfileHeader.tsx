@@ -32,52 +32,124 @@ const lifeStageLabels: Record<string, string> = {
 
 export const ProfileHeader: React.FC = () => {
   const { player } = useGameStore();
-  const happiness = player.happiness;
-  // Map happiness 0-100 to glow intensity
-  const glowAlpha = Math.round((happiness / 100) * 0.6 * 100) / 100;
-  const glowColor = happiness > 60 ? `rgba(251,191,36,${glowAlpha})` : happiness > 30 ? `rgba(96,165,250,${glowAlpha})` : `rgba(248,113,113,${glowAlpha})`;
+  const [displayMoney, setDisplayMoney] = React.useState(player.money);
+  const targetMoney = player.money;
+
+  React.useEffect(() => {
+    const diff = targetMoney - displayMoney;
+    if (diff === 0) return;
+    const steps = 20;
+    const increment = diff / steps;
+    let step = 0;
+    const interval = setInterval(() => {
+      step++;
+      if (step >= steps) {
+        setDisplayMoney(targetMoney);
+        clearInterval(interval);
+      } else {
+        setDisplayMoney(prev => Math.round(prev + increment));
+      }
+    }, 30);
+    return () => clearInterval(interval);
+  }, [targetMoney]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Life quality = average of positive stats
+  const lifeQuality = Math.round(
+    (player.health + player.happiness + player.smarts + player.looks + player.reputation + (100 - player.stress)) / 6
+  );
+  const ringColor = lifeQuality > 70
+    ? 'rgba(52, 211, 153, 0.7)'
+    : lifeQuality > 40
+    ? 'rgba(251, 191, 36, 0.7)'
+    : 'rgba(248, 113, 113, 0.7)';
+
   const stage = getLifeStage(player.age);
 
   return (
     <div style={{
-      display: 'flex', alignItems: 'center', gap: 16, padding: '20px 20px 16px',
+      position: 'relative',
+      overflow: 'hidden',
     }}>
+      {/* Gradient banner */}
       <div style={{
-        width: 68, height: 68, borderRadius: 20,
-        background: 'linear-gradient(135deg, #1A1A1F, #222228)',
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
-        fontSize: 36, boxShadow: `var(--shadow-card), 0 0 20px ${glowColor}`,
-        border: `2px solid ${glowColor}`,
-        transition: 'box-shadow 0.6s ease, border-color 0.6s ease',
+        position: 'absolute',
+        inset: 0,
+        background: 'linear-gradient(135deg, rgba(96,165,250,0.06) 0%, rgba(167,139,250,0.04) 50%, rgba(248,113,113,0.03) 100%)',
+        pointerEvents: 'none',
+      }} />
+
+      <div style={{
+        display: 'flex', alignItems: 'center', gap: 16,
+        padding: '24px 20px 20px',
+        position: 'relative',
       }}>
-        {genderEmoji(player.gender, player.age)}
-      </div>
-      <div style={{ flex: 1 }}>
-        <h1 style={{
-          fontSize: 20, fontWeight: 700, fontFamily: 'var(--font-display)',
-          letterSpacing: -0.3, marginBottom: 2,
-        }}>
-          {player.name}
-        </h1>
-        <div style={{ fontSize: 13, color: 'var(--text-secondary)', display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-          <span>Age {player.age}</span>
-          <span>📍 {cityNames[player.cityType] || player.cityType}</span>
-          {player.jobId && <span>💼 {jobNames[player.jobId] || 'Employed'}</span>}
-        </div>
+        {/* Glassmorphic avatar circle */}
         <div style={{
-          fontSize: 11, color: 'var(--text-muted)', fontWeight: 600,
-          letterSpacing: 0.5, textTransform: 'uppercase', marginTop: 3,
+          width: 64, height: 64, borderRadius: '50%',
+          background: 'rgba(255, 255, 255, 0.03)',
+          backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          fontSize: 32, flexShrink: 0,
+          border: `2.5px solid ${ringColor}`,
+          boxShadow: `0 0 20px ${ringColor.replace('0.7', '0.25')}, var(--shadow-card)`,
+          transition: 'border-color 0.6s ease, box-shadow 0.6s ease',
         }}>
-          {lifeStageLabels[stage] || stage}
+          {genderEmoji(player.gender, player.age)}
         </div>
-      </div>
-      <div style={{
-        textAlign: 'right', padding: '8px 14px', borderRadius: 12,
-        background: 'linear-gradient(135deg, rgba(52,211,153,0.1), rgba(52,211,153,0.05))',
-      }}>
-        <div style={{ fontSize: 11, color: 'var(--accent-green)', fontWeight: 600, letterSpacing: 0.5, textTransform: 'uppercase' }}>Money</div>
-        <div style={{ fontSize: 18, fontWeight: 700, color: 'var(--accent-green)', fontFamily: 'var(--font-mono)' }}>
-          ${player.money.toLocaleString()}
+
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <h1 style={{
+            fontSize: 24, fontWeight: 700, fontFamily: 'var(--font-display)',
+            letterSpacing: -0.5, marginBottom: 6, lineHeight: 1.1,
+          }}>
+            {player.name}
+          </h1>
+          <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+            <span style={{
+              fontSize: 11, fontWeight: 500, padding: '3px 10px', borderRadius: 20,
+              background: 'rgba(255,255,255,0.05)', color: 'var(--text-secondary)',
+              border: '1px solid rgba(255,255,255,0.06)',
+            }}>
+              📍 {cityNames[player.cityType] || player.cityType}
+            </span>
+            <span style={{
+              fontSize: 11, fontWeight: 500, padding: '3px 10px', borderRadius: 20,
+              background: 'rgba(255,255,255,0.05)', color: 'var(--text-secondary)',
+              border: '1px solid rgba(255,255,255,0.06)',
+            }}>
+              Age {player.age} · {lifeStageLabels[stage] || stage}
+            </span>
+            {player.jobId && (
+              <span style={{
+                fontSize: 11, fontWeight: 500, padding: '3px 10px', borderRadius: 20,
+                background: 'rgba(255,255,255,0.05)', color: 'var(--text-secondary)',
+                border: '1px solid rgba(255,255,255,0.06)',
+              }}>
+                💼 {jobNames[player.jobId] || 'Employed'}
+              </span>
+            )}
+          </div>
+        </div>
+
+        {/* Money with green glow */}
+        <div style={{
+          textAlign: 'right', padding: '10px 16px', borderRadius: 14,
+          background: 'rgba(52,211,153,0.06)',
+          backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
+          border: '1px solid rgba(52,211,153,0.1)',
+          boxShadow: displayMoney > 0 ? '0 0 20px rgba(52,211,153,0.08)' : 'none',
+        }}>
+          <div style={{ fontSize: 10, color: 'var(--accent-green)', fontWeight: 600, letterSpacing: 1, textTransform: 'uppercase', marginBottom: 2 }}>Money</div>
+          <div style={{
+            fontSize: 18, fontWeight: 700,
+            color: displayMoney >= 0 ? 'var(--accent-green)' : 'var(--accent-coral)',
+            fontFamily: 'var(--font-mono)',
+            textShadow: displayMoney > 1000 ? '0 0 12px rgba(52,211,153,0.3)' : 'none',
+          }} className="money-counter">
+            ${displayMoney.toLocaleString()}
+          </div>
         </div>
       </div>
     </div>

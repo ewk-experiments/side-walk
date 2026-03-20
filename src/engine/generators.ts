@@ -36,10 +36,23 @@ export function generateNewLife(seed?: number): { player: Player; relationships:
   const stability = stabilityTiers[Math.floor(rng() * stabilityTiers.length)];
   const stats = startingStats(wealth);
 
-  const traits = ['curious', 'stubborn', 'shy', 'bold', 'kind', 'mischievous', 'creative', 'analytical'];
+  const traits = [
+    'curious', 'stubborn', 'shy', 'bold', 'kind', 'mischievous', 'creative', 'analytical',
+    'athletic', 'introverted', 'rebellious', 'ambitious', 'empathetic', 'lazy', 'charming',
+    'anxious', 'optimistic', 'dramatic', 'patient', 'impulsive',
+  ];
   const talents = ['athletic', 'artistic', 'intellectual', 'social', 'musical', 'technical'];
   const personalityLeaning = traits[Math.floor(rng() * traits.length)];
   const talentBias = talents[Math.floor(rng() * talents.length)];
+
+  // Pick 2-3 unique traits
+  const traitCount = 2 + (rng() < 0.5 ? 1 : 0);
+  const selectedTraits: string[] = [personalityLeaning];
+  const remaining = traits.filter(t => t !== personalityLeaning);
+  for (let i = 0; i < traitCount - 1 && remaining.length > 0; i++) {
+    const idx = Math.floor(rng() * remaining.length);
+    selectedTraits.push(remaining.splice(idx, 1)[0]);
+  }
 
   const player: Player = {
     name,
@@ -51,7 +64,7 @@ export function generateNewLife(seed?: number): { player: Player; relationships:
     housingType: 'familyHome',
     ...stats,
     alive: true,
-    traits: [personalityLeaning],
+    traits: selectedTraits,
     conditions: [],
     familyWealth: wealth,
     familyStability: stability,

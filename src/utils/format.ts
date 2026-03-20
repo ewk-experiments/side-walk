@@ -14,11 +14,20 @@ export function clampStat(n: number): number {
 }
 
 export function getLifeStage(age: number): LifeStage {
-  if (age < 13) return 'childhood';
-  if (age < 18) return 'teen';
-  if (age < 30) return 'youngAdult';
-  if (age < 60) return 'adult';
+  if (age <= 12) return 'childhood';
+  if (age <= 18) return 'teen';
+  if (age <= 35) return 'youngAdult';
+  if (age <= 64) return 'adult';
   return 'senior';
+}
+
+/** Returns a life-stage transition message if we just crossed a boundary, else null */
+export function getLifeStageTransition(age: number): { emoji: string; message: string } | null {
+  if (age === 13) return { emoji: '🎒', message: 'Welcome to your TEEN years' };
+  if (age === 19) return { emoji: '🎓', message: "You're officially a YOUNG ADULT" };
+  if (age === 36) return { emoji: '💼', message: 'Welcome to ADULTHOOD' };
+  if (age === 65) return { emoji: '🌅', message: 'Entering your GOLDEN YEARS' };
+  return null;
 }
 
 export function getAgeEmoji(age: number): string {

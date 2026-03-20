@@ -95,6 +95,44 @@ const allChainEvents: GameEvent[] = [
   ...lifeChains,
 ];
 
+interface MicroEvent {
+  text: string;
+  effects: Partial<{ money: number; happiness: number; health: number; stress: number; smarts: number; reputation: number; looks: number }>;
+}
+
+const microEvents: MicroEvent[] = [
+  { text: 'You found $20 in your old jacket pocket', effects: { money: 20 } },
+  { text: "Your neighbor's dog won't stop barking", effects: { stress: 2 } },
+  { text: 'Someone complimented your haircut today', effects: { happiness: 2 } },
+  { text: "You accidentally liked your ex's photo from 2019", effects: { stress: 3 } },
+  { text: 'A stranger smiled at you on the street', effects: { happiness: 1 } },
+  { text: 'You got a perfect parking spot', effects: { happiness: 1 } },
+  { text: 'Stubbed your toe on the coffee table. Again.', effects: { health: -1 } },
+  { text: 'Found a $5 bill on the ground', effects: { money: 5 } },
+  { text: 'Your favorite song came on the radio', effects: { happiness: 2 } },
+  { text: 'Dropped your phone. Screen survived.', effects: { stress: 1 } },
+  { text: 'Got a free sample at the grocery store', effects: { happiness: 1 } },
+  { text: 'Someone held the door open for you', effects: { happiness: 1 } },
+  { text: 'You overslept by 30 minutes', effects: { stress: 2 } },
+  { text: 'A bird pooped on your car', effects: { happiness: -1 } },
+  { text: 'Found money in your couch cushions', effects: { money: 12 } },
+  { text: 'Your coffee was perfect this morning', effects: { happiness: 2 } },
+  { text: 'Someone cut you off in traffic', effects: { stress: 3 } },
+  { text: 'You finished a book you were reading', effects: { smarts: 1 } },
+  { text: 'Got an unexpected compliment at work', effects: { happiness: 2, reputation: 1 } },
+  { text: 'Forgot your umbrella. It rained.', effects: { happiness: -1 } },
+  { text: 'Made someone laugh really hard', effects: { happiness: 2 } },
+  { text: 'Ate something weird. Stomach survived.', effects: { health: -1 } },
+  { text: 'Your houseplant is thriving', effects: { happiness: 1 } },
+  { text: 'Tripped in public. Nobody saw.', effects: { stress: 1 } },
+  { text: 'Got a really good night of sleep', effects: { health: 2 } },
+  { text: 'Someone remembered your birthday', effects: { happiness: 3 } },
+  { text: 'Found a shortcut you never knew about', effects: { happiness: 1 } },
+  { text: 'Your WiFi went down for an hour', effects: { stress: 3 } },
+  { text: 'A kid waved at you from a car', effects: { happiness: 1 } },
+  { text: 'Tried a new recipe. Nailed it.', effects: { happiness: 2, smarts: 1 } },
+];
+
 interface GameStore extends GameState {
   currentEvent: GameEvent | null;
   showEventModal: boolean;
@@ -102,6 +140,7 @@ interface GameStore extends GameState {
   screen: 'title' | 'home' | 'relationships' | 'career' | 'summary';
   lifeSummary: { headline: string; achievements: string[]; stats: Record<string, any> } | null;
   availableJobs: Job[];
+  microEvent: MicroEvent | null;
 
   newGame: () => void;
   ageUp: () => void;
@@ -158,6 +197,7 @@ export const useGameStore = create<GameStore>((set, get) => ({
   screen: 'title',
   lifeSummary: null,
   availableJobs: [],
+  microEvent: null,
 
   newGame: () => {
     const state = makeGameState();
@@ -307,11 +347,35 @@ export const useGameStore = create<GameStore>((set, get) => ({
   },
 
   dismissResult: () => {
-    set({
-      showEventModal: false,
-      showResult: null,
-      currentEvent: null,
-    });
+    const store = get();
+    // 30% chance of micro-event
+    if (Math.random() < 0.3 && store.player.age >= 5) {
+      const micro = microEvents[Math.floor(Math.random() * microEvents.length)];
+      const p = { ...store.player };
+      const eff = micro.effects;
+      if (eff.money) p.money += eff.money;
+      if (eff.happiness) p.happiness = Math.max(0, Math.min(100, p.happiness + eff.happiness));
+      if (eff.health) p.health = Math.max(0, Math.min(100, p.health + eff.health));
+      if (eff.stress) p.stress = Math.max(0, Math.min(100, p.stress + eff.stress));
+      if (eff.smarts) p.smarts = Math.max(0, Math.min(100, p.smarts + eff.smarts));
+      if (eff.reputation) p.reputation = Math.max(0, Math.min(100, p.reputation + eff.reputation));
+      if (eff.looks) p.looks = Math.max(0, Math.min(100, p.looks + eff.looks));
+      set({
+        showEventModal: false,
+        showResult: null,
+        currentEvent: null,
+        player: p,
+        microEvent: micro,
+      });
+      // Auto-clear after 2.5s
+      setTimeout(() => { set({ microEvent: null }); }, 2500);
+    } else {
+      set({
+        showEventModal: false,
+        showResult: null,
+        currentEvent: null,
+      });
+    }
   },
 
   setCurrentEvent: (event) => set({

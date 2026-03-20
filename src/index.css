@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
 :root {
   --bg-deep: #0A0A0B;
   --bg-card: #111113;
@@ -17,9 +19,12 @@
   --radius-xl: 24px;
   --shadow-card: 0 2px 8px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2);
   --shadow-elevated: 0 8px 32px rgba(0,0,0,0.5), 0 2px 8px rgba(0,0,0,0.3);
-  --font-display: "SF Pro Display", "Inter", system-ui, -apple-system, sans-serif;
-  --font-body: "SF Pro Text", "Inter", system-ui, -apple-system, sans-serif;
-  --font-mono: "SF Mono", "Fira Code", monospace;
+  --font-display: "Space Grotesk", "SF Pro Display", "Inter", system-ui, -apple-system, sans-serif;
+  --font-body: "Inter", "SF Pro Text", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", "Fira Code", monospace;
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.06);
+  --glass-blur: blur(12px);
 }
 
 *, *::before, *::after {
@@ -102,6 +107,11 @@ button:active { transform: scale(0.97); }
   50% { opacity: 0.6; }
 }
 
+@keyframes criticalPulse {
+  0%, 100% { border-color: rgba(248, 113, 113, 0.15); }
+  50% { border-color: rgba(248, 113, 113, 0.5); }
+}
+
 @keyframes achievementShimmer {
   0% { background-position: -200% center; }
   100% { background-position: 200% center; }
@@ -126,4 +136,158 @@ button:active { transform: scale(0.97); }
 @keyframes backdropFadeIn {
   from { opacity: 0; backdrop-filter: blur(0); }
   to { opacity: 1; backdrop-filter: blur(8px); }
+}
+
+/* ── Stat bar flash animations ── */
+@keyframes statFlashGreen {
+  0% { box-shadow: 0 0 0 0 rgba(52,211,153,0); }
+  20% { box-shadow: 0 0 12px 2px rgba(52,211,153,0.6); }
+  100% { box-shadow: 0 0 0 0 rgba(52,211,153,0); }
+}
+@keyframes statFlashRed {
+  0% { box-shadow: 0 0 0 0 rgba(248,113,113,0); }
+  20% { box-shadow: 0 0 12px 2px rgba(248,113,113,0.6); }
+  100% { box-shadow: 0 0 0 0 rgba(248,113,113,0); }
+}
+.stat-flash-green { animation: statFlashGreen 0.8s ease-out; }
+.stat-flash-red { animation: statFlashRed 0.8s ease-out; }
+
+/* ── Age Up button life stages ── */
+@keyframes teenPulse {
+  0%, 100% { box-shadow: 0 4px 24px rgba(139,92,246,0.35); }
+  50% { box-shadow: 0 4px 32px rgba(139,92,246,0.55), 0 0 48px rgba(139,92,246,0.2); }
+}
+.age-btn-childhood {
+  background: linear-gradient(135deg, #60A5FA, #A78BFA) !important;
+  border-radius: 50px !important;
+  box-shadow: 0 4px 24px rgba(96,165,250,0.35) !important;
+}
+.age-btn-teen {
+  background: linear-gradient(135deg, #8B5CF6, #EC4899) !important;
+  border-radius: 16px !important;
+  animation: teenPulse 2s ease-in-out infinite !important;
+}
+.age-btn-youngAdult {
+  background: linear-gradient(135deg, #6366F1, #06B6D4) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 4px 24px rgba(99,102,241,0.4) !important;
+}
+.age-btn-adult {
+  background: linear-gradient(135deg, #1E3A5F, #4338CA) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 4px 24px rgba(30,58,95,0.5) !important;
+}
+.age-btn-senior {
+  background: linear-gradient(135deg, #D97706, #F59E0B, #FBBF24) !important;
+  border-radius: 50px !important;
+  box-shadow: 0 4px 24px rgba(217,119,6,0.4) !important;
+}
+.age-btn-adult, .age-btn-senior { color: #E8E4DF !important; }
+
+/* ── Life stage transition overlay ── */
+@keyframes stageTransitionIn {
+  0% { opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; }
+}
+.life-stage-overlay {
+  position: fixed; inset: 0; z-index: 999;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: rgba(0,0,0,0.92); backdrop-filter: blur(12px);
+  animation: stageTransitionIn 2.5s ease forwards;
+  pointer-events: none;
+}
+.life-stage-overlay .emoji { font-size: 72px; margin-bottom: 16px; }
+.life-stage-overlay .message {
+  font-size: 28px; font-weight: 800; text-align: center;
+  font-family: var(--font-display); letter-spacing: -0.5px;
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple), var(--accent-coral));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+/* ── Event category accents ── */
+.event-cat-family { --cat-accent: #D97706; --cat-bg: rgba(217,119,6,0.12); }
+.event-cat-school { --cat-accent: #3B82F6; --cat-bg: rgba(59,130,246,0.12); }
+.event-cat-romance { --cat-accent: #EC4899; --cat-bg: rgba(236,72,153,0.12); }
+.event-cat-work { --cat-accent: #10B981; --cat-bg: rgba(16,185,129,0.12); }
+.event-cat-money { --cat-accent: #EAB308; --cat-bg: rgba(234,179,8,0.12); }
+.event-cat-health { --cat-accent: #EF4444; --cat-bg: rgba(239,68,68,0.12); }
+.event-cat-social { --cat-accent: #8B5CF6; --cat-bg: rgba(139,92,246,0.12); }
+.event-cat-housing { --cat-accent: #14B8A6; --cat-bg: rgba(20,184,166,0.12); }
+.event-cat-absurd {
+  --cat-accent: #F59E0B;
+  --cat-bg: linear-gradient(135deg, rgba(236,72,153,0.1), rgba(96,165,250,0.1), rgba(52,211,153,0.1));
+}
+
+/* ── Death screen ── */
+@keyframes deathFadeToBlack {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes deathDotsAppear {
+  0%, 50% { opacity: 0; }
+  60% { opacity: 1; }
+  100% { opacity: 1; }
+}
+@keyframes deathReveal {
+  0%, 70% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.death-overlay {
+  position: fixed; inset: 0; z-index: 500;
+  background: #000; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  animation: deathFadeToBlack 3.5s ease forwards;
+  pointer-events: all;
+}
+.death-dots {
+  font-size: 32px; color: var(--text-muted); letter-spacing: 8px;
+  animation: deathDotsAppear 2.5s ease forwards;
+}
+
+/* ── Timeline slide-in ── */
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+.timeline-entry-animate {
+  animation: slideInRight 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* ── Money counter ── */
+.money-counter {
+  transition: color 0.3s ease;
+}
+
+/* ── Section headers with gradient underline ── */
+.section-header {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+  position: relative;
+  font-family: var(--font-display);
+}
+.section-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+  border-radius: 1px;
+}
+
+/* ── Glass card ── */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
 }

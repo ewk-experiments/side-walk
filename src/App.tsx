@@ -6,7 +6,7 @@ import { StatBars } from './components/charts/StatBars';
 import { ConditionChips } from './components/common/ConditionChips';
 import { TimelineCard } from './components/cards/TimelineCard';
 import { EventModal } from './components/event/EventModal';
-import { formatMoney, getLifeStage } from './utils/format';
+import { formatMoney, getLifeStage, getLifeStageTransition } from './utils/format';
 import { jobs } from './content/jobs';
 import { getAvailableJobs, getHousingOptions } from './engine/progression';
 import { hasSave } from './utils/save';
@@ -31,6 +31,47 @@ function App() {
   const store = useGameStore();
   const { screen, setScreen, gameOver } = store;
   const [toast, setToast] = React.useState<string | null>(null);
+  const [stageTransition, setStageTransition] = React.useState<{ emoji: string; message: string } | null>(null);
+  const [deathDrama, setDeathDrama] = React.useState(false);
+  const deathHandledRef = React.useRef(false);
+  const prevAgeRef = React.useRef(store.player.age);
+
+  // Watch for life stage transitions and death
+  React.useEffect(() => {
+    const age = store.player.age;
+    if (age !== prevAgeRef.current) {
+      const transition = getLifeStageTransition(age);
+      if (transition) {
+        setStageTransition(transition);
+      }
+      prevAgeRef.current = age;
+    }
+  }, [store.player.age]);
+
+  // Auto-dismiss life stage transition after 2.5s
+  React.useEffect(() => {
+    if (!stageTransition) return;
+    const timer = setTimeout(() => setStageTransition(null), 2500);
+    return () => clearTimeout(timer);
+  }, [stageTransition]);
+
+  // Death drama: intercept transition to summary
+  React.useEffect(() => {
+    if (screen === 'summary' && store.gameOver && !deathHandledRef.current) {
+      deathHandledRef.current = true;
+      setDeathDrama(true);
+      setScreen('home' as any);
+    }
+    if (screen === 'title') {
+      deathHandledRef.current = false;
+    }
+  }, [screen, store.gameOver]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // When death drama ends (via CSS animationend), transition to summary
+  const handleDeathAnimEnd = React.useCallback(() => {
+    setDeathDrama(false);
+    setScreen('summary');
+  }, [setScreen]);
 
   const handleSave = () => {
     store.saveGame();
@@ -54,21 +95,20 @@ function App() {
             display: 'flex', justifyContent: 'space-between', alignItems: 'center',
           }}>
             <span
-              onClick={() => {
-                if (store.gameOver || !store.player.alive) {
-                  setScreen('title');
-                } else if (window.confirm('Return to title screen? Your unsaved progress will be lost.')) {
-                  setScreen('title');
-                }
-              }}
               style={{
               fontSize: 13, fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase',
               background: 'linear-gradient(90deg, var(--accent-blue), var(--accent-purple))',
               WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
-              cursor: 'pointer',
             }}>
               Side Walk
             </span>
+            <span style={{
+              fontSize: 13, fontWeight: 600, fontFamily: 'var(--font-mono)',
+              color: 'var(--text-muted)', letterSpacing: 1,
+            }}>
+              {store.currentYear}
+            </span>
+            {screen !== 'summary' && (
             <button
               onClick={() => { handleSave(); }}
               style={{
@@ -79,6 +119,8 @@ function App() {
             >
               💾 Save
             </button>
+            )}
+            {screen === 'summary' && <span style={{ width: 52 }} />}
           </header>
 
           <main key={screen} className="fade-in" style={{ flex: 1, overflowY: 'auto', paddingBottom: 140 }}>
@@ -95,16 +137,17 @@ function App() {
             }}>
               <button
                 onClick={store.ageUp}
+                className={`age-btn-${getLifeStage(store.player.age)}`}
                 style={{
                   padding: '16px 48px', borderRadius: 50,
                   background: 'linear-gradient(135deg, #60A5FA, #A78BFA)',
                   color: '#0A0A0B', fontSize: 16, fontWeight: 800,
                   letterSpacing: 0.5, boxShadow: '0 4px 24px rgba(96,165,250,0.35)',
                   fontFamily: 'var(--font-display)', cursor: 'pointer',
-                  border: 'none',
+                  border: 'none', transition: 'all 0.4s ease',
                 }}
-                onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.05)'; e.currentTarget.style.boxShadow = '0 6px 32px rgba(96,165,250,0.5)'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = '0 4px 24px rgba(96,165,250,0.35)'; }}
+                onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.05)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
               >
                 ⏩ Age Up to {store.player.age + 1}
               </button>
@@ -115,30 +158,45 @@ function App() {
             <nav style={{
               position: 'fixed', bottom: 0, left: '50%', transform: 'translateX(-50%)',
               width: '100%', maxWidth: 480,
-              background: 'linear-gradient(180deg, transparent, var(--bg-card) 20%)',
-              padding: '12px 0 max(12px, env(safe-area-inset-bottom))',
+              background: 'var(--bg-card)',
+              padding: '14px 0 max(14px, env(safe-area-inset-bottom))',
               display: 'flex', justifyContent: 'space-around',
-              borderTop: '1px solid rgba(255,255,255,0.04)',
               zIndex: 40,
             }}>
+              {/* Top gradient fade */}
+              <div style={{
+                position: 'absolute', top: -20, left: 0, right: 0, height: 20,
+                background: 'linear-gradient(180deg, transparent, var(--bg-card))',
+                pointerEvents: 'none',
+              }} />
               {tabs.map((tab) => (
                 <button
                   key={tab.id}
                   onClick={() => setScreen(tab.id)}
                   style={{
                     display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4,
-                    padding: '6px 20px', borderRadius: 12,
-                    background: screen === tab.id ? 'rgba(96,165,250,0.1)' : 'transparent',
+                    padding: '6px 24px', borderRadius: 12,
+                    background: screen === tab.id ? 'rgba(96,165,250,0.08)' : 'transparent',
                     border: 'none', cursor: 'pointer',
+                    position: 'relative',
                   }}
                 >
-                  <span style={{ fontSize: 20 }}>{tab.icon}</span>
+                  <span style={{ fontSize: 24 }}>{tab.icon}</span>
                   <span style={{
                     fontSize: 10, fontWeight: 600, letterSpacing: 0.5, textTransform: 'uppercase',
                     color: screen === tab.id ? 'var(--accent-blue)' : 'var(--text-muted)',
                   }}>
                     {tab.label}
                   </span>
+                  {/* Active dot indicator */}
+                  {screen === tab.id && (
+                    <div style={{
+                      width: 4, height: 4, borderRadius: '50%',
+                      background: 'var(--accent-blue)',
+                      position: 'absolute', bottom: -2,
+                      boxShadow: '0 0 6px rgba(96,165,250,0.5)',
+                    }} />
+                  )}
                 </button>
               ))}
             </nav>
@@ -156,6 +214,41 @@ function App() {
               boxShadow: '0 4px 16px rgba(52,211,153,0.3)',
             }}>
               {toast}
+            </div>
+          )}
+
+          {store.microEvent && (
+            <div style={{
+              position: 'fixed', top: 24, left: '50%', transform: 'translateX(-50%)',
+              padding: '10px 20px', borderRadius: 14, maxWidth: 360,
+              background: 'linear-gradient(135deg, rgba(167,139,250,0.95), rgba(96,165,250,0.95))',
+              color: '#fff', fontSize: 13, fontWeight: 600, zIndex: 200,
+              animation: 'fadeIn 0.3s ease, fadeOut 0.5s ease 2s forwards',
+              boxShadow: '0 4px 20px rgba(167,139,250,0.4)',
+              textAlign: 'center',
+              pointerEvents: 'none',
+            }}>
+              {store.microEvent.text}
+              <div style={{ fontSize: 11, opacity: 0.8, marginTop: 2 }}>
+                {Object.entries(store.microEvent.effects).map(([k, v]) => {
+                  const label = k === 'money' ? '$' : k.charAt(0).toUpperCase() + k.slice(1);
+                  const num = v as number;
+                  return `${num > 0 ? '+' : ''}${k === 'money' ? `$${num}` : `${num} ${label}`}`;
+                }).join(' · ')}
+              </div>
+            </div>
+          )}
+
+          {stageTransition && (
+            <div className="life-stage-overlay">
+              <div className="emoji">{stageTransition.emoji}</div>
+              <div className="message">{stageTransition.message}</div>
+            </div>
+          )}
+
+          {deathDrama && (
+            <div className="death-overlay" onAnimationEnd={handleDeathAnimEnd} style={{ pointerEvents: 'all' }}>
+              <div className="death-dots">...</div>
             </div>
           )}
         </>
@@ -242,11 +335,7 @@ function HomeScreen() {
       <ProfileHeader />
       <StatBars />
       <ConditionChips />
-      <div style={{
-        padding: '0 20px', marginBottom: 8,
-        fontSize: 11, fontWeight: 600, letterSpacing: 1, textTransform: 'uppercase',
-        color: 'var(--text-muted)',
-      }}>
+      <div className="section-header" style={{ padding: '0 20px 8px', marginBottom: 8 }}>
         Timeline
       </div>
       <div>
@@ -278,9 +367,9 @@ function RelationshipsScreen() {
 
   return (
     <div className="fade-in" style={{ padding: 20 }}>
-      <h2 style={{ fontSize: 18, fontWeight: 700, marginBottom: 16, fontFamily: 'var(--font-display)' }}>
+      <div className="section-header" style={{ marginBottom: 20 }}>
         Relationships
-      </h2>
+      </div>
       {relationships.length === 0 && (
         <p style={{ color: 'var(--text-muted)', textAlign: 'center', padding: 40 }}>No relationships yet.</p>
       )}
@@ -289,8 +378,11 @@ function RelationshipsScreen() {
           const isDeceased = r.status === 'deceased';
           return (
           <div key={r.id} style={{
-            background: 'var(--bg-card)', borderRadius: 16, padding: 16,
-            border: '1px solid rgba(255,255,255,0.04)',
+            background: 'rgba(255, 255, 255, 0.03)',
+            backdropFilter: 'blur(12px)',
+            WebkitBackdropFilter: 'blur(12px)',
+            borderRadius: 16, padding: 20,
+            border: '1px solid rgba(255, 255, 255, 0.06)',
             boxShadow: 'var(--shadow-card)',
             opacity: isDeceased ? 0.55 : 1,
           }}>
@@ -384,13 +476,15 @@ function CareerScreen() {
 
   return (
     <div className="fade-in" style={{ padding: 20 }}>
-      <h2 style={{ fontSize: 18, fontWeight: 700, marginBottom: 16, fontFamily: 'var(--font-display)' }}>
+      <div className="section-header" style={{ marginBottom: 20 }}>
         Career & Finances
-      </h2>
+      </div>
 
       {/* Job card */}
       <div style={{
-        background: 'linear-gradient(135deg, var(--bg-card), var(--bg-elevated))',
+        background: 'rgba(255, 255, 255, 0.03)',
+        backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)',
         borderRadius: 16, padding: 20, marginBottom: 16,
         border: '1px solid rgba(96,165,250,0.1)', boxShadow: 'var(--shadow-card)',
       }}>
@@ -418,11 +512,11 @@ function CareerScreen() {
 
       {/* Education & Housing */}
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 16 }}>
-        <div style={{ background: 'var(--bg-card)', borderRadius: 14, padding: 16, border: '1px solid rgba(255,255,255,0.04)' }}>
+        <div style={{ background: 'rgba(255, 255, 255, 0.03)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', borderRadius: 14, padding: 20, border: '1px solid rgba(255, 255, 255, 0.06)' }}>
           <div style={{ fontSize: 11, color: 'var(--text-muted)', fontWeight: 600, marginBottom: 4, textTransform: 'uppercase', letterSpacing: 0.5 }}>Education</div>
           <div style={{ fontSize: 14, fontWeight: 600 }}>🎓 {getEducationLabel()}</div>
         </div>
-        <div style={{ background: 'var(--bg-card)', borderRadius: 14, padding: 16, border: '1px solid rgba(255,255,255,0.04)' }}>
+        <div style={{ background: 'rgba(255, 255, 255, 0.03)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', borderRadius: 14, padding: 20, border: '1px solid rgba(255, 255, 255, 0.06)' }}>
           <div style={{ fontSize: 11, color: 'var(--text-muted)', fontWeight: 600, marginBottom: 4, textTransform: 'uppercase', letterSpacing: 0.5 }}>Housing</div>
           <div style={{ fontSize: 14, fontWeight: 600 }}>🏠 {housingLabels[player.housingType] || player.housingType}</div>
         </div>
@@ -430,8 +524,9 @@ function CareerScreen() {
 
       {/* Monthly Breakdown - hide for children at home */}
       {!isChild && <div style={{
-        background: 'var(--bg-card)', borderRadius: 14, padding: 16, marginBottom: 16,
-        border: '1px solid rgba(255,255,255,0.04)',
+        background: 'rgba(255, 255, 255, 0.03)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)',
+        borderRadius: 14, padding: 20, marginBottom: 16,
+        border: '1px solid rgba(255, 255, 255, 0.06)',
       }}>
         <div style={{ fontSize: 11, color: 'var(--text-muted)', fontWeight: 600, marginBottom: 12, textTransform: 'uppercase', letterSpacing: 0.5 }}>Monthly Breakdown</div>
         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 8 }}>
