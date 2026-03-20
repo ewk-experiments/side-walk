@@ -42,7 +42,7 @@ const teenRomance: ChainEvent[] = [
     stage: 'teen',
     category: 'romance',
     weight: 0.8,
-    text: 'You\'ve been dating for a few months now. Everything feels electric. They ask you to the school dance, but your best friend is jealous and hasn\'t been invited by anyone.',
+    text: `You've been dating for a few months now. Everything feels electric. They ask you to the school dance, but your best friend is jealous and hasn't been invited by anyone.`,
     choices: [
       {
         id: 'teen-rom-dance-yes',
@@ -68,7 +68,7 @@ const teenRomance: ChainEvent[] = [
     stage: 'teen',
     category: 'romance',
     weight: 0.8,
-    text: 'Summer\'s ending. They\'re moving to a different city because of their parent\'s job. You have one last weekend together.',
+    text: `Summer's ending. They're moving to a different city because of their parent's job. You have one last weekend together.`,
     choices: [
       {
         id: 'teen-rom-promise',
@@ -98,7 +98,7 @@ const toxicRelationship: ChainEvent[] = [
     category: 'romance',
     weight: 0.5,
     requirements: { minAge: 19, maxAge: 28 },
-    text: 'You meet someone magnetic at a party. They\'re charming, intense, and completely focused on you. "I\'ve never met anyone like you," they say within the first hour.',
+    text: `You meet someone magnetic at a party. They're charming, intense, and completely focused on you. "I've never met anyone like you," they say within the first hour.`,
     choices: [
       {
         id: 'toxic-fall',
@@ -123,14 +123,14 @@ const toxicRelationship: ChainEvent[] = [
     stage: 'youngAdult',
     category: 'romance',
     weight: 0.8,
-    text: 'Six months in. They get upset when you hang out with friends without them. "I just love you so much, I can\'t stand being apart." Your friends are starting to worry.',
+    text: `Six months in. They get upset when you hang out with friends without them. "I just love you so much, I can't stand being apart." Your friends are starting to worry.`,
     choices: [
       {
         id: 'toxic-stay',
-        label: 'They just care a lot. It\'s fine.',
+        label: `They just care a lot. It's fine.`,
         effects: { happiness: -10, stress: 20, relationshipDelta: -15 },
         nextChainId: 'romance-toxic-3',
-        resultText: 'You stop seeing your friends as much. It\'s easier that way.'
+        resultText: `You stop seeing your friends as much. It's easier that way.`
       },
       {
         id: 'toxic-confront',
@@ -160,7 +160,7 @@ const toxicRelationship: ChainEvent[] = [
       },
       {
         id: 'toxic-denial',
-        label: '"I\'m fine, really. We\'re working on things."',
+        label: `"I'm fine, really. We're working on things."`,
         effects: { happiness: -20, stress: 25, health: -10 },
         resultText: 'The isolation deepens. You lose another year before you finally leave.'
       }
@@ -174,11 +174,11 @@ const toxicRelationship: ChainEvent[] = [
     stage: 'youngAdult',
     category: 'romance',
     weight: 0.8,
-    text: 'Months after leaving. You\'re staying with a friend. Some days you feel free. Other days you almost call them. Your phone buzzes — it\'s them: "I\'ve changed. Please come back."',
+    text: `Months after leaving. You're staying with a friend. Some days you feel free. Other days you almost call them. Your phone buzzes — it's them: "I've changed. Please come back."`,
     choices: [
       {
         id: 'toxic-block',
-        label: 'Block their number. Don\'t look back.',
+        label: `Block their number. Don't look back.`,
         effects: { happiness: 10, stress: -20, smarts: 10 },
         addConditions: ['survived-toxic-relationship'],
         resultText: 'Your hands shake as you hit block. But for the first time in a long time, you can breathe.'
@@ -187,7 +187,7 @@ const toxicRelationship: ChainEvent[] = [
         id: 'toxic-respond',
         label: 'Maybe they really have changed...',
         effects: { happiness: -15, stress: 20 },
-        resultText: 'They haven\'t changed. But this time, you leave after two weeks instead of two years. Progress.'
+        resultText: `They haven't changed. But this time, you leave after two weeks instead of two years. Progress.`
       }
     ]
   }
@@ -204,7 +204,7 @@ const stableMarriage: ChainEvent[] = [
     category: 'romance',
     weight: 0.6,
     requirements: { minAge: 24, maxAge: 35 },
-    text: 'You\'ve been with your partner for two years. It\'s not fireworks every day, but it\'s warm. Steady. They suggest moving in together.',
+    text: `You've been with your partner for two years. It's not fireworks every day, but it's warm. Steady. They suggest moving in together.`,
     choices: [
       {
         id: 'stable-movein',
@@ -217,7 +217,7 @@ const stableMarriage: ChainEvent[] = [
         id: 'stable-wait',
         label: 'Not yet — you like your own space',
         effects: { happiness: -5, relationshipDelta: -10 },
-        resultText: 'They understand, but you can tell they\'re a little hurt.'
+        resultText: `They understand, but you can tell they're a little hurt.`
       }
     ]
   },
@@ -229,14 +229,14 @@ const stableMarriage: ChainEvent[] = [
     stage: 'adult',
     category: 'romance',
     weight: 0.7,
-    text: 'A quiet Tuesday night. You\'re doing dishes, they\'re on the couch reading. It hits you — this is it. This is the person. You find a ring online later that night.',
+    text: `A quiet Tuesday night. You're doing dishes, they're on the couch reading. It hits you — this is it. This is the person. You find a ring online later that night.`,
     choices: [
       {
         id: 'stable-propose',
         label: 'Plan a proposal',
         effects: { happiness: 25, money: -8, stress: 10 },
         nextChainId: 'romance-stable-3',
-        resultText: 'They say yes before you even finish the question. You\'re both crying and laughing.'
+        resultText: `They say yes before you even finish the question. You're both crying and laughing.`
       },
       {
         id: 'stable-wait-more',
@@ -281,7 +281,7 @@ const stableMarriage: ChainEvent[] = [
     stage: 'adult',
     category: 'romance',
     weight: 0.7,
-    text: 'Five years married. You\'ve built a life together — routines, inside jokes, a shared Netflix queue. It\'s not glamorous, but when you come home and they\'re there, everything feels okay.',
+    text: `Five years married. You've built a life together — routines, inside jokes, a shared Netflix queue. It's not glamorous, but when you come home and they're there, everything feels okay.`,
     choices: [
       {
         id: 'stable-kids',
@@ -311,11 +311,11 @@ const divorceRecovery: ChainEvent[] = [
     category: 'romance',
     weight: 0.4,
     requirements: { minAge: 30, maxAge: 55, hasPartner: true },
-    text: 'The conversation you\'ve been dreading. Sitting across from each other at the kitchen table. "I think we both know this isn\'t working anymore." The silence that follows is deafening.',
+    text: `The conversation you've been dreading. Sitting across from each other at the kitchen table. "I think we both know this isn't working anymore." The silence that follows is deafening.`,
     choices: [
       {
         id: 'divorce-mutual',
-        label: 'Agree — it\'s been coming for a while',
+        label: `Agree — it's been coming for a while`,
         effects: { happiness: -25, stress: 20 },
         nextChainId: 'romance-divorce-2',
         removeConditions: ['married'],
@@ -326,7 +326,7 @@ const divorceRecovery: ChainEvent[] = [
         label: 'Fight for the relationship one more time',
         effects: { happiness: -15, stress: 30 },
         nextChainId: 'romance-divorce-2',
-        resultText: 'Couples therapy, date nights, trying. Three months later you\'re back at the same table. This time it\'s final.'
+        resultText: `Couples therapy, date nights, trying. Three months later you're back at the same table. This time it's final.`
       }
     ]
   },
@@ -345,14 +345,14 @@ const divorceRecovery: ChainEvent[] = [
         label: 'Force yourself to go',
         effects: { happiness: 10, stress: -10 },
         nextChainId: 'romance-divorce-3',
-        resultText: 'You don\'t talk much, but being around people again feels... okay. Baby steps.'
+        resultText: `You don't talk much, but being around people again feels... okay. Baby steps.`
       },
       {
         id: 'divorce-isolate',
-        label: 'Stay in. You\'re not ready.',
+        label: `Stay in. You're not ready.`,
         effects: { happiness: -10, stress: 5, health: -5 },
         nextChainId: 'romance-divorce-3',
-        resultText: 'Another night on the couch. Another episode of something you\'re not watching.'
+        resultText: `Another night on the couch. Another episode of something you're not watching.`
       }
     ]
   },
@@ -364,20 +364,20 @@ const divorceRecovery: ChainEvent[] = [
     stage: 'adult',
     category: 'romance',
     weight: 0.7,
-    text: 'A year later. You wake up one Saturday and realize you\'re... okay. Not great. But okay. You catch yourself laughing at something stupid on your phone and think — when was the last time I laughed?',
+    text: `A year later. You wake up one Saturday and realize you're... okay. Not great. But okay. You catch yourself laughing at something stupid on your phone and think — when was the last time I laughed?`,
     choices: [
       {
         id: 'divorce-newstart',
         label: 'Sign up for something new — a class, a hobby, anything',
         effects: { happiness: 15, stress: -15, smarts: 5 },
         addConditions: ['post-divorce-growth'],
-        resultText: 'Pottery class. You\'re terrible at it. But you meet interesting people and your hands are too covered in clay to check your ex\'s social media.'
+        resultText: `Pottery class. You're terrible at it. But you meet interesting people and your hands are too covered in clay to check your ex's social media.`
       },
       {
         id: 'divorce-dating',
         label: 'Download a dating app. Time to get back out there.',
         effects: { happiness: 5, stress: 10 },
-        resultText: 'The first few dates are awkward. But the fourth one makes you laugh so hard you snort. Maybe there\'s hope.'
+        resultText: `The first few dates are awkward. But the fourth one makes you laugh so hard you snort. Maybe there's hope.`
       }
     ]
   }
@@ -427,7 +427,7 @@ const lateLifeLegacy: ChainEvent[] = [
         label: 'Tell the real story — embarrassing parts and all',
         effects: { happiness: 15, relationshipDelta: 10 },
         nextChainId: 'romance-legacy-3',
-        resultText: 'The kid\'s eyes are wide. Your partner keeps correcting details. Everyone is laughing.'
+        resultText: `The kid's eyes are wide. Your partner keeps correcting details. Everyone is laughing.`
       },
       {
         id: 'legacy-mythologize',
@@ -446,7 +446,7 @@ const lateLifeLegacy: ChainEvent[] = [
     stage: 'senior',
     category: 'romance',
     weight: 0.7,
-    text: 'Late at night. You\'re lying in bed, listening to them breathe. You think about all the years, all the fights and reconciliations, all the ordinary Tuesdays that somehow added up to an extraordinary life.',
+    text: `Late at night. You're lying in bed, listening to them breathe. You think about all the years, all the fights and reconciliations, all the ordinary Tuesdays that somehow added up to an extraordinary life.`,
     choices: [
       {
         id: 'legacy-grateful',
@@ -458,7 +458,7 @@ const lateLifeLegacy: ChainEvent[] = [
         id: 'legacy-quiet',
         label: 'Just hold their hand in the dark',
         effects: { happiness: 20, stress: -15 },
-        resultText: 'Some things don\'t need words. This is one of them.'
+        resultText: `Some things don't need words. This is one of them.`
       }
     ]
   }

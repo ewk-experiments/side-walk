@@ -17,7 +17,7 @@ const deadEndJob: ChainEvent[] = [
     category: 'work',
     weight: 0.6,
     requirements: { minAge: 18, maxAge: 28 },
-    text: 'You got a job at a big box retail store. The uniform is ugly, the manager is worse, and every shift feels like it\'s 47 hours long. But hey — it\'s a paycheck.',
+    text: `You got a job at a big box retail store. The uniform is ugly, the manager is worse, and every shift feels like it's 47 hours long. But hey — it's a paycheck.`,
     choices: [
       {
         id: 'deadend-grind',
@@ -69,7 +69,7 @@ const deadEndJob: ChainEvent[] = [
     stage: 'youngAdult',
     category: 'work',
     weight: 0.7,
-    text: 'A friend from high school posts about their new tech job. Meanwhile, you\'re restocking shelves at 6 AM. The comparison stings. Something has to change.',
+    text: `A friend from high school posts about their new tech job. Meanwhile, you're restocking shelves at 6 AM. The comparison stings. Something has to change.`,
     choices: [
       {
         id: 'deadend-educate',
@@ -83,13 +83,13 @@ const deadEndJob: ChainEvent[] = [
         label: 'Start a side hustle — anything to escape retail',
         effects: { money: 5, stress: 15, smarts: 5 },
         addConditions: ['side-hustle'],
-        resultText: 'You start reselling stuff online. It\'s not glamorous, but it\'s yours.'
+        resultText: `You start reselling stuff online. It's not glamorous, but it's yours.`
       },
       {
         id: 'deadend-accept-fate',
         label: 'This is fine. Not everyone needs a dream job.',
         effects: { happiness: -5, stress: -10 },
-        resultText: 'You make peace with it. The job pays rent. Some days that\'s enough.'
+        resultText: `You make peace with it. The job pays rent. Some days that's enough.`
       }
     ]
   }
@@ -132,7 +132,7 @@ const startupDream: ChainEvent[] = [
     stage: 'youngAdult',
     category: 'work',
     weight: 0.7,
-    text: 'You launch. Crickets. Then one user. Then ten. A tech blog writes a tiny mention. Your mom shares it on Facebook. It\'s not viral, but it\'s real.',
+    text: `You launch. Crickets. Then one user. Then ten. A tech blog writes a tiny mention. Your mom shares it on Facebook. It's not viral, but it's real.`,
     choices: [
       {
         id: 'startup-push',
@@ -164,14 +164,14 @@ const startupDream: ChainEvent[] = [
         id: 'startup-sell',
         label: 'Take the acquisition offer',
         effects: { money: 40, happiness: 10, stress: -25 },
-        resultText: 'You sign the papers. Relief and grief in equal measure. Your baby is someone else\'s now. But your bank account has never looked this good.'
+        resultText: `You sign the papers. Relief and grief in equal measure. Your baby is someone else's now. But your bank account has never looked this good.`
       },
       {
         id: 'startup-keep',
-        label: 'Reject it — you\'re not done yet',
+        label: `Reject it — you're not done yet`,
         effects: { stress: 20, reputation: 10 },
         nextChainId: 'career-startup-4',
-        resultText: '"Are you insane?" your parents ask. Maybe. But you didn\'t start this to sell it at chapter two.'
+        resultText: `"Are you insane?" your parents ask. Maybe. But you didn't start this to sell it at chapter two.`
       }
     ]
   },
@@ -187,7 +187,7 @@ const startupDream: ChainEvent[] = [
     choices: [
       {
         id: 'startup-pivot',
-        label: 'Pivot to something they can\'t copy',
+        label: `Pivot to something they can't copy`,
         effects: { smarts: 10, stress: 15, money: -10 },
         nextChainId: 'career-startup-5',
         resultText: 'You rethink everything in a caffeine-fueled weekend. The pivot is risky, but it feels right.'
@@ -209,7 +209,7 @@ const startupDream: ChainEvent[] = [
     stage: 'adult',
     category: 'work',
     weight: 0.7,
-    text: 'Five years from that first napkin sketch. You\'re profitable. Not a unicorn, not on magazine covers. But you built something real that people use every day. An email comes in: "Your product changed my workflow. Thank you."',
+    text: `Five years from that first napkin sketch. You're profitable. Not a unicorn, not on magazine covers. But you built something real that people use every day. An email comes in: "Your product changed my workflow. Thank you."`,
     choices: [
       {
         id: 'startup-scale',
@@ -220,7 +220,7 @@ const startupDream: ChainEvent[] = [
       },
       {
         id: 'startup-exit',
-        label: 'It\'s time to move on to the next thing',
+        label: `It's time to move on to the next thing`,
         effects: { happiness: 10, money: 30, stress: -20 },
         addConditions: ['serial-entrepreneur'],
         resultText: 'You find a buyer who loves the product as much as you do. The wire hits your account. Now what?'
@@ -240,7 +240,7 @@ const officePromotion: ChainEvent[] = [
     category: 'work',
     weight: 0.6,
     requirements: { minAge: 26, maxAge: 45 },
-    text: 'Your boss pulls you aside. "There\'s a senior position opening up. I think you should apply." It would mean more money, more visibility... and managing people.',
+    text: `Your boss pulls you aside. "There's a senior position opening up. I think you should apply." It would mean more money, more visibility... and managing people.`,
     choices: [
       {
         id: 'promo-apply',
@@ -272,14 +272,14 @@ const officePromotion: ChainEvent[] = [
         label: 'Take them aside for an honest conversation',
         effects: { stress: 10, reputation: 10, smarts: 5 },
         nextChainId: 'career-promo-3',
-        resultText: '"I get it. I\'d feel the same way." They thaw slightly. It\'s a start.'
+        resultText: `"I get it. I'd feel the same way." They thaw slightly. It's a start.`
       },
       {
         id: 'promo-ignore',
-        label: 'Ignore it — they\'ll get over it',
+        label: `Ignore it — they'll get over it`,
         effects: { stress: 5, reputation: -5 },
         nextChainId: 'career-promo-3',
-        resultText: 'They don\'t get over it. The passive aggression in Slack is an art form.'
+        resultText: `They don't get over it. The passive aggression in Slack is an art form.`
       }
     ]
   },
@@ -322,7 +322,7 @@ const layoffSpiral: ChainEvent[] = [
     category: 'work',
     weight: 0.4,
     requirements: { minAge: 28, maxAge: 55 },
-    text: 'Friday afternoon. An all-hands meeting appears on the calendar with no description. Your stomach drops. "We\'re restructuring," the CEO says. Your entire team is being eliminated.',
+    text: `Friday afternoon. An all-hands meeting appears on the calendar with no description. Your stomach drops. "We're restructuring," the CEO says. Your entire team is being eliminated.`,
     choices: [
       {
         id: 'layoff-grace',
@@ -374,11 +374,11 @@ const layoffSpiral: ChainEvent[] = [
     stage: 'adult',
     category: 'work',
     weight: 0.7,
-    text: 'Month three. Savings dwindling. You start skipping social events to save money. A friend offers to connect you with someone at their company, but it\'s in a completely different field.',
+    text: `Month three. Savings dwindling. You start skipping social events to save money. A friend offers to connect you with someone at their company, but it's in a completely different field.`,
     choices: [
       {
         id: 'layoff-take-referral',
-        label: 'Take the referral — beggars can\'t be choosers',
+        label: `Take the referral — beggars can't be choosers`,
         effects: { money: 5, stress: -10, happiness: 5 },
         nextChainId: 'career-layoff-4',
         resultText: 'The interview goes surprisingly well. Turns out your skills transfer more than you thought.'
@@ -400,7 +400,7 @@ const layoffSpiral: ChainEvent[] = [
     stage: 'adult',
     category: 'work',
     weight: 0.7,
-    text: 'An offer finally comes. It\'s less money than before, the title is a step down, and the commute is brutal. But it\'s real.',
+    text: `An offer finally comes. It's less money than before, the title is a step down, and the commute is brutal. But it's real.`,
     choices: [
       {
         id: 'layoff-accept',
@@ -408,7 +408,7 @@ const layoffSpiral: ChainEvent[] = [
         effects: { money: 10, happiness: 10, stress: -20 },
         addConditions: ['employed'],
         removeConditions: ['unemployed'],
-        resultText: 'The first paycheck feels like oxygen. You\'re not drowning anymore.'
+        resultText: `The first paycheck feels like oxygen. You're not drowning anymore.`
       },
       {
         id: 'layoff-negotiate',
@@ -433,20 +433,20 @@ const midlifeReinvention: ChainEvent[] = [
     category: 'work',
     weight: 0.4,
     requirements: { minAge: 38, maxAge: 55 },
-    text: 'You\'re at your desk, twenty years into a career that used to excite you. You open a spreadsheet and think: "I cannot do this for twenty more years." The thought won\'t go away.',
+    text: `You're at your desk, twenty years into a career that used to excite you. You open a spreadsheet and think: "I cannot do this for twenty more years." The thought won't go away.`,
     choices: [
       {
         id: 'reinvent-explore',
         label: 'Start quietly exploring other paths',
         effects: { happiness: 10, stress: 5, smarts: 5 },
         nextChainId: 'career-reinvent-2',
-        resultText: 'You take online courses at night. You go to meetups for an industry you\'ve always been curious about. A spark ignites.'
+        resultText: `You take online courses at night. You go to meetups for an industry you've always been curious about. A spark ignites.`
       },
       {
         id: 'reinvent-suppress',
         label: 'Push the feeling down. You have responsibilities.',
         effects: { happiness: -10, stress: 10 },
-        resultText: 'The feeling doesn\'t go away. It just gets quieter. And heavier.'
+        resultText: `The feeling doesn't go away. It just gets quieter. And heavier.`
       }
     ]
   },
@@ -458,7 +458,7 @@ const midlifeReinvention: ChainEvent[] = [
     stage: 'adult',
     category: 'work',
     weight: 0.7,
-    text: 'You tell people about your plan to switch careers. The reactions are mixed. "At your age?" says one friend. "That\'s brave," says another. Your family is worried about the financial hit.',
+    text: `You tell people about your plan to switch careers. The reactions are mixed. "At your age?" says one friend. "That's brave," says another. Your family is worried about the financial hit.`,
     choices: [
       {
         id: 'reinvent-leap',
@@ -472,7 +472,7 @@ const midlifeReinvention: ChainEvent[] = [
         label: 'Transition slowly — keep the day job while you build',
         effects: { happiness: 5, stress: 15, smarts: 5 },
         nextChainId: 'career-reinvent-3',
-        resultText: 'You\'re running on fumes, working two lives simultaneously. But the runway feels safer.'
+        resultText: `You're running on fumes, working two lives simultaneously. But the runway feels safer.`
       }
     ]
   },
@@ -484,14 +484,14 @@ const midlifeReinvention: ChainEvent[] = [
     stage: 'adult',
     category: 'work',
     weight: 0.7,
-    text: 'First day in your new career. You\'re the oldest person in the room by fifteen years. The imposter syndrome is crushing. But when you start talking about the work, something in your chest loosens.',
+    text: `First day in your new career. You're the oldest person in the room by fifteen years. The imposter syndrome is crushing. But when you start talking about the work, something in your chest loosens.`,
     choices: [
       {
         id: 'reinvent-thrive',
-        label: 'Lean into being a beginner again — it\'s humbling and beautiful',
+        label: `Lean into being a beginner again — it's humbling and beautiful`,
         effects: { happiness: 20, smarts: 10, stress: -10 },
         addConditions: ['career-reinvented'],
-        resultText: 'Your decades of experience give you perspective the younger folks don\'t have. You\'re not behind — you\'re different. And that\'s valuable.'
+        resultText: `Your decades of experience give you perspective the younger folks don't have. You're not behind — you're different. And that's valuable.`
       },
       {
         id: 'reinvent-doubt',

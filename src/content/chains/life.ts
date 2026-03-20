@@ -17,14 +17,14 @@ const giftedStudent: ChainEvent[] = [
     category: 'school',
     weight: 0.5,
     requirements: { minAge: 8, maxAge: 12 },
-    text: 'Your teacher pulls your parents aside. "Your child is gifted. We\'d like to move them to the advanced program." Suddenly everyone expects great things from you. The pressure is subtle but constant.',
+    text: `Your teacher pulls your parents aside. "Your child is gifted. We'd like to move them to the advanced program." Suddenly everyone expects great things from you. The pressure is subtle but constant.`,
     choices: [
       {
         id: 'gifted-embrace',
         label: 'Embrace it — being smart is your thing',
         effects: { smarts: 15, stress: 10, happiness: 5 },
         nextChainId: 'life-gifted-2',
-        resultText: 'You breeze through advanced classes. "You\'re so smart!" becomes the thing adults say to you instead of hello.'
+        resultText: `You breeze through advanced classes. "You're so smart!" becomes the thing adults say to you instead of hello.`
       },
       {
         id: 'gifted-resist',
@@ -43,21 +43,21 @@ const giftedStudent: ChainEvent[] = [
     stage: 'teen',
     category: 'school',
     weight: 0.7,
-    text: 'High school. For the first time, things are actually hard. You\'ve never had to study before and you don\'t know how. A B+ on a test sends you into a spiral. "I\'m not smart anymore."',
+    text: `High school. For the first time, things are actually hard. You've never had to study before and you don't know how. A B+ on a test sends you into a spiral. "I'm not smart anymore."`,
     choices: [
       {
         id: 'gifted-learn',
         label: 'Learn to study — treat it like a new skill',
         effects: { smarts: 10, stress: 10, happiness: 5 },
         nextChainId: 'life-gifted-3',
-        resultText: 'It\'s humbling. You were never taught to work hard at academics. But you figure it out, slowly.'
+        resultText: `It's humbling. You were never taught to work hard at academics. But you figure it out, slowly.`
       },
       {
         id: 'gifted-avoid',
         label: 'Avoid anything you might fail at',
         effects: { smarts: -5, stress: 15, happiness: -10 },
         nextChainId: 'life-gifted-3',
-        resultText: 'You drop AP classes. Stop raising your hand. If you don\'t try, you can\'t fail. Right?'
+        resultText: `You drop AP classes. Stop raising your hand. If you don't try, you can't fail. Right?`
       }
     ]
   },
@@ -80,9 +80,9 @@ const giftedStudent: ChainEvent[] = [
       },
       {
         id: 'gifted-please',
-        label: 'Apply where they want. It\'s not worth the fight.',
+        label: `Apply where they want. It's not worth the fight.`,
         effects: { happiness: -10, stress: 15, smarts: 5 },
-        resultText: 'You get in. Everyone is proud. You feel nothing. The campus tour feels like visiting someone else\'s dream.'
+        resultText: `You get in. Everyone is proud. You feel nothing. The campus tour feels like visiting someone else's dream.`
       }
     ]
   }
@@ -99,7 +99,7 @@ const scholarship: ChainEvent[] = [
     category: 'school',
     weight: 0.4,
     requirements: { minAge: 16, maxAge: 18 },
-    text: 'Your counselor stops you in the hall. "There\'s a full-ride scholarship. It\'s competitive, and the application is brutal. But I think you have a shot." The deadline is in three weeks.',
+    text: `Your counselor stops you in the hall. "There's a full-ride scholarship. It's competitive, and the application is brutal. But I think you have a shot." The deadline is in three weeks.`,
     choices: [
       {
         id: 'scholarship-go',
@@ -157,13 +157,13 @@ const scholarship: ChainEvent[] = [
         label: 'You got it. Full ride.',
         effects: { happiness: 30, money: 30, stress: -20, reputation: 15 },
         addConditions: ['scholarship-winner'],
-        resultText: 'Your parent cries. Your counselor cries. You\'re going to college and it won\'t cost a dime. Everything just changed.'
+        resultText: `Your parent cries. Your counselor cries. You're going to college and it won't cost a dime. Everything just changed.`
       },
       {
         id: 'scholarship-lose',
         label: 'Waitlisted. Not this time.',
         effects: { happiness: -15, stress: 10 },
-        resultText: 'The rejection stings for weeks. But the process taught you how to fight for something. That muscle doesn\'t go away.'
+        resultText: `The rejection stings for weeks. But the process taught you how to fight for something. That muscle doesn't go away.`
       }
     ]
   }
@@ -187,7 +187,7 @@ const badRoommate: ChainEvent[] = [
         label: 'Have a roommate meeting — set ground rules',
         effects: { stress: 10, happiness: -5 },
         nextChainId: 'life-roommate-2',
-        resultText: '"Yeah totally, I\'ll be better about that," they say while eating your leftover pizza.'
+        resultText: `"Yeah totally, I'll be better about that," they say while eating your leftover pizza.`
       },
       {
         id: 'roommate-passive',
@@ -206,7 +206,7 @@ const badRoommate: ChainEvent[] = [
     stage: 'youngAdult',
     category: 'housing',
     weight: 0.7,
-    text: 'Month three. They used your expensive shampoo, shrank your sweater in the dryer, and now they\'re a month behind on their half of the utilities. You come home to find they\'ve adopted a cat. Your lease says no pets.',
+    text: `Month three. They used your expensive shampoo, shrank your sweater in the dryer, and now they're a month behind on their half of the utilities. You come home to find they've adopted a cat. Your lease says no pets.`,
     choices: [
       {
         id: 'roommate-ultimatum',
@@ -232,20 +232,20 @@ const badRoommate: ChainEvent[] = [
     stage: 'youngAdult',
     category: 'housing',
     weight: 0.7,
-    text: 'The lease is up. You\'re packing your things. Your roommate wanders in looking genuinely confused. "You\'re leaving? I thought we were cool."',
+    text: `The lease is up. You're packing your things. Your roommate wanders in looking genuinely confused. "You're leaving? I thought we were cool."`,
     choices: [
       {
         id: 'roommate-honest',
         label: '"We were not cool. At all."',
         effects: { happiness: 10, stress: -15 },
         addConditions: ['learned-boundaries'],
-        resultText: 'You say what you should have said months ago. It feels liberating. You vow to interview future roommates like you\'re hiring for a job.'
+        resultText: `You say what you should have said months ago. It feels liberating. You vow to interview future roommates like you're hiring for a job.`
       },
       {
         id: 'roommate-polite',
         label: '"Yeah it was great. Good luck with everything."',
         effects: { happiness: -5, stress: -10 },
-        resultText: 'You avoid conflict to the end. But as you close the door for the last time, you exhale a year\'s worth of tension.'
+        resultText: `You avoid conflict to the end. But as you close the door for the last time, you exhale a year's worth of tension.`
       }
     ]
   }
@@ -269,14 +269,14 @@ const creativeSideHustle: ChainEvent[] = [
         label: 'Invest time and money into growing it',
         effects: { money: -5, happiness: 15, stress: 10 },
         nextChainId: 'life-hustle-2',
-        resultText: 'You spend weekends creating inventory. Your apartment looks like a workshop. It\'s chaotic and wonderful.'
+        resultText: `You spend weekends creating inventory. Your apartment looks like a workshop. It's chaotic and wonderful.`
       },
       {
         id: 'hustle-casual',
         label: 'Keep it casual — just a fun hobby',
         effects: { happiness: 10, money: 3 },
         nextChainId: 'life-hustle-2',
-        resultText: 'A sale here and there. Enough for dinner out once a month. It stays fun because there\'s no pressure.'
+        resultText: `A sale here and there. Enough for dinner out once a month. It stays fun because there's no pressure.`
       }
     ]
   },
@@ -288,7 +288,7 @@ const creativeSideHustle: ChainEvent[] = [
     stage: 'youngAdult',
     category: 'money',
     weight: 0.7,
-    text: 'A popular account shares your work. Orders flood in. You\'re thrilled for about 6 hours until you realize you now have 200 orders to fulfill while working a full-time job.',
+    text: `A popular account shares your work. Orders flood in. You're thrilled for about 6 hours until you realize you now have 200 orders to fulfill while working a full-time job.`,
     choices: [
       {
         id: 'hustle-grind',
@@ -314,7 +314,7 @@ const creativeSideHustle: ChainEvent[] = [
     stage: 'adult',
     category: 'money',
     weight: 0.7,
-    text: 'The side hustle is now making almost as much as your day job. You\'re at a crossroads: keep the safety net, or bet on yourself?',
+    text: `The side hustle is now making almost as much as your day job. You're at a crossroads: keep the safety net, or bet on yourself?`,
     choices: [
       {
         id: 'hustle-fulltime',
@@ -328,7 +328,7 @@ const creativeSideHustle: ChainEvent[] = [
         label: 'Keep both — the security is too valuable',
         effects: { happiness: 5, money: 10, stress: 10 },
         addConditions: ['side-hustle'],
-        resultText: 'You\'re exhausted but financially comfortable. Two incomes, one person. The American dream, apparently.'
+        resultText: `You're exhausted but financially comfortable. Two incomes, one person. The American dream, apparently.`
       }
     ]
   }
@@ -345,20 +345,20 @@ const accidentalParenthood: ChainEvent[] = [
     category: 'family',
     weight: 0.3,
     requirements: { minAge: 20, maxAge: 35 },
-    text: 'Two lines on the test. You stare at it for what feels like an hour. This was not the plan. You\'re barely keeping your own life together.',
+    text: `Two lines on the test. You stare at it for what feels like an hour. This was not the plan. You're barely keeping your own life together.`,
     choices: [
       {
         id: 'parent-keep',
-        label: 'You\'re going to figure this out',
+        label: `You're going to figure this out`,
         effects: { stress: 25, happiness: 5, money: -10 },
         nextChainId: 'life-parent-2',
         resultText: 'Terror. Excitement. More terror. You start reading parenting books at 3 AM.'
       },
       {
         id: 'parent-not-ready',
-        label: 'You\'re not ready for this',
+        label: `You're not ready for this`,
         effects: { stress: 15, happiness: -10 },
-        resultText: 'It\'s the hardest decision you\'ve ever made. You don\'t talk about it for years. When you finally do, it\'s in a therapist\'s office.'
+        resultText: `It's the hardest decision you've ever made. You don't talk about it for years. When you finally do, it's in a therapist's office.`
       }
     ]
   },
@@ -386,7 +386,7 @@ const accidentalParenthood: ChainEvent[] = [
         effects: { happiness: 10, stress: 20 },
         nextChainId: 'life-parent-3',
         addConditions: ['parent'],
-        resultText: 'The guilt of leaving them for even an hour is crushing. But your therapist says you can\'t pour from an empty cup.'
+        resultText: `The guilt of leaving them for even an hour is crushing. But your therapist says you can't pour from an empty cup.`
       }
     ]
   },
@@ -398,18 +398,18 @@ const accidentalParenthood: ChainEvent[] = [
     stage: 'adult',
     category: 'family',
     weight: 0.7,
-    text: 'Your kid\'s first day of school. You watch them walk through the door in their too-big backpack, looking back at you one last time. You wave and smile. You cry in the car.',
+    text: `Your kid's first day of school. You watch them walk through the door in their too-big backpack, looking back at you one last time. You wave and smile. You cry in the car.`,
     choices: [
       {
         id: 'parent-hover',
         label: 'Check on them every chance you get',
         effects: { stress: 10, happiness: 5, relationshipDelta: 5 },
         nextChainId: 'life-parent-4',
-        resultText: 'The teacher politely asks you to stop calling during lunch. "They\'re doing great, I promise."'
+        resultText: `The teacher politely asks you to stop calling during lunch. "They're doing great, I promise."`
       },
       {
         id: 'parent-trust',
-        label: 'Trust that they\'ll be okay',
+        label: `Trust that they'll be okay`,
         effects: { happiness: 10, stress: -5 },
         nextChainId: 'life-parent-4',
         resultText: 'They come home with a drawing of your family. You are a purple blob with stick legs. It goes on the fridge forever.'
@@ -424,19 +424,19 @@ const accidentalParenthood: ChainEvent[] = [
     stage: 'adult',
     category: 'family',
     weight: 0.7,
-    text: 'Years later. Your kid is a teenager now — moody, brilliant, infuriating, and so much like you it\'s scary. They ask, "Was I planned?" You look at them for a long moment.',
+    text: `Years later. Your kid is a teenager now — moody, brilliant, infuriating, and so much like you it's scary. They ask, "Was I planned?" You look at them for a long moment.`,
     choices: [
       {
         id: 'parent-truth',
-        label: '"No. But you\'re the best surprise of my life."',
+        label: `"No. But you're the best surprise of my life."`,
         effects: { happiness: 20, relationshipDelta: 15 },
-        resultText: 'They roll their eyes but you catch the smile. "That\'s so cheesy." They hug you anyway.'
+        resultText: `They roll their eyes but you catch the smile. "That's so cheesy." They hug you anyway.`
       },
       {
         id: 'parent-deflect',
         label: '"Of course you were planned!" (lie lovingly)',
         effects: { happiness: 10, relationshipDelta: 5 },
-        resultText: 'They seem satisfied. You think about telling them the truth someday. When they\'re older. When the time is right.'
+        resultText: `They seem satisfied. You think about telling them the truth someday. When they're older. When the time is right.`
       }
     ]
   }

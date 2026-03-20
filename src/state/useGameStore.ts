@@ -21,6 +21,7 @@ import { chaosChains } from '../content/chains/chaos';
 import { lifeChains } from '../content/chains/life';
 import { jobs, type Job } from '../content/jobs';
 import { getLifeStage } from '../utils/format';
+import { playAgeUp, playChoice, playPositive, playNegative, playMilestone, playDeath, playNewLife, playMicroEvent } from '../utils/audio';
 
 // Fallback flavor texts per life stage
 const fallbackFlavor: Record<string, string[]> = {
@@ -215,6 +216,7 @@ export const useGameStore = create<GameStore>((set, get) => ({
   ageUp: () => {
     const store = get();
     if (store.gameOver) return;
+    playAgeUp();
 
     // 1. Apply passive age-up (income, costs, drift, education progression)
     let state = getStateSnapshot(store);
@@ -223,6 +225,7 @@ export const useGameStore = create<GameStore>((set, get) => ({
     // 2. Check death
     const deathCheck = checkDeath(state);
     if (deathCheck.died) {
+      playDeath();
       const summary = generateLifeSummary(state);
       // Find matching ending
       const hasPartner = state.relationships.some(r => (r.type === 'spouse' || r.type === 'romantic') && r.status === 'alive');
@@ -329,6 +332,7 @@ export const useGameStore = create<GameStore>((set, get) => ({
     const store = get();
     const event = store.currentEvent;
     if (!event) return;
+    playChoice();
 
     const state = getStateSnapshot(store);
     const { newState, resultText } = resolveChoice(state, event, choiceId);
@@ -336,6 +340,18 @@ export const useGameStore = create<GameStore>((set, get) => ({
     // Build effects display from choice
     const choice = event.choices.find(c => c.id === choiceId);
     const effects = choice?.effects || {};
+
+    // Play positive/negative based on net effect
+    const vals = Object.entries(effects).map(([k, v]) => k === 'stress' ? -(v as number) : (v as number));
+    const net = vals.reduce((a, b) => a + b, 0);
+    if (net > 0) playPositive();
+    else if (net < 0) playNegative();
+
+    // Check if this added a milestone
+    if (newState.timeline.length > state.timeline.length) {
+      const last = newState.timeline[newState.timeline.length - 1];
+      if (last && (last as any).isMilestone) playMilestone();
+    }
 
     set({
       ...newState,
@@ -367,6 +383,7 @@ export const useGameStore = create<GameStore>((set, get) => ({
         player: p,
         microEvent: micro,
       });
+      playMicroEvent();
       // Auto-clear after 2.5s
       setTimeout(() => { set({ microEvent: null }); }, 2500);
     } else {
@@ -409,6 +426,7 @@ export const useGameStore = create<GameStore>((set, get) => ({
 
   restartGame: () => {
     clearSave();
+    playNewLife();
     get().newGame();
   },
 

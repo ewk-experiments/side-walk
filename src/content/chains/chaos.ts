@@ -35,10 +35,10 @@ const schoolBullying: ChainEvent[] = [
       },
       {
         id: 'bully-fight',
-        label: 'Stand up to them, even if you\'re scared',
+        label: `Stand up to them, even if you're scared`,
         effects: { happiness: 5, stress: 15, reputation: 10 },
         nextChainId: 'chaos-bully-2',
-        resultText: 'Your voice shakes. They look surprised. It doesn\'t fix everything, but something shifts.'
+        resultText: `Your voice shakes. They look surprised. It doesn't fix everything, but something shifts.`
       }
     ]
   },
@@ -50,21 +50,21 @@ const schoolBullying: ChainEvent[] = [
     stage: 'childhood',
     category: 'social',
     weight: 0.7,
-    text: 'The bullying has been going on for months. Your grades are slipping. You dread school. One night your parent notices you haven\'t touched dinner. "What\'s going on with you?"',
+    text: `The bullying has been going on for months. Your grades are slipping. You dread school. One night your parent notices you haven't touched dinner. "What's going on with you?"`,
     choices: [
       {
         id: 'bully-open-up',
         label: 'Tell them everything',
         effects: { happiness: 10, stress: -15, relationshipDelta: 15 },
         nextChainId: 'chaos-bully-3',
-        resultText: 'Your parent holds you. They\'re angry — not at you. The next day, they\'re at the school demanding a meeting.'
+        resultText: `Your parent holds you. They're angry — not at you. The next day, they're at the school demanding a meeting.`
       },
       {
         id: 'bully-hide',
-        label: '"Nothing. I\'m fine."',
+        label: `"Nothing. I'm fine."`,
         effects: { happiness: -10, stress: 10 },
         nextChainId: 'chaos-bully-3',
-        resultText: 'They don\'t believe you, but they don\'t push. The silence between you grows.'
+        resultText: `They don't believe you, but they don't push. The silence between you grows.`
       }
     ]
   },
@@ -87,7 +87,7 @@ const schoolBullying: ChainEvent[] = [
       },
       {
         id: 'bully-avoid',
-        label: 'Look away — you don\'t want to get involved',
+        label: `Look away — you don't want to get involved`,
         effects: { happiness: -5, stress: 5 },
         resultText: 'You eat your lunch and try not to think about it. But you do think about it. For years.'
       }
@@ -106,7 +106,7 @@ const rebelliousPhase: ChainEvent[] = [
     category: 'social',
     weight: 0.6,
     requirements: { minAge: 14, maxAge: 18 },
-    text: 'You\'re sick of rules. Sick of "because I said so." A group of older kids invite you to a house party while their parents are out of town. Your curfew is 10 PM.',
+    text: `You're sick of rules. Sick of "because I said so." A group of older kids invite you to a house party while their parents are out of town. Your curfew is 10 PM.`,
     choices: [
       {
         id: 'rebel-go',
@@ -117,9 +117,9 @@ const rebelliousPhase: ChainEvent[] = [
       },
       {
         id: 'rebel-stay',
-        label: 'Stay home. It\'s not worth the risk.',
+        label: `Stay home. It's not worth the risk.`,
         effects: { happiness: -5, stress: -5 },
-        resultText: 'Monday at school, everyone\'s talking about the party. You pretend you didn\'t want to go.'
+        resultText: `Monday at school, everyone's talking about the party. You pretend you didn't want to go.`
       }
     ]
   },
@@ -187,7 +187,7 @@ const influencerMoment: ChainEvent[] = [
     category: 'social',
     weight: 0.3,
     requirements: { minAge: 17, maxAge: 30 },
-    text: 'You post a video that was supposed to be a joke. 48 hours later: 2 million views. Your phone won\'t stop buzzing. A brand DMs you about a sponsorship deal.',
+    text: `You post a video that was supposed to be a joke. 48 hours later: 2 million views. Your phone won't stop buzzing. A brand DMs you about a sponsorship deal.`,
     choices: [
       {
         id: 'influencer-ride',
@@ -226,7 +226,7 @@ const influencerMoment: ChainEvent[] = [
         label: 'Optimize everything for the algorithm',
         effects: { money: 20, stress: 25, happiness: -10 },
         nextChainId: 'chaos-influencer-3',
-        resultText: 'The numbers go up. Your soul feels like it goes down. You can\'t remember the last time you posted something you actually cared about.'
+        resultText: `The numbers go up. Your soul feels like it goes down. You can't remember the last time you posted something you actually cared about.`
       }
     ]
   },
@@ -238,7 +238,7 @@ const influencerMoment: ChainEvent[] = [
     stage: 'youngAdult',
     category: 'social',
     weight: 0.7,
-    text: 'A year in. The platform changes its algorithm and your reach drops 80% overnight. Brands stop calling. You\'re sitting in a ring light wondering what just happened.',
+    text: `A year in. The platform changes its algorithm and your reach drops 80% overnight. Brands stop calling. You're sitting in a ring light wondering what just happened.`,
     choices: [
       {
         id: 'influencer-pivot',
@@ -251,7 +251,7 @@ const influencerMoment: ChainEvent[] = [
         id: 'influencer-chase',
         label: 'Chase the next viral moment',
         effects: { happiness: -10, stress: 20, reputation: -10 },
-        resultText: 'You spend months trying to recapture lightning in a bottle. It doesn\'t come. The desperation shows.'
+        resultText: `You spend months trying to recapture lightning in a bottle. It doesn't come. The desperation shows.`
       }
     ]
   }
@@ -268,11 +268,11 @@ const burnoutArc: ChainEvent[] = [
     category: 'health',
     weight: 0.5,
     requirements: { minAge: 25, maxAge: 50, stressMin: 60 },
-    text: 'You can\'t remember the last time you had a weekend. Your eye has been twitching for two weeks. You zone out in meetings and realize you\'ve been staring at the same email for 20 minutes.',
+    text: `You can't remember the last time you had a weekend. Your eye has been twitching for two weeks. You zone out in meetings and realize you've been staring at the same email for 20 minutes.`,
     choices: [
       {
         id: 'burnout-push',
-        label: 'Push through — there\'s too much to do',
+        label: `Push through — there's too much to do`,
         effects: { health: -15, stress: 20, happiness: -15 },
         nextChainId: 'chaos-burnout-2',
         resultText: 'You start getting chest pains. You Google "am I having a heart attack at 34" at 2 AM.'
@@ -282,7 +282,7 @@ const burnoutArc: ChainEvent[] = [
         label: 'Admit something is wrong',
         effects: { stress: -5, happiness: -5 },
         nextChainId: 'chaos-burnout-2',
-        resultText: 'You tell your partner / friend "I think I\'m burning out." Saying it out loud makes it real.'
+        resultText: `You tell your partner / friend "I think I'm burning out." Saying it out loud makes it real.`
       }
     ]
   },
@@ -294,7 +294,7 @@ const burnoutArc: ChainEvent[] = [
     stage: 'adult',
     category: 'health',
     weight: 0.7,
-    text: 'Your body makes the decision for you. You wake up one morning and physically cannot get out of bed. Not won\'t. Can\'t. Your limbs feel like concrete. The ceiling is very interesting.',
+    text: `Your body makes the decision for you. You wake up one morning and physically cannot get out of bed. Not won't. Can't. Your limbs feel like concrete. The ceiling is very interesting.`,
     choices: [
       {
         id: 'burnout-doctor',
@@ -331,7 +331,7 @@ const burnoutArc: ChainEvent[] = [
       },
       {
         id: 'burnout-quit',
-        label: 'Quit and take a real break before deciding what\'s next',
+        label: `Quit and take a real break before deciding what's next`,
         effects: { happiness: 20, money: -15, stress: -30 },
         addConditions: ['sabbatical'],
         resultText: 'Three months of nothing. Then slowly, the ideas come back. The excitement comes back. You come back.'
@@ -351,7 +351,7 @@ const therapyArc: ChainEvent[] = [
     category: 'health',
     weight: 0.4,
     requirements: { minAge: 20, maxAge: 50 },
-    text: 'Something\'s been off for a while. You\'re not sleeping well. You snap at people you love. A friend mentions therapy like it\'s the most normal thing in the world. "Everyone should have a therapist," they say.',
+    text: `Something's been off for a while. You're not sleeping well. You snap at people you love. A friend mentions therapy like it's the most normal thing in the world. "Everyone should have a therapist," they say.`,
     choices: [
       {
         id: 'therapy-try',
@@ -362,7 +362,7 @@ const therapyArc: ChainEvent[] = [
       },
       {
         id: 'therapy-nah',
-        label: '"I\'m fine, I don\'t need therapy"',
+        label: `"I'm fine, I don't need therapy"`,
         effects: { stress: 5 },
         resultText: 'You continue white-knuckling it through life. The coping mechanisms get more creative and less healthy.'
       }
@@ -376,21 +376,21 @@ const therapyArc: ChainEvent[] = [
     stage: 'youngAdult',
     category: 'health',
     weight: 0.7,
-    text: 'Third session. Your therapist says something that hits you like a truck. "It sounds like you learned early on that your feelings weren\'t safe to express." You stare at them. Nobody has ever said that before.',
+    text: `Third session. Your therapist says something that hits you like a truck. "It sounds like you learned early on that your feelings weren't safe to express." You stare at them. Nobody has ever said that before.`,
     choices: [
       {
         id: 'therapy-lean-in',
-        label: 'Lean into it — this is why you\'re here',
+        label: `Lean into it — this is why you're here`,
         effects: { happiness: 5, stress: 10, smarts: 5 },
         nextChainId: 'chaos-therapy-3',
         resultText: 'The next few sessions are brutal. You cry more than you thought possible. But each session, the weight gets a little lighter.'
       },
       {
         id: 'therapy-deflect',
-        label: 'Change the subject — that\'s too close',
+        label: `Change the subject — that's too close`,
         effects: { stress: 10 },
         nextChainId: 'chaos-therapy-3',
-        resultText: 'You spend two more sessions talking about surface stuff. Your therapist is patient. They\'ll wait.'
+        resultText: `You spend two more sessions talking about surface stuff. Your therapist is patient. They'll wait.`
       }
     ]
   },
@@ -406,14 +406,14 @@ const therapyArc: ChainEvent[] = [
     choices: [
       {
         id: 'therapy-continue',
-        label: 'Keep going — you\'re just getting started',
+        label: `Keep going — you're just getting started`,
         effects: { happiness: 10, stress: -10, smarts: 5, money: -5 },
         nextChainId: 'chaos-therapy-4',
         resultText: 'Therapy becomes the most important hour of your week. You start recommending it to everyone.'
       },
       {
         id: 'therapy-pause',
-        label: 'Take a break — you\'ve got enough tools for now',
+        label: `Take a break — you've got enough tools for now`,
         effects: { happiness: 5, stress: -5, money: 3 },
         nextChainId: 'chaos-therapy-4',
         resultText: 'You step away for a while. The skills stick. You know you can go back if you need to.'
@@ -432,17 +432,17 @@ const therapyArc: ChainEvent[] = [
     choices: [
       {
         id: 'therapy-growth',
-        label: 'Handle it with the tools you\'ve built',
+        label: `Handle it with the tools you've built`,
         effects: { happiness: 20, stress: -15, smarts: 10 },
         addConditions: ['emotionally-healthy'],
-        resultText: 'It\'s not perfect. But you navigate it without blowing up your life. That\'s the real victory.'
+        resultText: `It's not perfect. But you navigate it without blowing up your life. That's the real victory.`
       },
       {
         id: 'therapy-slip',
         label: 'Slip back into old patterns, then catch yourself',
         effects: { happiness: 10, stress: -5 },
         addConditions: ['self-aware'],
-        resultText: 'You fall, but you fall softer. And you get back up faster. Progress isn\'t linear, and that\'s okay.'
+        resultText: `You fall, but you fall softer. And you get back up faster. Progress isn't linear, and that's okay.`
       }
     ]
   }

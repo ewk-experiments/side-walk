@@ -13,13 +13,13 @@ export const milestoneEvents: GameEvent[] = [
         id: 'school-brave',
         label: 'Walk in like you own the place',
         effects: { happiness: 10, reputation: 5 },
-        resultText: 'You march through those doors. A kid in a dinosaur shirt waves at you. Maybe this won\'t be so bad.'
+        resultText: `You march through those doors. A kid in a dinosaur shirt waves at you. Maybe this won't be so bad.`
       },
       {
         id: 'school-cling',
-        label: 'Cling to your parent\'s leg and refuse to let go',
+        label: `Cling to your parent's leg and refuse to let go`,
         effects: { happiness: -5, stress: 10 },
-        resultText: 'They eventually pry you off. By lunchtime, you\'ve made a friend and forgotten you were ever scared.'
+        resultText: `They eventually pry you off. By lunchtime, you've made a friend and forgotten you were ever scared.`
       }
     ]
   },
@@ -51,13 +51,13 @@ export const milestoneEvents: GameEvent[] = [
     category: 'school',
     weight: 1,
     requirements: { minAge: 17, maxAge: 18 },
-    text: 'Graduation day. The cap doesn\'t fit right and the gown makes you look like a wizard. Someone\'s playing "Pomp and Circumstance" slightly off-key. You did it.',
+    text: `Graduation day. The cap doesn't fit right and the gown makes you look like a wizard. Someone's playing "Pomp and Circumstance" slightly off-key. You did it.`,
     choices: [
       {
         id: 'grad-celebrate',
         label: 'Throw your cap so high it disappears',
         effects: { happiness: 20, stress: -15 },
-        resultText: 'You never find that cap. You don\'t care. The future is wide open.'
+        resultText: `You never find that cap. You don't care. The future is wide open.`
       },
       {
         id: 'grad-bittersweet',
@@ -73,7 +73,7 @@ export const milestoneEvents: GameEvent[] = [
     category: 'work',
     weight: 0.9,
     requirements: { minAge: 15, maxAge: 19 },
-    text: 'Your first real paycheck. It\'s not much, but it\'s yours. You earned this by standing on your feet for 6 hours doing something moderately degrading.',
+    text: `Your first real paycheck. It's not much, but it's yours. You earned this by standing on your feet for 6 hours doing something moderately degrading.`,
     choices: [
       {
         id: 'job-save',
@@ -83,7 +83,7 @@ export const milestoneEvents: GameEvent[] = [
       },
       {
         id: 'job-spend',
-        label: 'Blow it immediately on something you\'ve wanted forever',
+        label: `Blow it immediately on something you've wanted forever`,
         effects: { happiness: 15, money: -3 },
         resultText: 'The purchase gives you a dopamine hit that lasts approximately 72 hours. Worth it.'
       }
@@ -95,7 +95,7 @@ export const milestoneEvents: GameEvent[] = [
     category: 'housing',
     weight: 0.9,
     requirements: { minAge: 18, maxAge: 25 },
-    text: 'Your first apartment. It\'s small, the faucet drips, and the previous tenant left a mysterious stain on the ceiling. But the key is in YOUR hand.',
+    text: `Your first apartment. It's small, the faucet drips, and the previous tenant left a mysterious stain on the ceiling. But the key is in YOUR hand.`,
     choices: [
       {
         id: 'apt-decorate',
@@ -105,7 +105,7 @@ export const milestoneEvents: GameEvent[] = [
       },
       {
         id: 'apt-minimal',
-        label: 'Mattress on the floor. That\'s it. That\'s the apartment.',
+        label: `Mattress on the floor. That's it. That's the apartment.`,
         effects: { happiness: 5, money: 3 },
         resultText: 'Minimalism by choice (and also by budget). The echo is kind of meditative.'
       }
@@ -139,14 +139,14 @@ export const milestoneEvents: GameEvent[] = [
     category: 'romance',
     weight: 0.8,
     requirements: { minAge: 23, maxAge: 50, hasPartner: true },
-    text: 'Your wedding day. Everything that could go wrong has gone wrong — the florist delivered the wrong flowers, someone\'s uncle is already drunk, and it\'s raining. But then you see them at the end of the aisle and none of it matters.',
+    text: `Your wedding day. Everything that could go wrong has gone wrong — the florist delivered the wrong flowers, someone's uncle is already drunk, and it's raining. But then you see them at the end of the aisle and none of it matters.`,
     choices: [
       {
         id: 'wedding-tears',
         label: 'Cry through your entire vows (happy tears)',
         effects: { happiness: 30, stress: -10 },
         addConditions: ['married'],
-        resultText: 'Nobody understands a word you say through the sobbing. Everyone agrees it was the most beautiful thing they\'ve ever seen.'
+        resultText: `Nobody understands a word you say through the sobbing. Everyone agrees it was the most beautiful thing they've ever seen.`
       },
       {
         id: 'wedding-composed',
@@ -174,10 +174,10 @@ export const milestoneEvents: GameEvent[] = [
       },
       {
         id: 'child-panic',
-        label: '"I have no idea what I\'m doing"',
+        label: `"I have no idea what I'm doing"`,
         effects: { happiness: 20, stress: 20 },
         addConditions: ['parent'],
-        resultText: 'The nurse laughs. "Nobody does." Somehow that\'s comforting.'
+        resultText: `The nurse laughs. "Nobody does." Somehow that's comforting.`
       }
     ]
   },
@@ -187,13 +187,13 @@ export const milestoneEvents: GameEvent[] = [
     category: 'work',
     weight: 0.7,
     requirements: { minAge: 25, maxAge: 55 },
-    text: 'You get called into the corner office. "We\'ve been impressed with your work. How does Director sound?" The title comes with a real office. With a door.',
+    text: `You get called into the corner office. "We've been impressed with your work. How does Director sound?" The title comes with a real office. With a door.`,
     choices: [
       {
         id: 'promo-celebrate',
         label: 'Accept and celebrate properly',
         effects: { happiness: 20, money: 15, reputation: 10 },
-        resultText: 'You call everyone you know. Your parent says "I always knew you\'d do something big." You ugly-cry in a restaurant bathroom.'
+        resultText: `You call everyone you know. Your parent says "I always knew you'd do something big." You ugly-cry in a restaurant bathroom.`
       },
       {
         id: 'promo-negotiate',
@@ -209,13 +209,13 @@ export const milestoneEvents: GameEvent[] = [
     category: 'housing',
     weight: 0.7,
     requirements: { minAge: 27, maxAge: 55, moneyMin: 20 },
-    text: 'The realtor hands you the keys. This house — this actual house — is yours. Well, yours and the bank\'s. But mostly yours. The lawn needs work. The kitchen is outdated. It\'s perfect.',
+    text: `The realtor hands you the keys. This house — this actual house — is yours. Well, yours and the bank's. But mostly yours. The lawn needs work. The kitchen is outdated. It's perfect.`,
     choices: [
       {
         id: 'house-dream',
         label: 'Walk through every room imagining the future',
         effects: { happiness: 25, money: -20 },
-        resultText: '"The kids\' rooms will be upstairs. We\'ll put the reading nook here." You spend the first night on the floor eating takeout. Best meal ever.'
+        resultText: `"The kids' rooms will be upstairs. We'll put the reading nook here." You spend the first night on the floor eating takeout. Best meal ever.`
       },
       {
         id: 'house-practical',
@@ -237,13 +237,13 @@ export const milestoneEvents: GameEvent[] = [
         id: 'nest-freedom',
         label: 'Turn their room into the home gym you always wanted',
         effects: { happiness: 10, health: 5 },
-        resultText: 'Guilt lasts about a week. Then you\'re doing squats where their bed used to be and feeling great about it.'
+        resultText: `Guilt lasts about a week. Then you're doing squats where their bed used to be and feeling great about it.`
       },
       {
         id: 'nest-preserve',
         label: 'Leave it exactly as it is',
         effects: { happiness: -5 },
-        resultText: 'The posters stay up. The trophies gather dust. They\'ll always have a room to come home to.'
+        resultText: `The posters stay up. The trophies gather dust. They'll always have a room to come home to.`
       }
     ]
   },
@@ -265,7 +265,7 @@ export const milestoneEvents: GameEvent[] = [
         id: 'retire-lost',
         label: 'Feel a little lost without the structure',
         effects: { happiness: 5, stress: 10 },
-        resultText: 'By Wednesday you\'re reorganizing the garage. By Friday you\'re considering "part-time consulting." Old habits die hard.'
+        resultText: `By Wednesday you're reorganizing the garage. By Friday you're considering "part-time consulting." Old habits die hard.`
       }
     ]
   },
@@ -281,7 +281,7 @@ export const milestoneEvents: GameEvent[] = [
         id: 'grand-spoil',
         label: 'Start shopping for tiny outfits immediately',
         effects: { happiness: 25, money: -5 },
-        resultText: 'You buy more baby clothes than any infant could wear in a lifetime. You don\'t care. Grandparent privileges.'
+        resultText: `You buy more baby clothes than any infant could wear in a lifetime. You don't care. Grandparent privileges.`
       },
       {
         id: 'grand-wisdom',
@@ -297,13 +297,13 @@ export const milestoneEvents: GameEvent[] = [
     category: 'social',
     weight: 0.8,
     requirements: { minAge: 50, maxAge: 50 },
-    text: 'The big 5-0. Half a century on this planet. Your body has opinions about stairs now. But you\'ve survived everything life threw at you, and you\'re still here.',
+    text: `The big 5-0. Half a century on this planet. Your body has opinions about stairs now. But you've survived everything life threw at you, and you're still here.`,
     choices: [
       {
         id: '50-party',
         label: 'Throw the party of a lifetime',
         effects: { happiness: 20, money: -10, reputation: 10 },
-        resultText: 'Everyone comes. People you haven\'t seen in decades. The speeches make you cry. The hangover lasts three days.'
+        resultText: `Everyone comes. People you haven't seen in decades. The speeches make you cry. The hangover lasts three days.`
       },
       {
         id: '50-quiet',

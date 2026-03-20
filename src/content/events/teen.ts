@@ -10,7 +10,7 @@ export const teenEvents: GameEvent[] = [
     choices: [
       { id: 'dm', label: 'Slide into their DMs', effects: { happiness: 10, stress: 15, reputation: 5 }, resultText: 'You type and delete fourteen messages before sending "hey." They reply in 3 minutes. You ascend.' },
       { id: 'pine', label: 'Admire from a distance forever', effects: { happiness: -5, stress: 10 }, resultText: 'You memorize their schedule. This is not healthy. This is being 14.' },
-      { id: 'friend_ask', label: 'Get your friend to ask if they like you', effects: { stress: 10, reputation: -5 }, resultText: 'Your friend, being 14, handles this with zero subtlety. It\'s out there now.' },
+      { id: 'friend_ask', label: 'Get your friend to ask if they like you', effects: { stress: 10, reputation: -5 }, resultText: `Your friend, being 14, handles this with zero subtlety. It's out there now.` },
     ],
   },
   {
@@ -18,9 +18,9 @@ export const teenEvents: GameEvent[] = [
     stage: 'teen',
     category: 'school',
     weight: 5,
-    text: 'Your group chat is blowing up at 1 AM on a school night. There\'s apparently drama.',
+    text: `Your group chat is blowing up at 1 AM on a school night. There's apparently drama.`,
     choices: [
-      { id: 'stay_up', label: 'Stay up and follow every message', effects: { health: -5, happiness: 5, stress: 10 }, resultText: 'You\'re exhausted tomorrow but fully informed. Two people aren\'t talking anymore. Worth it.' },
+      { id: 'stay_up', label: 'Stay up and follow every message', effects: { health: -5, happiness: 5, stress: 10 }, resultText: `You're exhausted tomorrow but fully informed. Two people aren't talking anymore. Worth it.` },
       { id: 'mute', label: 'Mute and sleep', effects: { health: 5, stress: -5, happiness: -5 }, resultText: 'You wake up to 347 unread messages and absolutely no context. Catch-up takes the entire bus ride.' },
       { id: 'instigate', label: 'Add fuel to the fire', effects: { reputation: -10, happiness: 10, stress: 5 }, resultText: 'You screenshot and share. The chaos doubles. You are the villain and you know it.' },
     ],
@@ -32,9 +32,9 @@ export const teenEvents: GameEvent[] = [
     weight: 4,
     text: 'Someone posts an unflattering photo of you on their story. It already has 200 views.',
     choices: [
-      { id: 'ask_remove', label: 'Ask them to take it down', effects: { stress: 10, reputation: 5 }, resultText: 'They take it down but the screenshot economy is already in motion. It\'s out there.' },
+      { id: 'ask_remove', label: 'Ask them to take it down', effects: { stress: 10, reputation: 5 }, resultText: `They take it down but the screenshot economy is already in motion. It's out there.` },
       { id: 'repost', label: 'Repost it yourself with a funny caption', effects: { reputation: 15, happiness: 10 }, resultText: 'Owning it is the ultimate power move. People respect you more for it.' },
-      { id: 'retaliate', label: 'Post a worse one of them', effects: { reputation: -10, happiness: 5, relationshipDelta: -15 }, resultText: 'Mutually assured destruction. You\'re both embarrassed. Nobody wins.' },
+      { id: 'retaliate', label: 'Post a worse one of them', effects: { reputation: -10, happiness: 5, relationshipDelta: -15 }, resultText: `Mutually assured destruction. You're both embarrassed. Nobody wins.` },
     ],
   },
   {
@@ -46,8 +46,8 @@ export const teenEvents: GameEvent[] = [
     text: 'A fast food place near school is hiring. The uniform is humiliating but you need money.',
     choices: [
       { id: 'apply', label: 'Apply and get the job', effects: { money: 15, happiness: -5, stress: 10 }, resultText: 'You smell like fries permanently. Your friends visit just to roast you. But that direct deposit hits different.' },
-      { id: 'skip', label: 'Hold out for something better', effects: { money: -5, stress: 5 }, resultText: 'You\'re still broke three months later. "Something better" was not, in fact, coming.' },
-      { id: 'freelance', label: 'Try to make money online instead', effects: { smarts: 10, money: 5, stress: 5 }, resultText: 'You start a Depop store selling thrifted clothes. It makes $40 in the first month. It\'s honest work.' },
+      { id: 'skip', label: 'Hold out for something better', effects: { money: -5, stress: 5 }, resultText: `You're still broke three months later. "Something better" was not, in fact, coming.` },
+      { id: 'freelance', label: 'Try to make money online instead', effects: { smarts: 10, money: 5, stress: 5 }, resultText: `You start a Depop store selling thrifted clothes. It makes $40 in the first month. It's honest work.` },
     ],
   },
   {
@@ -55,10 +55,10 @@ export const teenEvents: GameEvent[] = [
     stage: 'teen',
     category: 'health',
     weight: 3,
-    text: 'Someone offers you a vape in the bathroom. "It\'s just mango, bro."',
+    text: `Someone offers you a vape in the bathroom. "It's just mango, bro."`,
     choices: [
       { id: 'try', label: 'Try it', effects: { health: -10, reputation: 5, stress: -5 }, resultText: 'You cough for 45 seconds. "Smooth," you lie. You do not try it again. For a while.' },
-      { id: 'decline', label: 'Pass', effects: { health: 5, reputation: -5 }, resultText: '"Nah, I\'m good." They shrug. It\'s actually less dramatic than you expected.' },
+      { id: 'decline', label: 'Pass', effects: { health: 5, reputation: -5 }, resultText: `"Nah, I'm good." They shrug. It's actually less dramatic than you expected.` },
       { id: 'snitch', label: 'Tell a teacher', effects: { reputation: -15, stress: 10 }, resultText: 'The bathroom gets locked for a month. Everyone knows it was you. Was it worth it? Debatable.' },
     ],
   },
@@ -82,9 +82,9 @@ export const teenEvents: GameEvent[] = [
     weight: 4,
     text: 'Your parents go through your phone. They find something.',
     choices: [
-      { id: 'defend', label: 'Argue about privacy', effects: { stress: 15, relationshipDelta: -10, reputation: 5 }, resultText: '"I\'m not a child!" you yell, childishly. The argument lasts three days.' },
-      { id: 'apologize', label: 'Apologize and accept the consequences', effects: { stress: 5, relationshipDelta: 5, happiness: -10 }, resultText: 'Phone privileges revoked for two weeks. You read an actual book. It\'s not terrible.' },
-      { id: 'deflect', label: 'Blame it on a friend', effects: { stress: 10, relationshipDelta: -5 }, resultText: 'They don\'t believe you. Of course they don\'t. You\'re a bad liar and they\'ve known you for 15 years.' },
+      { id: 'defend', label: 'Argue about privacy', effects: { stress: 15, relationshipDelta: -10, reputation: 5 }, resultText: `"I'm not a child!" you yell, childishly. The argument lasts three days.` },
+      { id: 'apologize', label: 'Apologize and accept the consequences', effects: { stress: 5, relationshipDelta: 5, happiness: -10 }, resultText: `Phone privileges revoked for two weeks. You read an actual book. It's not terrible.` },
+      { id: 'deflect', label: 'Blame it on a friend', effects: { stress: 10, relationshipDelta: -5 }, resultText: `They don't believe you. Of course they don't. You're a bad liar and they've known you for 15 years.` },
     ],
   },
   {
@@ -92,10 +92,10 @@ export const teenEvents: GameEvent[] = [
     stage: 'teen',
     category: 'social',
     weight: 3,
-    text: 'You get invited to your first real house party. The host\'s parents are "out of town."',
+    text: `You get invited to your first real house party. The host's parents are "out of town."`,
     choices: [
       { id: 'go', label: 'Obviously go', effects: { happiness: 15, reputation: 10, health: -5, stress: 5 }, resultText: 'The party is exactly like the movies, minus the fun lighting. Someone breaks a lamp. You have a great time.' },
-      { id: 'skip', label: 'Stay home', effects: { happiness: -10, stress: -5 }, resultText: 'You watch everyone\'s stories from bed. FOMO hits like a truck. But your liver is fine.' },
+      { id: 'skip', label: 'Stay home', effects: { happiness: -10, stress: -5 }, resultText: `You watch everyone's stories from bed. FOMO hits like a truck. But your liver is fine.` },
       { id: 'go_leave_early', label: 'Go but leave early', effects: { happiness: 5, reputation: 5 }, resultText: 'You make an appearance, say hi to everyone, and dip at 10. Strategic socializing.' },
     ],
   },
@@ -107,7 +107,7 @@ export const teenEvents: GameEvent[] = [
     text: 'You accidentally become a meme. Someone filmed you wiping out in the parking lot.',
     choices: [
       { id: 'embrace', label: 'Lean into the fame', effects: { reputation: 15, happiness: 10 }, resultText: 'You repost it with #NeverForget. It gets 50K views. For one week, you are internet famous. Then everyone forgets.' },
-      { id: 'hide', label: 'Try to get it taken down', effects: { stress: 15, happiness: -10 }, resultText: 'DMCA on a TikTok doesn\'t really work like that. The internet is forever. You learn this the hard way.' },
+      { id: 'hide', label: 'Try to get it taken down', effects: { stress: 15, happiness: -10 }, resultText: `DMCA on a TikTok doesn't really work like that. The internet is forever. You learn this the hard way.` },
       { id: 'sequel', label: 'Film a sequel on purpose', effects: { reputation: 10, happiness: 15, health: -5 }, resultText: 'The intentional wipeout gets even more views. You might have a career in physical comedy.' },
     ],
   },
@@ -117,7 +117,7 @@ export const teenEvents: GameEvent[] = [
     category: 'romance',
     weight: 4,
     requirements: { minAge: 14 },
-    text: 'You\'re in your first relationship. It\'s been two weeks. You\'re basically married.',
+    text: `You're in your first relationship. It's been two weeks. You're basically married.`,
     choices: [
       { id: 'all_in', label: 'Change your profile pic to a couple photo', effects: { happiness: 15, reputation: -5, relationshipDelta: 10 }, resultText: 'Matching profile pics. Joint TikTok account. Your friends stage an intervention by week three.' },
       { id: 'chill', label: 'Play it cool', effects: { happiness: 10, stress: 5, relationshipDelta: 5 }, resultText: 'You resist the urge to text every 5 minutes. You text every 7 minutes instead. Growth.' },
@@ -129,11 +129,11 @@ export const teenEvents: GameEvent[] = [
     stage: 'teen',
     category: 'school',
     weight: 5,
-    text: 'Your teacher assigns a group project. You\'re with the kid who does nothing and the kid who does too much.',
+    text: `Your teacher assigns a group project. You're with the kid who does nothing and the kid who does too much.`,
     choices: [
       { id: 'carry', label: 'Just do most of it yourself', effects: { smarts: 10, stress: 15, happiness: -5 }, resultText: 'You pull an all-nighter. The do-nothing kid presents your slides. You discover what resentment feels like.' },
       { id: 'delegate', label: 'Actually try to coordinate', effects: { smarts: 5, stress: 10, reputation: 5 }, resultText: 'You make a shared doc and assign tasks. One person still does nothing. But you tried. Management is pain.' },
-      { id: 'confront', label: 'Call out the freeloader', effects: { reputation: 5, stress: 10, relationshipDelta: -10 }, resultText: '"So are you gonna, like, do anything?" The tension is unbearable. They do the bare minimum. It\'s something.' },
+      { id: 'confront', label: 'Call out the freeloader', effects: { reputation: 5, stress: 10, relationshipDelta: -10 }, resultText: `"So are you gonna, like, do anything?" The tension is unbearable. They do the bare minimum. It's something.` },
     ],
   },
   {
@@ -144,9 +144,9 @@ export const teenEvents: GameEvent[] = [
     requirements: { minAge: 16 },
     text: 'Your parents offer to teach you to drive. In the car. Right now.',
     choices: [
-      { id: 'go', label: 'Let\'s do this', effects: { smarts: 5, stress: 15, happiness: 10 }, resultText: 'You run a stop sign in the first five minutes. Your parent\'s life flashes before their eyes. You improve rapidly after that.' },
+      { id: 'go', label: `Let's do this`, effects: { smarts: 5, stress: 15, happiness: 10 }, resultText: `You run a stop sign in the first five minutes. Your parent's life flashes before their eyes. You improve rapidly after that.` },
       { id: 'drivers_ed', label: 'Insist on professional lessons', effects: { money: -10, smarts: 10, stress: 5 }, resultText: 'The instructor has a brake pedal on their side. This is the correct choice and everyone knows it.' },
-      { id: 'delay', label: 'You\'re not ready', effects: { stress: -5, happiness: -5 }, resultText: 'Your friends all get their licenses. You become very good at asking for rides.' },
+      { id: 'delay', label: `You're not ready`, effects: { stress: -5, happiness: -5 }, resultText: 'Your friends all get their licenses. You become very good at asking for rides.' },
     ],
   },
   {
@@ -154,12 +154,12 @@ export const teenEvents: GameEvent[] = [
     stage: 'teen',
     category: 'social',
     weight: 4,
-    text: 'Your friend group is splitting. You\'re being forced to pick a side.',
+    text: `Your friend group is splitting. You're being forced to pick a side.`,
     choices: [
       { id: 'side_a', label: 'Go with your older friends', effects: { relationshipDelta: -10, happiness: -5, stress: 10 }, resultText: 'You lose half your friends overnight. The group chat splits into two group chats. Political.' },
-      { id: 'side_b', label: 'Go with the newer crew', effects: { relationshipDelta: -10, happiness: 5, stress: 10, reputation: -5 }, resultText: 'Fresh start energy. But you miss the old inside jokes. Some things can\'t be replicated.' },
-      { id: 'neutral', label: 'Refuse to pick sides', effects: { stress: 15, reputation: 10 }, resultText: 'You\'re in both group chats, which is twice the drama. Switzerland has it harder than people think.' },
-      { id: 'new_friends', label: 'Find entirely new friends', effects: { happiness: 5, relationshipDelta: -15, stress: -5 }, resultText: 'You start eating lunch with the art kids. They\'re weird. You love it.' },
+      { id: 'side_b', label: 'Go with the newer crew', effects: { relationshipDelta: -10, happiness: 5, stress: 10, reputation: -5 }, resultText: `Fresh start energy. But you miss the old inside jokes. Some things can't be replicated.` },
+      { id: 'neutral', label: 'Refuse to pick sides', effects: { stress: 15, reputation: 10 }, resultText: `You're in both group chats, which is twice the drama. Switzerland has it harder than people think.` },
+      { id: 'new_friends', label: 'Find entirely new friends', effects: { happiness: 5, relationshipDelta: -15, stress: -5 }, resultText: `You start eating lunch with the art kids. They're weird. You love it.` },
     ],
   },
   {
@@ -168,7 +168,7 @@ export const teenEvents: GameEvent[] = [
     category: 'money',
     weight: 3,
     requirements: { minAge: 16 },
-    text: 'You saved up $800 from your part-time job. That\'s real money.',
+    text: `You saved up $800 from your part-time job. That's real money.`,
     choices: [
       { id: 'save', label: 'Put it in savings', effects: { money: 20, smarts: 5 }, resultText: 'Boring, responsible, correct. Your future self will thank you. Your present self is bored.' },
       { id: 'spend', label: 'Treat yourself — new clothes, headphones, food', effects: { money: -15, happiness: 20, looks: 5 }, resultText: 'You look fresh for exactly one month. The money evaporates like morning dew.' },
@@ -180,10 +180,10 @@ export const teenEvents: GameEvent[] = [
     stage: 'teen',
     category: 'health',
     weight: 4,
-    text: 'You haven\'t slept more than 5 hours a night in two weeks. School, social media, and existential dread are competing for your attention.',
+    text: `You haven't slept more than 5 hours a night in two weeks. School, social media, and existential dread are competing for your attention.`,
     choices: [
       { id: 'fix', label: 'Try to fix your sleep schedule', effects: { health: 10, happiness: 5, stress: -10 }, resultText: 'Phone down at 10 PM. You stare at the ceiling for an hour but eventually your body remembers how sleep works.' },
-      { id: 'lean_in', label: 'Embrace the insomnia aesthetic', effects: { health: -15, smarts: -5, happiness: -5 }, resultText: 'You\'re running on caffeine and spite. Your under-eye bags have under-eye bags.' },
+      { id: 'lean_in', label: 'Embrace the insomnia aesthetic', effects: { health: -15, smarts: -5, happiness: -5 }, resultText: `You're running on caffeine and spite. Your under-eye bags have under-eye bags.` },
       { id: 'melatonin', label: 'Start taking melatonin', effects: { health: 5, stress: -5 }, resultText: 'You sleep like a rock. The dreams are unhinged though. Last night you were a sentient lamp.' },
     ],
   },
@@ -194,7 +194,7 @@ export const teenEvents: GameEvent[] = [
     weight: 2,
     text: 'You decide to start a YouTube channel / TikTok. You have zero followers and enormous confidence.',
     choices: [
-      { id: 'commit', label: 'Post consistently for months', effects: { smarts: 10, reputation: 5, happiness: 5, stress: 10 }, resultText: 'You hit 500 followers. It\'s not fame, but your editing skills are now genuinely impressive.' },
+      { id: 'commit', label: 'Post consistently for months', effects: { smarts: 10, reputation: 5, happiness: 5, stress: 10 }, resultText: `You hit 500 followers. It's not fame, but your editing skills are now genuinely impressive.` },
       { id: 'one_video', label: 'Make one video and quit', effects: { happiness: -5, smarts: 5 }, resultText: 'The video gets 23 views. 14 of them are you. Content creation is harder than it looks.' },
       { id: 'go_viral', label: 'Try to force a viral moment', effects: { reputation: -10, health: -5, happiness: 5 }, resultText: 'Your "prank" video gets reported. You learn about Terms of Service the hard way.' },
     ],
@@ -205,10 +205,10 @@ export const teenEvents: GameEvent[] = [
     category: 'school',
     weight: 3,
     requirements: { minAge: 17 },
-    text: 'College application essays are due. The prompt is "describe a challenge you\'ve overcome." You stare at the blank screen.',
+    text: `College application essays are due. The prompt is "describe a challenge you've overcome." You stare at the blank screen.`,
     choices: [
-      { id: 'honest', label: 'Write something genuinely personal', effects: { smarts: 15, happiness: 10, stress: 10 }, resultText: 'You write about something real. It\'s scary to be this honest. The essay is actually good.' },
-      { id: 'generic', label: 'Write about that one volunteering trip', effects: { smarts: 5, stress: 5 }, resultText: 'It\'s fine. It reads like every other essay. You are one of 40,000 applicants who built houses.' },
+      { id: 'honest', label: 'Write something genuinely personal', effects: { smarts: 15, happiness: 10, stress: 10 }, resultText: `You write about something real. It's scary to be this honest. The essay is actually good.` },
+      { id: 'generic', label: 'Write about that one volunteering trip', effects: { smarts: 5, stress: 5 }, resultText: `It's fine. It reads like every other essay. You are one of 40,000 applicants who built houses.` },
       { id: 'ai', label: 'Ask ChatGPT to write it', effects: { smarts: -10, stress: -10, reputation: -5 }, resultText: 'It sounds like a LinkedIn post written by a motivational poster. You submit it anyway. Integrity is complicated at 17.' },
     ],
   },
@@ -222,7 +222,7 @@ export const teenEvents: GameEvent[] = [
     choices: [
       { id: 'sad', label: 'Let yourself be sad', effects: { happiness: -15, stress: 10, health: -5 }, resultText: 'You listen to sad music for two weeks straight. Your Spotify Wrapped will be embarrassing.' },
       { id: 'revenge_glow', label: 'Revenge glow-up', effects: { looks: 10, health: 5, happiness: 5, stress: 5 }, resultText: 'You hit the gym. You get a haircut. You post a fire selfie. They see it. You know they see it.' },
-      { id: 'immediately_move_on', label: 'Pretend you\'re fine', effects: { happiness: -10, stress: 15, reputation: 5 }, resultText: '"I\'m honestly relieved," you tell everyone. You are not relieved. You are crumbling.' },
+      { id: 'immediately_move_on', label: `Pretend you're fine`, effects: { happiness: -10, stress: 15, reputation: 5 }, resultText: `"I'm honestly relieved," you tell everyone. You are not relieved. You are crumbling.` },
       { id: 'talk_it_out', label: 'Call your best friend', effects: { happiness: 5, stress: -10, relationshipDelta: 10 }, resultText: 'Three-hour phone call. They validate every feeling. This is what friends are for.' },
     ],
   },
@@ -235,7 +235,7 @@ export const teenEvents: GameEvent[] = [
     choices: [
       { id: 'honest', label: '"I have no idea"', effects: { stress: 5, happiness: 5 }, resultText: 'Uncle Dave gives you a 20-minute lecture about trades. Aunt Carol says "follow your passion." Neither helps.' },
       { id: 'lie', label: '"Pre-med"', effects: { stress: 10, reputation: 5 }, resultText: 'Everyone is impressed. You are now pre-med in the extended family cinematic universe. Good luck with that.' },
-      { id: 'deflect', label: 'Redirect to their problems', effects: { smarts: 5, stress: -5 }, resultText: '"How\'s YOUR job going, Uncle Dave?" Table goes quiet. Strategic deflection: mastered.' },
+      { id: 'deflect', label: 'Redirect to their problems', effects: { smarts: 5, stress: -5 }, resultText: `"How's YOUR job going, Uncle Dave?" Table goes quiet. Strategic deflection: mastered.` },
     ],
   },
   {
@@ -246,8 +246,8 @@ export const teenEvents: GameEvent[] = [
     text: 'Your best friend tells you a secret. Then your other friend asks if you know anything.',
     choices: [
       { id: 'keep_secret', label: 'Deny everything', effects: { stress: 10, relationshipDelta: 10 }, resultText: 'You hold the line. Your poker face is tested. Trust: maintained.' },
-      { id: 'spill', label: '"Okay but you can\'t tell anyone"', effects: { stress: -5, relationshipDelta: -15, reputation: -10 }, resultText: 'It gets back to the original friend within 24 hours. It always does. You\'re in the trust doghouse.' },
-      { id: 'vague', label: 'Give a vague non-answer', effects: { stress: 5, smarts: 5 }, resultText: '"It\'s not my place to say." This is technically the right answer and also the most suspicious thing you could possibly say.' },
+      { id: 'spill', label: `"Okay but you can't tell anyone"`, effects: { stress: -5, relationshipDelta: -15, reputation: -10 }, resultText: `It gets back to the original friend within 24 hours. It always does. You're in the trust doghouse.` },
+      { id: 'vague', label: 'Give a vague non-answer', effects: { stress: 5, smarts: 5 }, resultText: `"It's not my place to say." This is technically the right answer and also the most suspicious thing you could possibly say.` },
     ],
   },
   {
@@ -255,11 +255,11 @@ export const teenEvents: GameEvent[] = [
     stage: 'teen',
     category: 'school',
     weight: 4,
-    text: 'You\'re falling behind in a class. Report cards come out next week.',
+    text: `You're falling behind in a class. Report cards come out next week.`,
     choices: [
       { id: 'cram', label: 'Emergency cram session', effects: { smarts: 10, stress: 15, health: -5 }, resultText: 'You learn more in 48 hours than you did in 8 weeks. You pass. Barely. The adrenaline was not worth it.' },
       { id: 'ask_help', label: 'Ask the teacher for extra credit', effects: { smarts: 5, stress: 5, reputation: 5 }, resultText: 'The teacher appreciates the initiative. You write a bonus essay and claw your way to a C+. Survival.' },
-      { id: 'accept', label: 'Accept the L', effects: { stress: -5, happiness: -10, smarts: -5 }, resultText: 'D+. Your parents are disappointed. You\'re disappointed. Everyone is disappointed.' },
+      { id: 'accept', label: 'Accept the L', effects: { stress: -5, happiness: -10, smarts: -5 }, resultText: `D+. Your parents are disappointed. You're disappointed. Everyone is disappointed.` },
     ],
   },
   {
@@ -267,7 +267,7 @@ export const teenEvents: GameEvent[] = [
     stage: 'teen',
     category: 'health',
     weight: 3,
-    text: 'You start comparing yourself to people on social media. It\'s getting to you.',
+    text: `You start comparing yourself to people on social media. It's getting to you.`,
     choices: [
       { id: 'detox', label: 'Take a social media break', effects: { happiness: 15, health: 10, stress: -15 }, resultText: 'A week off. You read, you walk, you feel like a person again. You also miss 40 memes.' },
       { id: 'curate', label: 'Unfollow accounts that make you feel bad', effects: { happiness: 10, stress: -10, smarts: 5 }, resultText: 'Your feed becomes dogs, food, and niche memes. Immediate improvement in mental state.' },
@@ -279,7 +279,7 @@ export const teenEvents: GameEvent[] = [
     stage: 'teen',
     category: 'absurd',
     weight: 1,
-    text: 'You wake up the day of a big test and realize your alarm didn\'t go off. School started an hour ago.',
+    text: `You wake up the day of a big test and realize your alarm didn't go off. School started an hour ago.`,
     choices: [
       { id: 'rush', label: 'Sprint to school in pajamas', effects: { stress: 15, reputation: -5, smarts: 5 }, resultText: 'You arrive sweating in plaid pants. The teacher lets you take the test. You score higher than expected. Adrenaline is a study aid.' },
       { id: 'skip', label: 'Just skip the whole day', effects: { stress: -5, smarts: -10 }, resultText: 'You spend the day on the couch watching cooking shows. The makeup test is harder. Karma.' },
@@ -296,7 +296,7 @@ export const teenEvents: GameEvent[] = [
     choices: [
       { id: 'work_hard', label: 'Actually try to be good at it', effects: { money: 10, smarts: 5, stress: 10 }, resultText: 'You become the best folder of shirts in the tri-county area. Your reward is more shifts.' },
       { id: 'minimum', label: 'Do the bare minimum', effects: { money: 10, stress: -5, happiness: 5 }, resultText: 'You master the art of looking busy. This skill will serve you for decades.' },
-      { id: 'quit', label: 'Quit after two weeks', effects: { stress: -10, money: -5 }, resultText: 'The manager just nods. They\'ve seen this before. Many times. You are not special to them.' },
+      { id: 'quit', label: 'Quit after two weeks', effects: { stress: -10, money: -5 }, resultText: `The manager just nods. They've seen this before. Many times. You are not special to them.` },
     ],
   },
   {
@@ -305,7 +305,7 @@ export const teenEvents: GameEvent[] = [
     category: 'romance',
     weight: 3,
     requirements: { minAge: 16 },
-    text: 'Prom is coming. You don\'t have a date.',
+    text: `Prom is coming. You don't have a date.`,
     choices: [
       { id: 'ask_crush', label: 'Ask your crush with an elaborate promposal', effects: { stress: 15, happiness: 15, reputation: 10 }, resultText: 'You hold up a sign in the cafeteria. They say yes. The whole school claps. You peak.' },
       { id: 'go_solo', label: 'Go solo and own it', effects: { happiness: 10, reputation: 5, stress: -5 }, resultText: 'You dance with everyone. No drama, no awkward slow dances. Honestly the better call.' },
@@ -321,7 +321,7 @@ export const teenEvents: GameEvent[] = [
     text: 'Your younger sibling is going through their annoying phase. They will not leave you alone.',
     choices: [
       { id: 'snap', label: 'Yell at them', effects: { stress: -5, relationshipDelta: -10, happiness: -5 }, resultText: 'They cry. You feel terrible immediately. You are becoming your parent.' },
-      { id: 'include', label: 'Actually include them', effects: { happiness: 5, relationshipDelta: 15, stress: 5 }, resultText: 'You let them hang out with you. They worship you even more. It\'s kind of nice, actually.' },
+      { id: 'include', label: 'Actually include them', effects: { happiness: 5, relationshipDelta: 15, stress: 5 }, resultText: `You let them hang out with you. They worship you even more. It's kind of nice, actually.` },
       { id: 'headphones', label: 'Noise-canceling headphones', effects: { stress: -10, happiness: 5 }, resultText: 'Technology solves what patience cannot. You discover your new favorite album in the process.' },
     ],
   },
@@ -331,11 +331,11 @@ export const teenEvents: GameEvent[] = [
     category: 'school',
     weight: 3,
     requirements: { minAge: 17 },
-    text: 'You get your first college acceptance letter. It\'s not your top choice.',
+    text: `You get your first college acceptance letter. It's not your top choice.`,
     choices: [
       { id: 'celebrate', label: 'Celebrate anyway — you got IN somewhere', effects: { happiness: 15, stress: -10 }, resultText: 'The relief is overwhelming. You have a future. The specific coordinates of that future are still TBD.' },
-      { id: 'obsess', label: 'Fixate on the schools that haven\'t responded', effects: { stress: 20, happiness: -10 }, resultText: 'You refresh your portal 30 times a day. This is not living. This is purgatory with WiFi.' },
-      { id: 'reconsider', label: 'Actually research this school', effects: { smarts: 10, happiness: 10, stress: -5 }, resultText: 'It\'s... actually pretty good? Sometimes the backup plan is the plan.' },
+      { id: 'obsess', label: `Fixate on the schools that haven't responded`, effects: { stress: 20, happiness: -10 }, resultText: 'You refresh your portal 30 times a day. This is not living. This is purgatory with WiFi.' },
+      { id: 'reconsider', label: 'Actually research this school', effects: { smarts: 10, happiness: 10, stress: -5 }, resultText: `It's... actually pretty good? Sometimes the backup plan is the plan.` },
     ],
   },
   {
@@ -343,11 +343,11 @@ export const teenEvents: GameEvent[] = [
     stage: 'teen',
     category: 'social',
     weight: 4,
-    text: 'You realize you\'ve been the toxic one in a friendship. The signs were always there.',
+    text: `You realize you've been the toxic one in a friendship. The signs were always there.`,
     choices: [
-      { id: 'apologize', label: 'Reach out and genuinely apologize', effects: { happiness: 10, reputation: 10, relationshipDelta: 10, stress: 5 }, resultText: 'It\'s hard. They appreciate it. The friendship is different now — maybe better. Growth is uncomfortable.' },
-      { id: 'deny', label: 'Convince yourself it wasn\'t that bad', effects: { happiness: -5, stress: 10 }, resultText: 'You know it was that bad. Denial is a full-time job.' },
-      { id: 'distance', label: 'Quietly distance yourself and do better', effects: { happiness: 5, stress: -5, smarts: 5 }, resultText: 'You fade out of their life. You can\'t fix the past but you can stop repeating it.' },
+      { id: 'apologize', label: 'Reach out and genuinely apologize', effects: { happiness: 10, reputation: 10, relationshipDelta: 10, stress: 5 }, resultText: `It's hard. They appreciate it. The friendship is different now — maybe better. Growth is uncomfortable.` },
+      { id: 'deny', label: `Convince yourself it wasn't that bad`, effects: { happiness: -5, stress: 10 }, resultText: 'You know it was that bad. Denial is a full-time job.' },
+      { id: 'distance', label: 'Quietly distance yourself and do better', effects: { happiness: 5, stress: -5, smarts: 5 }, resultText: `You fade out of their life. You can't fix the past but you can stop repeating it.` },
     ],
   },
   {
@@ -355,7 +355,7 @@ export const teenEvents: GameEvent[] = [
     stage: 'teen',
     category: 'health',
     weight: 3,
-    text: 'You start going to the gym. You have no idea what you\'re doing.',
+    text: `You start going to the gym. You have no idea what you're doing.`,
     choices: [
       { id: 'youtube', label: 'Watch YouTube tutorials', effects: { health: 10, looks: 5, smarts: 5 }, resultText: 'You learn proper form from a guy named Chad who is unreasonably positive. It works.' },
       { id: 'wing_it', label: 'Just use random machines', effects: { health: 5, looks: 5, stress: 5 }, resultText: 'You use the leg press backwards once. A stranger kindly corrects you. Humbling but necessary.' },
@@ -369,9 +369,9 @@ export const teenEvents: GameEvent[] = [
     weight: 2,
     text: 'You discover your teacher has a TikTok account. It has 200K followers.',
     choices: [
-      { id: 'follow', label: 'Follow them', effects: { happiness: 10, reputation: 5 }, resultText: 'Their content is actually... good? You can never look at them the same in class. They\'re doing the griddy in your brain forever.' },
-      { id: 'share', label: 'Share it with the entire school', effects: { reputation: 5, happiness: 10, relationshipDelta: -5 }, resultText: 'It spreads instantly. The teacher leans into it. They\'re cooler than you now.' },
-      { id: 'pretend', label: 'Pretend you never saw it', effects: { stress: 5 }, resultText: 'Every class is now slightly surreal. They reference a trend and you know exactly which video they\'re thinking of.' },
+      { id: 'follow', label: 'Follow them', effects: { happiness: 10, reputation: 5 }, resultText: `Their content is actually... good? You can never look at them the same in class. They're doing the griddy in your brain forever.` },
+      { id: 'share', label: 'Share it with the entire school', effects: { reputation: 5, happiness: 10, relationshipDelta: -5 }, resultText: `It spreads instantly. The teacher leans into it. They're cooler than you now.` },
+      { id: 'pretend', label: 'Pretend you never saw it', effects: { stress: 5 }, resultText: `Every class is now slightly surreal. They reference a trend and you know exactly which video they're thinking of.` },
     ],
   },
   {
@@ -384,7 +384,7 @@ export const teenEvents: GameEvent[] = [
     choices: [
       { id: 'meet', label: 'Meet up at a coffee shop', effects: { happiness: 10, stress: 10, reputation: 5 }, resultText: 'They look like their photos. The conversation flows. You feel terrifyingly adult.' },
       { id: 'ghost', label: 'Get anxious and never respond', effects: { stress: 5, happiness: -5 }, resultText: 'You watch their "..." typing indicator disappear. Another connection dissolved by cowardice.' },
-      { id: 'catfish_check', label: 'Ask for their Instagram first', effects: { smarts: 5, stress: -5 }, resultText: 'Their profile checks out. Mutual friends exist. Okay, they\'re real. Deep breath.' },
+      { id: 'catfish_check', label: 'Ask for their Instagram first', effects: { smarts: 5, stress: -5 }, resultText: `Their profile checks out. Mutual friends exist. Okay, they're real. Deep breath.` },
     ],
   },
   {
@@ -395,7 +395,7 @@ export const teenEvents: GameEvent[] = [
     text: 'A substitute teacher shows up. The class descends into anarchy.',
     choices: [
       { id: 'join', label: 'Join the chaos', effects: { happiness: 10, reputation: 5, smarts: -5 }, resultText: 'Paper airplanes are thrown. Names are given falsely. The sub writes a devastating report. Nobody cares.' },
-      { id: 'study', label: 'Actually do the worksheet', effects: { smarts: 10, reputation: -5 }, resultText: 'You\'re the only one. The sub thanks you personally. Cool. Thanks. That\'ll go on the fridge.' },
+      { id: 'study', label: 'Actually do the worksheet', effects: { smarts: 10, reputation: -5 }, resultText: `You're the only one. The sub thanks you personally. Cool. Thanks. That'll go on the fridge.` },
       { id: 'leave', label: 'Ask for a bathroom pass and never return', effects: { happiness: 10, stress: -10 }, resultText: 'You wander the halls for 45 minutes. The freedom is intoxicating.' },
     ],
   },
@@ -407,8 +407,8 @@ export const teenEvents: GameEvent[] = [
     text: 'You overhear your parents talking about money problems.',
     choices: [
       { id: 'offer_help', label: 'Offer to contribute from your job', effects: { money: -10, relationshipDelta: 15, happiness: 5 }, resultText: 'Your parents refuse at first, then quietly accept. Growing up happens in moments like this.' },
-      { id: 'worry_silently', label: 'Pretend you didn\'t hear', effects: { stress: 15, happiness: -10 }, resultText: 'You carry it alone. You start buying less at school. Nobody notices, which is somehow worse.' },
-      { id: 'ask_about_it', label: 'Ask them directly', effects: { stress: 10, relationshipDelta: 5, smarts: 5 }, resultText: 'They\'re surprised you noticed. They explain. It\'s scary but less scary than not knowing.' },
+      { id: 'worry_silently', label: `Pretend you didn't hear`, effects: { stress: 15, happiness: -10 }, resultText: 'You carry it alone. You start buying less at school. Nobody notices, which is somehow worse.' },
+      { id: 'ask_about_it', label: 'Ask them directly', effects: { stress: 10, relationshipDelta: 5, smarts: 5 }, resultText: `They're surprised you noticed. They explain. It's scary but less scary than not knowing.` },
     ],
   },
   {
@@ -420,7 +420,7 @@ export const teenEvents: GameEvent[] = [
     choices: [
       { id: 'post_freely', label: 'Post unhinged thoughts at 2 AM', effects: { happiness: 15, stress: -10, reputation: -5 }, resultText: 'It becomes your therapy journal with an audience. Messy but cathartic. Your friends feel closer to you.' },
       { id: 'careful', label: 'Still overthink every post', effects: { stress: 5, happiness: -5 }, resultText: 'Drafting finsta captions for 20 minutes defeats the entire purpose. You are your own worst curator.' },
-      { id: 'delete', label: 'Delete it when anxiety kicks in', effects: { stress: -5 }, resultText: 'The internet didn\'t need more of your thoughts anyway. Probably healthy.' },
+      { id: 'delete', label: 'Delete it when anxiety kicks in', effects: { stress: -5 }, resultText: `The internet didn't need more of your thoughts anyway. Probably healthy.` },
     ],
   },
   {
@@ -429,10 +429,10 @@ export const teenEvents: GameEvent[] = [
     category: 'money',
     weight: 3,
     requirements: { minAge: 16 },
-    text: 'Your friend wants to start a "business" together. It\'s dropshipping. They\'re very excited.',
+    text: `Your friend wants to start a "business" together. It's dropshipping. They're very excited.`,
     choices: [
       { id: 'join', label: 'Go in on it', effects: { money: -10, smarts: 10, stress: 10 }, resultText: 'You sell 3 phone cases in 2 months. You learn more about Facebook ads than any 16-year-old should know. The business fails. The education was free.' },
-      { id: 'decline', label: 'Pass — it sounds like a scam', effects: { smarts: 5, relationshipDelta: -5 }, resultText: 'They\'re briefly offended. Three months later they quietly shut it down. You say nothing. Smart.' },
+      { id: 'decline', label: 'Pass — it sounds like a scam', effects: { smarts: 5, relationshipDelta: -5 }, resultText: `They're briefly offended. Three months later they quietly shut it down. You say nothing. Smart.` },
       { id: 'counter', label: 'Suggest a better idea', effects: { smarts: 10, money: 5, reputation: 5 }, resultText: 'You pivot to tutoring younger kids. Actual demand, actual money. Entrepreneurship with training wheels.' },
     ],
   },
@@ -445,7 +445,7 @@ export const teenEvents: GameEvent[] = [
     choices: [
       { id: 'moderate', label: 'One coffee in the morning, max', effects: { health: 5, smarts: 5 }, resultText: 'A reasonable relationship with caffeine. You are in the minority of your generation.' },
       { id: 'overdo', label: 'Four energy drinks a day', effects: { health: -15, smarts: 5, stress: 10 }, resultText: 'Your heart rate is concerning. You can see sounds. You finish your homework though.' },
-      { id: 'personality', label: 'Make coffee your entire personality', effects: { happiness: 5, looks: 5, money: -10 }, resultText: 'You start going to the local café. You learn latte art. Your Instagram becomes 40% coffee. It\'s a phase. Hopefully.' },
+      { id: 'personality', label: 'Make coffee your entire personality', effects: { happiness: 5, looks: 5, money: -10 }, resultText: `You start going to the local café. You learn latte art. Your Instagram becomes 40% coffee. It's a phase. Hopefully.` },
     ],
   },
   {
@@ -453,9 +453,9 @@ export const teenEvents: GameEvent[] = [
     stage: 'teen',
     category: 'absurd',
     weight: 1,
-    text: 'You find out your parent has been lying about their age. They\'re five years older than they told everyone.',
+    text: `You find out your parent has been lying about their age. They're five years older than they told everyone.`,
     choices: [
-      { id: 'confront', label: 'Bring it up at dinner', effects: { happiness: 10, relationshipDelta: -5, stress: 5 }, resultText: 'The table goes silent. Your other parent starts laughing. "I TOLD you they\'d find out." Family drama unlocked.' },
+      { id: 'confront', label: 'Bring it up at dinner', effects: { happiness: 10, relationshipDelta: -5, stress: 5 }, resultText: `The table goes silent. Your other parent starts laughing. "I TOLD you they'd find out." Family drama unlocked.` },
       { id: 'leverage', label: 'Save this information for later', effects: { smarts: 5, happiness: 5 }, resultText: 'Blackmail material, filed away. You are becoming a strategist.' },
       { id: 'dont_care', label: 'Honestly? Not that interesting', effects: { happiness: 5 }, resultText: 'Adults are weird. This tracks. You go back to your phone.' },
     ],
@@ -469,8 +469,8 @@ export const teenEvents: GameEvent[] = [
     text: 'You have to pick your electives for next year. This feels weirdly consequential.',
     choices: [
       { id: 'practical', label: 'AP classes — maximum college credit', effects: { smarts: 15, stress: 15, happiness: -10 }, resultText: 'Your schedule is a war crime. You age 5 years in one semester. But that transcript though.' },
-      { id: 'creative', label: 'Art, music, or creative writing', effects: { happiness: 15, smarts: 5, stress: -5 }, resultText: 'You discover you actually enjoy school when it\'s not all memorization. Revolutionary concept.' },
-      { id: 'easy', label: 'Whatever has the least homework', effects: { happiness: 10, stress: -10, smarts: -5 }, resultText: 'You take Study Hall and Intro to Woodworking. You build a birdhouse. It\'s actually great.' },
+      { id: 'creative', label: 'Art, music, or creative writing', effects: { happiness: 15, smarts: 5, stress: -5 }, resultText: `You discover you actually enjoy school when it's not all memorization. Revolutionary concept.` },
+      { id: 'easy', label: 'Whatever has the least homework', effects: { happiness: 10, stress: -10, smarts: -5 }, resultText: `You take Study Hall and Intro to Woodworking. You build a birdhouse. It's actually great.` },
     ],
   },
   {
@@ -479,11 +479,11 @@ export const teenEvents: GameEvent[] = [
     category: 'romance',
     weight: 3,
     requirements: { minAge: 14 },
-    text: 'You accidentally like a photo from 87 weeks ago on your crush\'s Instagram. Deep-scroll territory.',
+    text: `You accidentally like a photo from 87 weeks ago on your crush's Instagram. Deep-scroll territory.`,
     choices: [
-      { id: 'unlike', label: 'Unlike immediately and pray', effects: { stress: 20, happiness: -10 }, resultText: 'They definitely got the notification. There\'s no taking this back. You consider witness protection.' },
+      { id: 'unlike', label: 'Unlike immediately and pray', effects: { stress: 20, happiness: -10 }, resultText: `They definitely got the notification. There's no taking this back. You consider witness protection.` },
       { id: 'own_it', label: 'Like a few more to make it look intentional', effects: { reputation: 5, happiness: 5, stress: 5 }, resultText: '"Just going through your page, you have great content!" Smooth. Terrifying. But smooth.' },
-      { id: 'block', label: 'Block them so they can\'t see', effects: { stress: 10, happiness: -15 }, resultText: 'You blocked your crush. Over an accidental like. This is a proportional response.' },
+      { id: 'block', label: `Block them so they can't see`, effects: { stress: 10, happiness: -15 }, resultText: 'You blocked your crush. Over an accidental like. This is a proportional response.' },
     ],
   },
   {
@@ -491,11 +491,11 @@ export const teenEvents: GameEvent[] = [
     stage: 'teen',
     category: 'family',
     weight: 3,
-    text: 'Your parent tries to be your friend on social media. They\'re commenting on everything.',
+    text: `Your parent tries to be your friend on social media. They're commenting on everything.`,
     choices: [
-      { id: 'accept', label: 'Accept it — they mean well', effects: { happiness: -5, relationshipDelta: 10 }, resultText: 'Your mom comments "Gorgeous!!! 😍😍😍" on every post. Your friends think it\'s wholesome. You die inside.' },
-      { id: 'restrict', label: 'Put them on the restricted list', effects: { stress: -5, relationshipDelta: -5, smarts: 5 }, resultText: 'They can\'t see anything. They don\'t notice for 6 months. Modern problems, modern solutions.' },
-      { id: 'talk', label: 'Have a conversation about boundaries', effects: { stress: 5, relationshipDelta: 5, smarts: 5 }, resultText: '"Mom, I love you, but the public comments..." She\'s hurt for a day, then gets it. Maturity.' },
+      { id: 'accept', label: 'Accept it — they mean well', effects: { happiness: -5, relationshipDelta: 10 }, resultText: `Your mom comments "Gorgeous!!! 😍😍😍" on every post. Your friends think it's wholesome. You die inside.` },
+      { id: 'restrict', label: 'Put them on the restricted list', effects: { stress: -5, relationshipDelta: -5, smarts: 5 }, resultText: `They can't see anything. They don't notice for 6 months. Modern problems, modern solutions.` },
+      { id: 'talk', label: 'Have a conversation about boundaries', effects: { stress: 5, relationshipDelta: 5, smarts: 5 }, resultText: `"Mom, I love you, but the public comments..." She's hurt for a day, then gets it. Maturity.` },
     ],
   },
   {
@@ -506,7 +506,7 @@ export const teenEvents: GameEvent[] = [
     text: 'Everyone is going to a concert. Tickets are $80. You have exactly $80.',
     choices: [
       { id: 'go', label: 'Spend it all — memories over money', effects: { money: -15, happiness: 20, reputation: 5 }, resultText: 'Best night of your life so far. You scream every lyric. Your voice is gone for three days. Zero regrets.' },
-      { id: 'skip', label: 'Save the money', effects: { money: 5, happiness: -10, stress: 5 }, resultText: 'They come back with stories and inside jokes you can\'t share. The FOMO is real and it is acute.' },
+      { id: 'skip', label: 'Save the money', effects: { money: 5, happiness: -10, stress: 5 }, resultText: `They come back with stories and inside jokes you can't share. The FOMO is real and it is acute.` },
       { id: 'sneak_in', label: 'Try to sneak in', effects: { happiness: 10, stress: 15, reputation: 10 }, resultText: 'You get past security by walking in confidently behind a group. Your heart rate is 180 bpm for an hour. Worth it.' },
     ],
   },
@@ -518,8 +518,8 @@ export const teenEvents: GameEvent[] = [
     text: 'You accidentally plagiarize a sentence in your essay. Your teacher flags it.',
     choices: [
       { id: 'honest', label: 'Explain it was genuinely accidental', effects: { stress: 10, reputation: 5, smarts: 5 }, resultText: 'The teacher believes you but makes you rewrite it. You now cite everything obsessively. Including text messages.' },
-      { id: 'deny', label: 'Insist you wrote it independently', effects: { stress: 15, reputation: -10 }, resultText: 'They pull up the source. It\'s word for word. This is going on your record.' },
-      { id: 'rewrite', label: 'Immediately offer to redo the whole essay', effects: { smarts: 10, stress: 5, reputation: 5 }, resultText: 'You rewrite it in one night. It\'s actually better. The teacher appreciates the accountability.' },
+      { id: 'deny', label: 'Insist you wrote it independently', effects: { stress: 15, reputation: -10 }, resultText: `They pull up the source. It's word for word. This is going on your record.` },
+      { id: 'rewrite', label: 'Immediately offer to redo the whole essay', effects: { smarts: 10, stress: 5, reputation: 5 }, resultText: `You rewrite it in one night. It's actually better. The teacher appreciates the accountability.` },
     ],
   },
   {
@@ -527,11 +527,11 @@ export const teenEvents: GameEvent[] = [
     stage: 'teen',
     category: 'health',
     weight: 3,
-    text: 'You start having panic attacks. You don\'t know what they are at first.',
+    text: `You start having panic attacks. You don't know what they are at first.`,
     choices: [
       { id: 'tell_someone', label: 'Tell your parents', effects: { health: 10, stress: -10, relationshipDelta: 5 }, resultText: 'They take you to see someone. It helps. Asking for help is the hardest and best thing you do this year.' },
       { id: 'research', label: 'Google it and self-manage', effects: { smarts: 10, health: 5, stress: -5 }, resultText: 'You learn breathing techniques. They help. You become weirdly knowledgeable about the nervous system.' },
-      { id: 'ignore', label: 'Push through and say nothing', effects: { health: -15, stress: 15, happiness: -10 }, resultText: 'They get worse. Your grades dip. Something has to give, and it\'s you.' },
+      { id: 'ignore', label: 'Push through and say nothing', effects: { health: -15, stress: 15, happiness: -10 }, resultText: `They get worse. Your grades dip. Something has to give, and it's you.` },
     ],
   },
   {
@@ -542,7 +542,7 @@ export const teenEvents: GameEvent[] = [
     text: 'The fire alarm goes off during a test. You were failing the test.',
     choices: [
       { id: 'relief', label: 'Thank the universe', effects: { happiness: 15, stress: -15 }, resultText: 'Standing outside in the sun while your test sits unfinished on your desk. This is divine intervention.' },
-      { id: 'worried', label: 'Hope they cancel the test', effects: { stress: 5 }, resultText: 'They don\'t cancel it. You go back and finish. But those 15 minutes of hope were beautiful.' },
+      { id: 'worried', label: 'Hope they cancel the test', effects: { stress: 5 }, resultText: `They don't cancel it. You go back and finish. But those 15 minutes of hope were beautiful.` },
       { id: 'conspiracy', label: 'Wonder who pulled it', effects: { smarts: 5, happiness: 10 }, resultText: 'You have your suspicions. The kid who sits in the back left early for the "bathroom." Hero.' },
     ],
   },
@@ -555,8 +555,8 @@ export const teenEvents: GameEvent[] = [
     text: 'Your friend asks to borrow $50. They "definitely" have you next week.',
     choices: [
       { id: 'lend', label: 'Give them the money', effects: { money: -10, relationshipDelta: 5 }, resultText: 'Next week comes and goes. Then the next. You learn the ancient proverb: never lend friends money you need back.' },
-      { id: 'decline', label: '"I\'m broke too, sorry"', effects: { stress: 5, relationshipDelta: -5 }, resultText: 'They find it somewhere else. The friendship is slightly strained. But you have $50.' },
-      { id: 'compromise', label: 'Offer $20', effects: { money: -5, relationshipDelta: 5 }, resultText: '"It\'s a gift, not a loan." Clear expectations. No weirdness. This is wisdom beyond your years.' },
+      { id: 'decline', label: `"I'm broke too, sorry"`, effects: { stress: 5, relationshipDelta: -5 }, resultText: 'They find it somewhere else. The friendship is slightly strained. But you have $50.' },
+      { id: 'compromise', label: 'Offer $20', effects: { money: -5, relationshipDelta: 5 }, resultText: `"It's a gift, not a loan." Clear expectations. No weirdness. This is wisdom beyond your years.` },
     ],
   },
   {
@@ -569,7 +569,7 @@ export const teenEvents: GameEvent[] = [
     choices: [
       { id: 'own_up', label: 'Admit it and apologize', effects: { reputation: 5, stress: 5, relationshipDelta: 5 }, resultText: 'Accountability. It stings but people respect it. The screenshots get deleted. Probably.' },
       { id: 'dig_deeper', label: 'Double down with a more complex lie', effects: { stress: 15, reputation: -15, smarts: -5 }, resultText: 'The hole gets deeper. You need a spreadsheet to track your own story. This is unsustainable.' },
-      { id: 'go_silent', label: 'Just... go quiet for a while', effects: { stress: 10, reputation: -5 }, resultText: 'You disappear from social life for a week. When you return, it\'s mostly blown over. Time heals everything except screenshots.' },
+      { id: 'go_silent', label: 'Just... go quiet for a while', effects: { stress: 10, reputation: -5 }, resultText: `You disappear from social life for a week. When you return, it's mostly blown over. Time heals everything except screenshots.` },
     ],
   },
   {
@@ -577,9 +577,9 @@ export const teenEvents: GameEvent[] = [
     stage: 'teen',
     category: 'family',
     weight: 2,
-    text: 'Your parent starts dating someone new. You\'re expected to have dinner with them.',
+    text: `Your parent starts dating someone new. You're expected to have dinner with them.`,
     choices: [
-      { id: 'try', label: 'Give them a fair chance', effects: { happiness: 5, relationshipDelta: 10, stress: 5 }, resultText: 'They\'re... actually okay? They ask about your interests and don\'t try too hard. Cautious optimism.' },
+      { id: 'try', label: 'Give them a fair chance', effects: { happiness: 5, relationshipDelta: 10, stress: 5 }, resultText: `They're... actually okay? They ask about your interests and don't try too hard. Cautious optimism.` },
       { id: 'hostile', label: 'Be cold and distant', effects: { happiness: -5, relationshipDelta: -15, stress: 10 }, resultText: 'Dinner is excruciating for everyone. Your parent is hurt. You feel justified and terrible simultaneously.' },
       { id: 'interrogate', label: 'Ask them intense questions', effects: { smarts: 5, reputation: 5, stress: 5 }, resultText: '"What are your intentions?" you ask, dead serious. They laugh nervously. Your parent kicks you under the table.' },
     ],
@@ -593,8 +593,8 @@ export const teenEvents: GameEvent[] = [
     text: 'Graduation is next month. You feel nothing and everything at the same time.',
     choices: [
       { id: 'excited', label: 'Focus on the excitement', effects: { happiness: 15, stress: -5 }, resultText: 'New chapter. New city maybe. The future is terrifying and thrilling. You let yourself feel the thrill.' },
-      { id: 'sad', label: 'Let the nostalgia hit', effects: { happiness: 5, stress: 5, relationshipDelta: 5 }, resultText: 'You look at old photos. Text people you haven\'t talked to in years. Some things are ending that you can\'t get back.' },
-      { id: 'numb', label: 'Dissociate through the whole ceremony', effects: { stress: 10 }, resultText: 'You walk across the stage. Someone hands you a diploma holder. It\'s empty. They mail the real one. Somehow this is a metaphor.' },
+      { id: 'sad', label: 'Let the nostalgia hit', effects: { happiness: 5, stress: 5, relationshipDelta: 5 }, resultText: `You look at old photos. Text people you haven't talked to in years. Some things are ending that you can't get back.` },
+      { id: 'numb', label: 'Dissociate through the whole ceremony', effects: { stress: 10 }, resultText: `You walk across the stage. Someone hands you a diploma holder. It's empty. They mail the real one. Somehow this is a metaphor.` },
     ],
   },
   {
@@ -606,7 +606,7 @@ export const teenEvents: GameEvent[] = [
     choices: [
       { id: 'delete', label: 'Delete it within 2 seconds', effects: { stress: 15, happiness: -10 }, resultText: '"This message was deleted." Everyone saw the notification. The damage is unknown but assumed to be catastrophic.' },
       { id: 'play_off', label: '"That was about someone else lol"', effects: { stress: 10, reputation: -5 }, resultText: 'Nobody believes you. The chat goes silent. You can hear the screenshot sounds.' },
-      { id: 'apologize', label: 'Immediately apologize directly', effects: { stress: 10, relationshipDelta: -10, reputation: 5 }, resultText: 'You own it. They\'re hurt but appreciate the honesty. The friendship survives. Barely.' },
+      { id: 'apologize', label: 'Immediately apologize directly', effects: { stress: 10, relationshipDelta: -10, reputation: 5 }, resultText: `You own it. They're hurt but appreciate the honesty. The friendship survives. Barely.` },
     ],
   },
   {
@@ -617,10 +617,10 @@ export const teenEvents: GameEvent[] = [
     requirements: { minAge: 16 },
     text: 'You realize you have no idea who you actually are versus who you perform being.',
     choices: [
-      { id: 'explore', label: 'Start experimenting with who you might be', effects: { happiness: 15, smarts: 10, looks: 5 }, resultText: 'New music, new style, new opinions that are actually yours. It\'s uncomfortable and freeing. This is the work.' },
+      { id: 'explore', label: 'Start experimenting with who you might be', effects: { happiness: 15, smarts: 10, looks: 5 }, resultText: `New music, new style, new opinions that are actually yours. It's uncomfortable and freeing. This is the work.` },
       { id: 'spiral', label: 'Have a full identity crisis', effects: { stress: 20, happiness: -15 }, resultText: 'You lie in bed staring at the ceiling wondering if any of your opinions are real. Welcome to being 17.' },
-      { id: 'journal', label: 'Start journaling about it', effects: { smarts: 10, happiness: 10, stress: -10 }, resultText: 'Writing it down helps. You start to see patterns. Who you are is somewhere in the mess. You\'ll find them.' },
-      { id: 'therapy', label: 'Ask to see a therapist', effects: { health: 15, happiness: 10, stress: -15, smarts: 5 }, resultText: 'Best decision of your teenage years. Having someone to talk to changes everything. You wish you\'d asked sooner.' },
+      { id: 'journal', label: 'Start journaling about it', effects: { smarts: 10, happiness: 10, stress: -10 }, resultText: `Writing it down helps. You start to see patterns. Who you are is somewhere in the mess. You'll find them.` },
+      { id: 'therapy', label: 'Ask to see a therapist', effects: { health: 15, happiness: 10, stress: -15, smarts: 5 }, resultText: `Best decision of your teenage years. Having someone to talk to changes everything. You wish you'd asked sooner.` },
     ],
   },
   {
@@ -632,7 +632,7 @@ export const teenEvents: GameEvent[] = [
     choices: [
       { id: 'go', label: 'Buy the ticket immediately', effects: { happiness: 20, money: -15, health: -5, stress: -10 }, resultText: `You stood in the pit, ears ringing, voice gone, $5 left to your name. Best night of your life. You slept through first period.` },
       { id: 'skip', label: 'Be responsible and skip it', effects: { happiness: -10, money: 5, stress: 5 }, resultText: `You watched the concert on someone's shaky Instagram story. The FOMO was physical. You could feel it in your chest.` },
-      { id: 'sneak', label: 'Tell your parents it\'s a "study group"', effects: { happiness: 15, money: -15, stress: 10, reputation: -5 }, resultText: `You came home at 1 AM smelling like sweat and freedom. Your mom was awake. She knew. She always knows.` },
+      { id: 'sneak', label: `Tell your parents it's a "study group"`, effects: { happiness: 15, money: -15, stress: 10, reputation: -5 }, resultText: `You came home at 1 AM smelling like sweat and freedom. Your mom was awake. She knew. She always knows.` },
     ],
   },
   {
@@ -729,7 +729,7 @@ export const teenEvents: GameEvent[] = [
     text: `The thin envelope from your top choice college arrived. Thin envelopes don't contain confetti. You know what this is before you open it.`,
     choices: [
       { id: 'open', label: 'Open it and face reality', effects: { happiness: -15, stress: 15, smarts: 5 }, resultText: `"After careful consideration..." You didn't read the rest. Your backup school suddenly needed to become the plan. It stung. A lot.` },
-      { id: 'reframe', label: 'Remind yourself it\'s one school', effects: { happiness: -5, stress: 5, smarts: 10 }, resultText: `You Googled "successful people who got rejected from college." The list was surprisingly long. You'd be fine. Probably.` },
+      { id: 'reframe', label: `Remind yourself it's one school`, effects: { happiness: -5, stress: 5, smarts: 10 }, resultText: `You Googled "successful people who got rejected from college." The list was surprisingly long. You'd be fine. Probably.` },
       { id: 'appeal', label: 'Write an appeal letter', effects: { stress: 15, smarts: 5, happiness: -5 }, resultText: `You poured your heart out in 500 words. They said no again, but nicer. At least you tried. That matters.` },
     ],
   },
@@ -753,7 +753,7 @@ export const teenEvents: GameEvent[] = [
     weight: 4,
     text: `Your ex posted a photo with someone new. It's been two weeks. TWO WEEKS. You're not jealous. You're just... observant.`,
     choices: [
-      { id: 'stalk', label: 'Deep-dive their new person\'s entire profile', effects: { happiness: -15, stress: 15 }, resultText: `You went back to 2019. You know their dog's name, their SAT score, and their aunt's vacation photos. This isn't healthy. You know this.` },
+      { id: 'stalk', label: `Deep-dive their new person's entire profile`, effects: { happiness: -15, stress: 15 }, resultText: `You went back to 2019. You know their dog's name, their SAT score, and their aunt's vacation photos. This isn't healthy. You know this.` },
       { id: 'block', label: 'Block and move on', effects: { happiness: 5, stress: -10, reputation: 5 }, resultText: `The hardest button you've ever pressed. But the feed got cleaner. The brain got quieter. Growth is uncomfortable.` },
       { id: 'glow_up', label: 'Post your best photo ever', effects: { looks: 5, happiness: 10, reputation: 5 }, resultText: `Golden hour. Perfect angle. Casual caption. 112 likes. Your ex viewed the story three times. Petty? Yes. Healing? Also yes.` },
     ],
@@ -765,7 +765,7 @@ export const teenEvents: GameEvent[] = [
     weight: 4,
     text: `You're caught using your phone during a test. It was in your lap. You weren't cheating — you were checking the TIME. The teacher doesn't care.`,
     choices: [
-      { id: 'explain', label: 'Explain calmly that you weren\'t cheating', effects: { stress: 10, reputation: 5, smarts: 5 }, resultText: `The teacher believed you. Barely. You got a warning and a speech about "optics." You now wear a watch.` },
+      { id: 'explain', label: `Explain calmly that you weren't cheating`, effects: { stress: 10, reputation: 5, smarts: 5 }, resultText: `The teacher believed you. Barely. You got a warning and a speech about "optics." You now wear a watch.` },
       { id: 'accept', label: 'Accept the zero', effects: { happiness: -15, stress: 10, smarts: -5 }, resultText: `A zero on a test you actually studied for. The injustice burned. You learned that life isn't fair, specifically in room 204.` },
       { id: 'parent', label: 'Get your parents involved', effects: { stress: 5, smarts: 5, reputation: -5 }, resultText: `Your mom emailed the principal. The zero became a 50. The teacher never looked at you the same way. Worth it? Unclear.` },
     ],

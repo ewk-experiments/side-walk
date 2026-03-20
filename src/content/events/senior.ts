@@ -24,7 +24,7 @@ export const seniorEvents: GameEvent[] = [
         id: 'senior_001_c',
         label: 'Get a second opinion from WebMD',
         effects: { health: -5, stress: 15, smarts: 5 },
-        resultText: 'WebMD says you either have high cholesterol or a rare tropical parasite. You don\'t sleep for three days.',
+        resultText: `WebMD says you either have high cholesterol or a rare tropical parasite. You don't sleep for three days.`,
       },
     ],
   },
@@ -34,25 +34,25 @@ export const seniorEvents: GameEvent[] = [
     category: 'family',
     weight: 3,
     requirements: { hasKids: true },
-    text: 'Your grandchild asks you to explain what life was like "before the internet." They look at you like you\'re a museum exhibit.',
+    text: `Your grandchild asks you to explain what life was like "before the internet." They look at you like you're a museum exhibit.`,
     choices: [
       {
         id: 'senior_002_a',
         label: 'Tell wildly exaggerated stories',
         effects: { happiness: 10, reputation: 5 },
-        resultText: 'You describe walking uphill both ways to a library to look things up in an encyclopedia. They\'re horrified and fascinated.',
+        resultText: `You describe walking uphill both ways to a library to look things up in an encyclopedia. They're horrified and fascinated.`,
       },
       {
         id: 'senior_002_b',
         label: 'Show them your old photo albums',
         effects: { happiness: 15, relationshipDelta: 10 },
-        resultText: 'They can\'t believe photos used to be physical objects. You share a genuinely beautiful afternoon together.',
+        resultText: `They can't believe photos used to be physical objects. You share a genuinely beautiful afternoon together.`,
       },
       {
         id: 'senior_002_c',
         label: 'Turn it into a lecture about "kids these days"',
         effects: { happiness: -5, relationshipDelta: -10, stress: 5 },
-        resultText: 'Their eyes glaze over within 30 seconds. You\'ve become the person you swore you\'d never become.',
+        resultText: `Their eyes glaze over within 30 seconds. You've become the person you swore you'd never become.`,
       },
     ],
   },
@@ -61,25 +61,25 @@ export const seniorEvents: GameEvent[] = [
     stage: 'senior',
     category: 'social',
     weight: 3,
-    text: 'You discover pickleball. It\'s all anyone at the community center talks about. The courts have a 2-hour waitlist at 6 AM.',
+    text: `You discover pickleball. It's all anyone at the community center talks about. The courts have a 2-hour waitlist at 6 AM.`,
     choices: [
       {
         id: 'senior_003_a',
         label: 'Go all in — buy the paddle, the shoes, the headband',
         effects: { health: 15, happiness: 10, money: -5 },
-        resultText: 'You\'re now waking up at 5:30 AM to secure a court. You have opinions about paddle grip tape. You\'ve never felt more alive.',
+        resultText: `You're now waking up at 5:30 AM to secure a court. You have opinions about paddle grip tape. You've never felt more alive.`,
       },
       {
         id: 'senior_003_b',
-        label: 'Refuse on principle — it\'s just tiny tennis',
+        label: `Refuse on principle — it's just tiny tennis`,
         effects: { happiness: -5, reputation: -5 },
-        resultText: 'You\'re now the only person at the community center without a pickleball story. Social exile is real.',
+        resultText: `You're now the only person at the community center without a pickleball story. Social exile is real.`,
       },
       {
         id: 'senior_003_c',
         label: 'Start a rival shuffleboard revival',
         effects: { happiness: 10, reputation: 10, smarts: 5 },
-        resultText: 'Three people join. You call yourselves "The Resistance." It\'s honestly more fun than pickleball.',
+        resultText: `Three people join. You call yourselves "The Resistance." It's honestly more fun than pickleball.`,
       },
     ],
   },
@@ -88,25 +88,25 @@ export const seniorEvents: GameEvent[] = [
     stage: 'senior',
     category: 'money',
     weight: 4,
-    text: 'A financial advisor says you should "diversify your retirement portfolio." You\'re not entirely sure what that means.',
+    text: `A financial advisor says you should "diversify your retirement portfolio." You're not entirely sure what that means.`,
     choices: [
       {
         id: 'senior_004_a',
         label: 'Nod and let them handle it',
         effects: { money: 10, stress: -5, smarts: -5 },
-        resultText: 'Your portfolio is now diversified. You still don\'t know what that means, but the numbers went up.',
+        resultText: `Your portfolio is now diversified. You still don't know what that means, but the numbers went up.`,
       },
       {
         id: 'senior_004_b',
         label: 'Invest it all in gold coins you saw on TV',
         effects: { money: -15, happiness: 5, stress: 10 },
-        resultText: 'You now own $4,000 worth of commemorative coins featuring obscure presidents. They\'re worth about $800.',
+        resultText: `You now own $4,000 worth of commemorative coins featuring obscure presidents. They're worth about $800.`,
       },
       {
         id: 'senior_004_c',
         label: 'Hide cash in the mattress like grandma did',
         effects: { money: -5, stress: -10, happiness: 5 },
-        resultText: 'Your bed is lumpy but you sleep soundly knowing exactly where your money is. The bank can\'t be trusted.',
+        resultText: `Your bed is lumpy but you sleep soundly knowing exactly where your money is. The bank can't be trusted.`,
       },
     ],
   },
@@ -115,13 +115,13 @@ export const seniorEvents: GameEvent[] = [
     stage: 'senior',
     category: 'absurd',
     weight: 2,
-    text: 'You accidentally become a Nextdoor celebrity after posting a furious review of someone\'s lawn ornament. 147 comments and counting.',
+    text: `You accidentally become a Nextdoor celebrity after posting a furious review of someone's lawn ornament. 147 comments and counting.`,
     choices: [
       {
         id: 'senior_005_a',
         label: 'Double down — start a lawn ornament watchdog group',
         effects: { reputation: 10, happiness: 10, stress: 10 },
-        resultText: 'You\'re now the self-appointed aesthetic guardian of the neighborhood. People cross the street to avoid lawn discussions with you.',
+        resultText: `You're now the self-appointed aesthetic guardian of the neighborhood. People cross the street to avoid lawn discussions with you.`,
       },
       {
         id: 'senior_005_b',
@@ -133,7 +133,7 @@ export const seniorEvents: GameEvent[] = [
         id: 'senior_005_c',
         label: 'Buy an even uglier lawn ornament in solidarity',
         effects: { happiness: 15, reputation: 5, money: -5 },
-        resultText: 'You install a 4-foot ceramic frog. The neighborhood is divided. You\'ve never felt more powerful.',
+        resultText: `You install a 4-foot ceramic frog. The neighborhood is divided. You've never felt more powerful.`,
       },
     ],
   },
@@ -142,7 +142,7 @@ export const seniorEvents: GameEvent[] = [
     stage: 'senior',
     category: 'social',
     weight: 2,
-    text: 'You overshare on Facebook again. This time it\'s a detailed post about your colonoscopy results with a thumbs-up emoji.',
+    text: `You overshare on Facebook again. This time it's a detailed post about your colonoscopy results with a thumbs-up emoji.`,
     choices: [
       {
         id: 'senior_006_a',
@@ -169,7 +169,7 @@ export const seniorEvents: GameEvent[] = [
         id: 'senior_007_a',
         label: 'Start physical therapy',
         effects: { health: 10, money: -10, stress: -5 },
-        resultText: 'Your therapist is 28 and calls you "champ." It\'s humiliating but your back does feel better.',
+        resultText: `Your therapist is 28 and calls you "champ." It's humiliating but your back does feel better.`,
       },
       {
         id: 'senior_007_b',
@@ -181,7 +181,7 @@ export const seniorEvents: GameEvent[] = [
         id: 'senior_007_c',
         label: 'Buy a grabber tool and adapt',
         effects: { happiness: 5, money: -5, health: 5 },
-        resultText: 'You now use the grabber for everything. Snacks. Mail. Petting the dog. It\'s your new favorite possession.',
+        resultText: `You now use the grabber for everything. Snacks. Mail. Petting the dog. It's your new favorite possession.`,
       },
     ],
   },
@@ -196,13 +196,13 @@ export const seniorEvents: GameEvent[] = [
         id: 'senior_008_a',
         label: 'Ask for the discount at every single establishment',
         effects: { money: 10, happiness: 10, reputation: -5 },
-        resultText: 'You save $847 over the year. You also ask for the senior discount at a nightclub. They don\'t have one.',
+        resultText: `You save $847 over the year. You also ask for the senior discount at a nightclub. They don't have one.`,
       },
       {
         id: 'senior_008_b',
-        label: 'Refuse the discount — you\'re not "that old"',
+        label: `Refuse the discount — you're not "that old"`,
         effects: { money: -5, happiness: -5, reputation: 5 },
-        resultText: 'Your pride costs you roughly $12 per week. The cashier at Denny\'s respects you though.',
+        resultText: `Your pride costs you roughly $12 per week. The cashier at Denny's respects you though.`,
       },
     ],
   },
@@ -238,13 +238,13 @@ export const seniorEvents: GameEvent[] = [
     stage: 'senior',
     category: 'social',
     weight: 2,
-    text: 'You strike up a friendship with a 23-year-old barista who thinks you\'re "iconic." You\'re not sure what that means but you like it.',
+    text: `You strike up a friendship with a 23-year-old barista who thinks you're "iconic." You're not sure what that means but you like it.`,
     choices: [
       {
         id: 'senior_010_a',
         label: 'Lean into it — become their unofficial mentor',
         effects: { happiness: 15, smarts: 5, reputation: 10 },
-        resultText: 'You give life advice. They teach you what "no cap" means. It\'s the most unlikely and genuine friendship you\'ve had in years.',
+        resultText: `You give life advice. They teach you what "no cap" means. It's the most unlikely and genuine friendship you've had in years.`,
       },
       {
         id: 'senior_010_b',
@@ -265,13 +265,13 @@ export const seniorEvents: GameEvent[] = [
         id: 'senior_011_a',
         label: 'Jump — you only live once',
         effects: { happiness: 20, health: -5, stress: -10, reputation: 15 },
-        resultText: 'You scream the entire way down. When you land, you cry. It\'s the best day you\'ve had in a decade.',
+        resultText: `You scream the entire way down. When you land, you cry. It's the best day you've had in a decade.`,
       },
       {
         id: 'senior_011_b',
         label: 'Nope. Watch from the ground.',
         effects: { stress: -5, happiness: -5 },
-        resultText: 'You watch others jump and feel a twinge of regret. But also your knees still work, so there\'s that.',
+        resultText: `You watch others jump and feel a twinge of regret. But also your knees still work, so there's that.`,
       },
       {
         id: 'senior_011_c',
@@ -298,13 +298,13 @@ export const seniorEvents: GameEvent[] = [
         id: 'senior_012_b',
         label: 'Stay and fill every room with hobbies',
         effects: { happiness: 15, money: -10, stress: 5 },
-        resultText: 'Guest bedroom is now a model train room. Dining room is a pottery studio. You\'ve never used this house better.',
+        resultText: `Guest bedroom is now a model train room. Dining room is a pottery studio. You've never used this house better.`,
       },
       {
         id: 'senior_012_c',
         label: 'Get a roommate from Craigslist',
         effects: { money: 10, happiness: 5, stress: 10 },
-        resultText: 'Your new roommate is a 30-year-old grad student named Tyler. He does the dishes. You explain how taxes work. It\'s oddly symbiotic.',
+        resultText: `Your new roommate is a 30-year-old grad student named Tyler. He does the dishes. You explain how taxes work. It's oddly symbiotic.`,
       },
     ],
   },
@@ -320,7 +320,7 @@ export const seniorEvents: GameEvent[] = [
         id: 'senior_013_a',
         label: 'Ask them to dinner',
         effects: { happiness: 15, stress: 10, relationshipDelta: 15 },
-        resultText: 'You go to an Olive Garden. You split the breadsticks. You haven\'t smiled like this in years.',
+        resultText: `You go to an Olive Garden. You split the breadsticks. You haven't smiled like this in years.`,
       },
       {
         id: 'senior_013_b',
@@ -341,7 +341,7 @@ export const seniorEvents: GameEvent[] = [
     stage: 'senior',
     category: 'absurd',
     weight: 2,
-    text: 'Your smart speaker starts ordering things you didn\'t ask for. You now own 14 bags of prunes and a kayak.',
+    text: `Your smart speaker starts ordering things you didn't ask for. You now own 14 bags of prunes and a kayak.`,
     choices: [
       {
         id: 'senior_014_a',
@@ -351,9 +351,9 @@ export const seniorEvents: GameEvent[] = [
       },
       {
         id: 'senior_014_b',
-        label: 'Keep the kayak — it\'s a sign',
+        label: `Keep the kayak — it's a sign`,
         effects: { happiness: 15, health: 10, money: -10 },
-        resultText: 'You take up kayaking. It\'s the best accidental purchase you\'ve ever made.',
+        resultText: `You take up kayaking. It's the best accidental purchase you've ever made.`,
       },
       {
         id: 'senior_014_c',
@@ -368,13 +368,13 @@ export const seniorEvents: GameEvent[] = [
     stage: 'senior',
     category: 'health',
     weight: 3,
-    text: 'You can\'t remember why you walked into the kitchen. This is the fourth time today.',
+    text: `You can't remember why you walked into the kitchen. This is the fourth time today.`,
     choices: [
       {
         id: 'senior_015_a',
         label: 'Start doing brain puzzles religiously',
         effects: { smarts: 10, stress: 5, health: 5 },
-        resultText: 'You complete a crossword every morning. Your vocabulary is terrifying. You still forget why you\'re in the kitchen.',
+        resultText: `You complete a crossword every morning. Your vocabulary is terrifying. You still forget why you're in the kitchen.`,
       },
       {
         id: 'senior_015_b',
@@ -394,7 +394,7 @@ export const seniorEvents: GameEvent[] = [
     choices: [
       {
         id: 'senior_016_a',
-        label: 'Let them film you — what\'s the worst that could happen?',
+        label: `Let them film you — what's the worst that could happen?`,
         effects: { happiness: 15, reputation: 10, relationshipDelta: 10 },
         resultText: 'Your video of you reacting to modern slang gets 2.3 million views. You are now "Grandma/Grandpa Goals" in 47 countries.',
       },
@@ -408,7 +408,7 @@ export const seniorEvents: GameEvent[] = [
         id: 'senior_016_c',
         label: 'Agree but secretly start your own account',
         effects: { happiness: 10, smarts: 10, reputation: 5 },
-        resultText: 'You post garden tours and cooking tips. You have 800 followers and zero idea what an algorithm is. You\'re thriving.',
+        resultText: `You post garden tours and cooking tips. You have 800 followers and zero idea what an algorithm is. You're thriving.`,
       },
     ],
   },
@@ -430,7 +430,7 @@ export const seniorEvents: GameEvent[] = [
         id: 'senior_017_b',
         label: 'Leave a cryptic treasure map instead of a will',
         effects: { happiness: 20, reputation: 5, stress: -5 },
-        resultText: 'You hide clues around the house and write riddles in a leather journal. You\'ve never had this much fun. Your family will have mixed feelings.',
+        resultText: `You hide clues around the house and write riddles in a leather journal. You've never had this much fun. Your family will have mixed feelings.`,
       },
       {
         id: 'senior_017_c',
@@ -445,7 +445,7 @@ export const seniorEvents: GameEvent[] = [
     stage: 'senior',
     category: 'social',
     weight: 2,
-    text: 'You realize you\'ve become the person who talks about the weather for 20 minutes straight. To strangers. At the grocery store.',
+    text: `You realize you've become the person who talks about the weather for 20 minutes straight. To strangers. At the grocery store.`,
     choices: [
       {
         id: 'senior_018_a',
@@ -484,7 +484,7 @@ export const seniorEvents: GameEvent[] = [
         id: 'senior_019_c',
         label: 'Lawyer up — this is a matter of principle',
         effects: { money: -15, stress: 15, reputation: 5 },
-        resultText: 'Your lawyer argues "gnome expression" is protected under the First Amendment. It\'s a stretch. But the HOA backs down because they can\'t afford the legal fees either.',
+        resultText: `Your lawyer argues "gnome expression" is protected under the First Amendment. It's a stretch. But the HOA backs down because they can't afford the legal fees either.`,
       },
     ],
   },
@@ -493,7 +493,7 @@ export const seniorEvents: GameEvent[] = [
     stage: 'senior',
     category: 'health',
     weight: 5,
-    text: 'A routine checkup finds something concerning. The doctor wants more tests. The waiting room magazine selection hasn\'t changed since 2019.',
+    text: `A routine checkup finds something concerning. The doctor wants more tests. The waiting room magazine selection hasn't changed since 2019.`,
     choices: [
       {
         id: 'senior_020_a',

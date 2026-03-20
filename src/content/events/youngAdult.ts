@@ -18,7 +18,7 @@ export const youngAdultEvents: GameEvent[] = [
     stage: 'youngAdult',
     category: 'work',
     weight: 4,
-    text: 'Your boss sends a Slack message at 11:47 PM: "Quick question." That\'s it. No follow-up.',
+    text: `Your boss sends a Slack message at 11:47 PM: "Quick question." That's it. No follow-up.`,
     choices: [
       { id: 'respond', label: 'Reply immediately like a good soldier', effects: { stress: 10, reputation: 5 }, resultText: 'They respond at 9 AM the next day: "Nvm figured it out."' },
       { id: 'ignore', label: 'Pretend you were asleep', effects: { stress: 5, happiness: 3 }, resultText: 'You stared at the notification for 2 hours anyway.' },
@@ -44,7 +44,7 @@ export const youngAdultEvents: GameEvent[] = [
     weight: 4,
     text: 'Your roommate has started a "fermentation station" in the kitchen. The entire apartment smells like a brewery crossed with a swamp.',
     choices: [
-      { id: 'confront', label: 'Have the conversation', effects: { stress: 5, happiness: 3, relationshipDelta: -5 }, resultText: 'They said it\'s their "art." You said it smells like feet. Nobody won.' },
+      { id: 'confront', label: 'Have the conversation', effects: { stress: 5, happiness: 3, relationshipDelta: -5 }, resultText: `They said it's their "art." You said it smells like feet. Nobody won.` },
       { id: 'join', label: 'Start your own fermentation project', effects: { happiness: 5, health: -3, smarts: 2 }, resultText: 'Your kombucha exploded on the ceiling. You are now both the problem.' },
       { id: 'move', label: 'Start looking for a new place', effects: { money: -15, stress: 10, happiness: 5 }, resultText: 'Rent is $400 more. But the air is breathable.' },
     ],
@@ -69,8 +69,8 @@ export const youngAdultEvents: GameEvent[] = [
     text: 'You threw out your back picking up a sock. You are 26.',
     choices: [
       { id: 'physio', label: 'Go to physical therapy like an adult', effects: { health: 10, money: -8, smarts: 2 }, resultText: 'Turns out you have the posture of a shrimp. The exercises help though.' },
-      { id: 'ignore', label: 'Take ibuprofen and pretend it didn\'t happen', effects: { health: -5, stress: 5 }, resultText: 'It happened again two weeks later. With a towel this time.' },
-      { id: 'yoga', label: 'Become a yoga person overnight', effects: { health: 5, happiness: 3, money: -5 }, resultText: 'You bought a $90 mat and went twice. It\'s now a cat bed.' },
+      { id: 'ignore', label: `Take ibuprofen and pretend it didn't happen`, effects: { health: -5, stress: 5 }, resultText: 'It happened again two weeks later. With a towel this time.' },
+      { id: 'yoga', label: 'Become a yoga person overnight', effects: { health: 5, happiness: 3, money: -5 }, resultText: `You bought a $90 mat and went twice. It's now a cat bed.` },
     ],
   },
   {
@@ -90,11 +90,11 @@ export const youngAdultEvents: GameEvent[] = [
     stage: 'youngAdult',
     category: 'family',
     weight: 3,
-    text: 'Your mom calls. It\'s not an emergency. She just wants to know if you\'re eating enough vegetables and when you\'re giving her grandchildren.',
+    text: `Your mom calls. It's not an emergency. She just wants to know if you're eating enough vegetables and when you're giving her grandchildren.`,
     choices: [
       { id: 'honest', label: 'Tell her the truth about your diet', effects: { happiness: -3, relationshipDelta: 5 }, resultText: 'She mailed you a 12-pack of multivitamins the next day.' },
       { id: 'lie', label: 'Lie and say you had kale for lunch', effects: { stress: 3, relationshipDelta: 2 }, resultText: 'You were eating Doritos during the call. She could hear the crunch.' },
-      { id: 'deflect', label: 'Change the subject to her neighbor\'s drama', effects: { happiness: 5, stress: -5 }, resultText: 'She talked for 40 minutes about Linda\'s new fence. Crisis averted.' },
+      { id: 'deflect', label: `Change the subject to her neighbor's drama`, effects: { happiness: 5, stress: -5 }, resultText: `She talked for 40 minutes about Linda's new fence. Crisis averted.` },
     ],
   },
   {
@@ -102,9 +102,9 @@ export const youngAdultEvents: GameEvent[] = [
     stage: 'youngAdult',
     category: 'work',
     weight: 4,
-    text: 'You\'re on a Zoom call and accidentally unmute while roasting your manager to your cat.',
+    text: `You're on a Zoom call and accidentally unmute while roasting your manager to your cat.`,
     choices: [
-      { id: 'apologize', label: 'Apologize profusely and blame your cat', effects: { stress: 15, reputation: -10 }, resultText: '"My cat\'s name is also Karen, total coincidence." Nobody bought it.' },
+      { id: 'apologize', label: 'Apologize profusely and blame your cat', effects: { stress: 15, reputation: -10 }, resultText: `"My cat's name is also Karen, total coincidence." Nobody bought it.` },
       { id: 'double', label: 'Double down: "And I meant it"', effects: { reputation: -15, happiness: 10, stress: 5 }, resultText: 'Legend status among coworkers. HR wants a word.' },
       { id: 'disconnect', label: 'Immediately "lose your internet"', effects: { stress: 10, reputation: -3 }, resultText: 'You turned off your router and sat in the dark for 10 minutes.' },
     ],
@@ -117,9 +117,9 @@ export const youngAdultEvents: GameEvent[] = [
     requirements: { hasPartner: true },
     text: 'Your partner just watched you eat cereal for dinner for the third night in a row and asked "Is everything okay?"',
     choices: [
-      { id: 'fine', label: '"I\'m fine, this is a lifestyle choice"', effects: { happiness: -3, relationshipDelta: -3 }, resultText: 'They silently ordered you a meal kit subscription.' },
+      { id: 'fine', label: `"I'm fine, this is a lifestyle choice"`, effects: { happiness: -3, relationshipDelta: -3 }, resultText: 'They silently ordered you a meal kit subscription.' },
       { id: 'cook', label: 'Cook an elaborate meal to prove a point', effects: { happiness: 5, money: -5, relationshipDelta: 5 }, resultText: 'You made pasta from scratch. It took 3 hours. It was slightly better than the cereal.' },
-      { id: 'cry', label: 'Break down and admit things are hard', effects: { stress: -10, happiness: 5, relationshipDelta: 8 }, resultText: 'They held you and ordered Thai food. Sometimes that\'s enough.' },
+      { id: 'cry', label: 'Break down and admit things are hard', effects: { stress: -10, happiness: 5, relationshipDelta: 8 }, resultText: `They held you and ordered Thai food. Sometimes that's enough.` },
     ],
   },
   {
@@ -130,7 +130,7 @@ export const youngAdultEvents: GameEvent[] = [
     text: 'Your friend who got into crypto in 2021 just texted you "I need to borrow $500." No further explanation.',
     choices: [
       { id: 'lend', label: 'Lend them the money', effects: { money: -10, relationshipDelta: 5, stress: 5 }, resultText: 'They used it to buy more crypto. You will never see that $500 again.' },
-      { id: 'decline', label: 'Say you\'re broke too', effects: { relationshipDelta: -3, stress: 3 }, resultText: 'They said "all good" and then posted a story from a rooftop bar that night.' },
+      { id: 'decline', label: `Say you're broke too`, effects: { relationshipDelta: -3, stress: 3 }, resultText: 'They said "all good" and then posted a story from a rooftop bar that night.' },
       { id: 'lecture', label: 'Send them a Dave Ramsey clip', effects: { reputation: -5, smarts: 2, relationshipDelta: -8 }, resultText: 'They left you on read for two weeks.' },
     ],
   },
@@ -139,10 +139,10 @@ export const youngAdultEvents: GameEvent[] = [
     stage: 'youngAdult',
     category: 'work',
     weight: 4,
-    text: 'Your company just announced "we\'re a family" right before laying off 30% of the team.',
+    text: `Your company just announced "we're a family" right before laying off 30% of the team.`,
     choices: [
-      { id: 'survive', label: 'Keep your head down and survive', effects: { stress: 15, happiness: -10, money: 5 }, resultText: 'You now do 3 people\'s jobs. For the same pay. But you\'re "resilient."' },
-      { id: 'negotiate', label: 'Ask for a raise since you\'re doing extra work', effects: { reputation: 5, stress: 10, money: 8 }, resultText: 'They gave you a $2,000 raise and called it "generous." It covers one month of the extra stress.' },
+      { id: 'survive', label: 'Keep your head down and survive', effects: { stress: 15, happiness: -10, money: 5 }, resultText: `You now do 3 people's jobs. For the same pay. But you're "resilient."` },
+      { id: 'negotiate', label: `Ask for a raise since you're doing extra work`, effects: { reputation: 5, stress: 10, money: 8 }, resultText: 'They gave you a $2,000 raise and called it "generous." It covers one month of the extra stress.' },
       { id: 'leave', label: 'Start interviewing immediately', effects: { stress: 10, happiness: 5, smarts: 3 }, resultText: 'Three rounds of interviews at another company. They also called themselves a family.' },
     ],
   },
@@ -166,7 +166,7 @@ export const youngAdultEvents: GameEvent[] = [
     text: 'You got invited to a music festival. Tickets are $400. Your savings account has $412.',
     choices: [
       { id: 'go', label: 'YOLO, you only live once', effects: { money: -15, happiness: 15, health: -5, stress: -8 }, resultText: 'Best weekend of your life. You lost a shoe and your debit card. Worth it.' },
-      { id: 'skip', label: 'Be responsible and skip it', effects: { money: 2, happiness: -8, stress: -3 }, resultText: 'You watched everyone\'s stories from your couch. The FOMO was physical.' },
+      { id: 'skip', label: 'Be responsible and skip it', effects: { money: 2, happiness: -8, stress: -3 }, resultText: `You watched everyone's stories from your couch. The FOMO was physical.` },
       { id: 'volunteer', label: 'Apply to volunteer for free entry', effects: { happiness: 8, health: -3, reputation: 3 }, resultText: 'You picked up trash for 4 hours then snuck into the VIP section. Life hack.' },
     ],
   },
@@ -175,11 +175,11 @@ export const youngAdultEvents: GameEvent[] = [
     stage: 'youngAdult',
     category: 'health',
     weight: 3,
-    text: 'You haven\'t seen a doctor in 4 years. Something in your knee clicks now. It didn\'t used to click.',
+    text: `You haven't seen a doctor in 4 years. Something in your knee clicks now. It didn't used to click.`,
     choices: [
       { id: 'doctor', label: 'Finally make an appointment', effects: { health: 8, money: -8, stress: 5, smarts: 2 }, resultText: 'The doctor said "you need to stretch more" and charged you $200 after insurance.' },
-      { id: 'google', label: 'Google your symptoms at 2 AM', effects: { stress: 15, happiness: -8 }, resultText: 'WebMD says it\'s either nothing or everything. You didn\'t sleep.' },
-      { id: 'ignore', label: 'It\'s probably fine', effects: { health: -5, happiness: 3 }, resultText: 'It\'s been clicking for 6 months now. You\'ve accepted it as your theme song.' },
+      { id: 'google', label: 'Google your symptoms at 2 AM', effects: { stress: 15, happiness: -8 }, resultText: `WebMD says it's either nothing or everything. You didn't sleep.` },
+      { id: 'ignore', label: `It's probably fine`, effects: { health: -5, happiness: 3 }, resultText: `It's been clicking for 6 months now. You've accepted it as your theme song.` },
     ],
   },
   {
@@ -187,11 +187,11 @@ export const youngAdultEvents: GameEvent[] = [
     stage: 'youngAdult',
     category: 'absurd',
     weight: 1,
-    text: 'You accidentally liked your ex\'s photo from 2019 while deep-scrolling at 3 AM. The unlike was instant. But they saw it.',
+    text: `You accidentally liked your ex's photo from 2019 while deep-scrolling at 3 AM. The unlike was instant. But they saw it.`,
     choices: [
       { id: 'block', label: 'Block them immediately', effects: { stress: 10, reputation: -3 }, resultText: 'They texted you "lol" from a different platform. There is no escape.' },
       { id: 'own', label: 'Like five more photos to make it look intentional', effects: { happiness: -5, reputation: -8 }, resultText: 'They posted a story saying "some people never move on." It got 200 likes.' },
-      { id: 'nothing', label: 'Do nothing and pretend you died', effects: { stress: 15, happiness: -10 }, resultText: 'You checked if they blocked you every hour for a week. They didn\'t. Somehow worse.' },
+      { id: 'nothing', label: 'Do nothing and pretend you died', effects: { stress: 15, happiness: -10 }, resultText: `You checked if they blocked you every hour for a week. They didn't. Somehow worse.` },
     ],
   },
   {
@@ -199,11 +199,11 @@ export const youngAdultEvents: GameEvent[] = [
     stage: 'youngAdult',
     category: 'work',
     weight: 3,
-    text: 'A recruiter DMed you on LinkedIn about an "exciting opportunity." It\'s the exact same job but at a company with a ping pong table.',
+    text: `A recruiter DMed you on LinkedIn about an "exciting opportunity." It's the exact same job but at a company with a ping pong table.`,
     choices: [
       { id: 'interview', label: 'Interview anyway, leverage is leverage', effects: { smarts: 3, stress: 5, reputation: 2 }, resultText: 'You got an offer $10K higher. Used it to negotiate at your current job. Chess, not checkers.' },
       { id: 'ignore', label: 'Ignore the message', effects: { stress: -2 }, resultText: 'They followed up 4 times. Recruiters are persistent like pigeons.' },
-      { id: 'roast', label: 'Reply "Is the ping pong table load-bearing?"', effects: { happiness: 5, reputation: -2 }, resultText: 'They didn\'t respond. But your friend group chat loved the screenshot.' },
+      { id: 'roast', label: 'Reply "Is the ping pong table load-bearing?"', effects: { happiness: 5, reputation: -2 }, resultText: `They didn't respond. But your friend group chat loved the screenshot.` },
     ],
   },
   {
@@ -211,7 +211,7 @@ export const youngAdultEvents: GameEvent[] = [
     stage: 'youngAdult',
     category: 'romance',
     weight: 3,
-    text: 'You went on three amazing dates with someone. They texted "I\'m not really looking for anything serious right now" and then posted a couple photo a week later.',
+    text: `You went on three amazing dates with someone. They texted "I'm not really looking for anything serious right now" and then posted a couple photo a week later.`,
     choices: [
       { id: 'move', label: 'Delete their number and move on', effects: { happiness: -5, stress: -3, smarts: 3 }, resultText: 'Hurt for a week. Then you remembered their weird laugh and felt better.' },
       { id: 'reply', label: 'Send a perfectly crafted "haha no worries!" text', effects: { stress: 8, happiness: -8 }, resultText: 'You rewrote it 11 times. The casual tone took 45 minutes to achieve.' },
@@ -223,10 +223,10 @@ export const youngAdultEvents: GameEvent[] = [
     stage: 'youngAdult',
     category: 'money',
     weight: 3,
-    text: 'Your credit card bill arrived. You don\'t remember spending $340 at Target. You went in for toothpaste.',
+    text: `Your credit card bill arrived. You don't remember spending $340 at Target. You went in for toothpaste.`,
     choices: [
       { id: 'budget', label: 'Start a budget spreadsheet', effects: { smarts: 5, money: 5, stress: 5 }, resultText: 'The spreadsheet lasted 12 days. But you learned that 40% of your income goes to food delivery.' },
-      { id: 'return', label: 'Return the stuff you don\'t need', effects: { money: 5, stress: 3 }, resultText: 'You returned $80 worth of candles. Kept the throw blanket though.' },
+      { id: 'return', label: `Return the stuff you don't need`, effects: { money: 5, stress: 3 }, resultText: 'You returned $80 worth of candles. Kept the throw blanket though.' },
       { id: 'accept', label: 'Accept that Target is your weakness', effects: { happiness: 3, money: -5 }, resultText: 'You went back the next weekend. Left with a rug and "organizational bins."' },
     ],
   },
@@ -237,7 +237,7 @@ export const youngAdultEvents: GameEvent[] = [
     weight: 4,
     text: 'Your company is switching to an open floor plan. Your manager called it "collaborative." You can now hear Dave chew.',
     choices: [
-      { id: 'headphones', label: 'Invest in noise-canceling headphones', effects: { money: -5, happiness: 3, stress: -5 }, resultText: 'AirPods Max. You can\'t afford rent now but you can\'t hear Dave either.' },
+      { id: 'headphones', label: 'Invest in noise-canceling headphones', effects: { money: -5, happiness: 3, stress: -5 }, resultText: `AirPods Max. You can't afford rent now but you can't hear Dave either.` },
       { id: 'remote', label: 'Ask to work from home more', effects: { happiness: 8, reputation: -3 }, resultText: 'Approved for 2 days remote. You are 50% happier. Dave is 100% louder on the other 3 days.' },
       { id: 'suffer', label: 'Suffer in silence', effects: { stress: 10, happiness: -8, health: -3 }, resultText: 'You developed a twitch in your left eye. Dave started eating celery.' },
     ],
@@ -250,7 +250,7 @@ export const youngAdultEvents: GameEvent[] = [
     text: 'Your apartment building is being converted to "luxury condos." You have 60 days to find a new place in the worst rental market in history.',
     choices: [
       { id: 'hustle', label: 'Apply to 30 apartments in a weekend', effects: { stress: 15, money: -10, smarts: 3 }, resultText: 'You got one callback. They wanted first, last, security, and a DNA sample.' },
-      { id: 'friends', label: 'Crash with friends temporarily', effects: { stress: 5, money: 5, relationshipDelta: -5 }, resultText: 'You slept on Jake\'s couch for 6 weeks. Your friendship survived. Barely.' },
+      { id: 'friends', label: 'Crash with friends temporarily', effects: { stress: 5, money: 5, relationshipDelta: -5 }, resultText: `You slept on Jake's couch for 6 weeks. Your friendship survived. Barely.` },
       { id: 'parents', label: 'Move back in with your parents', effects: { money: 15, happiness: -10, stress: 8 }, resultText: 'Your childhood bedroom is now a home gym. You sleep next to a Peloton.' },
     ],
   },
@@ -263,7 +263,7 @@ export const youngAdultEvents: GameEvent[] = [
     choices: [
       { id: 'embrace', label: 'Lean into it. You ARE the fun one', effects: { happiness: 5, reputation: 5, stress: -3 }, resultText: 'You told a story about your Tinder date that made everyone choke on their wine. Star of the show.' },
       { id: 'skip', label: 'Stop going to couple events', effects: { happiness: -3, stress: -5, relationshipDelta: -5 }, resultText: 'You stayed home and watched a documentary about cults. Weirdly relatable.' },
-      { id: 'download', label: 'Download three dating apps simultaneously', effects: { stress: 8, happiness: -5 }, resultText: 'You now have 47 matches, 3 conversations, and 0 dates. The math isn\'t mathing.' },
+      { id: 'download', label: 'Download three dating apps simultaneously', effects: { stress: 8, happiness: -5 }, resultText: `You now have 47 matches, 3 conversations, and 0 dates. The math isn't mathing.` },
     ],
   },
   {
@@ -273,7 +273,7 @@ export const youngAdultEvents: GameEvent[] = [
     weight: 3,
     text: 'You joined a gym in January. It is now February. You have been twice.',
     choices: [
-      { id: 'commit', label: 'Actually go consistently this time', effects: { health: 10, happiness: 8, stress: -8, looks: 5 }, resultText: 'You went 4x a week for 3 months. You feel incredible. Your gym crush still doesn\'t know you exist.' },
+      { id: 'commit', label: 'Actually go consistently this time', effects: { health: 10, happiness: 8, stress: -8, looks: 5 }, resultText: `You went 4x a week for 3 months. You feel incredible. Your gym crush still doesn't know you exist.` },
       { id: 'cancel', label: 'Cancel and save the $50/month', effects: { money: 3, happiness: -3 }, resultText: 'You cancelled but they kept charging you for 2 months. Classic.' },
       { id: 'home', label: 'Switch to YouTube workout videos at home', effects: { health: 5, money: 3, happiness: 3 }, resultText: 'You did Chloe Ting for a week, then your downstairs neighbor complained about the jumping.' },
     ],
@@ -295,9 +295,9 @@ export const youngAdultEvents: GameEvent[] = [
     stage: 'youngAdult',
     category: 'work',
     weight: 3,
-    text: 'You\'ve been at your first "real" job for a year. Your title is "Associate Coordinator of Synergy Implementation." You still don\'t know what you do.',
+    text: `You've been at your first "real" job for a year. Your title is "Associate Coordinator of Synergy Implementation." You still don't know what you do.`,
     choices: [
-      { id: 'ask', label: 'Ask your manager what your job actually is', effects: { smarts: 5, stress: 5 }, resultText: 'They said "you\'re doing great" without answering the question. The mystery continues.' },
+      { id: 'ask', label: 'Ask your manager what your job actually is', effects: { smarts: 5, stress: 5 }, resultText: `They said "you're doing great" without answering the question. The mystery continues.` },
       { id: 'automate', label: 'Automate your tasks and freelance on the side', effects: { money: 8, smarts: 5, stress: 8 }, resultText: 'You now do 4 hours of work in 45 minutes. The rest is side hustle time.' },
       { id: 'coast', label: 'Just keep vibing and collecting paychecks', effects: { money: 3, happiness: 3, smarts: -3 }, resultText: 'You mastered the art of looking busy. Alt+Tab is your best friend.' },
     ],
@@ -309,7 +309,7 @@ export const youngAdultEvents: GameEvent[] = [
     weight: 2,
     text: 'Your situationship just posted "single and thriving ✨" while lying next to you in bed.',
     choices: [
-      { id: 'confront', label: 'Ask what you even are', effects: { stress: 10, happiness: -5, smarts: 3 }, resultText: 'They said "I don\'t like labels." You said "I don\'t like this." Growth.' },
+      { id: 'confront', label: 'Ask what you even are', effects: { stress: 10, happiness: -5, smarts: 3 }, resultText: `They said "I don't like labels." You said "I don't like this." Growth.` },
       { id: 'match', label: 'Post "single and thriving" right back', effects: { happiness: -3, reputation: 2, stress: 5 }, resultText: 'You both posted from the same GPS location. Someone noticed.' },
       { id: 'leave', label: 'Get dressed and go home', effects: { happiness: -8, stress: -5, smarts: 5 }, resultText: 'Cried in the Uber. But woke up feeling like you made the right call.' },
     ],
@@ -319,11 +319,11 @@ export const youngAdultEvents: GameEvent[] = [
     stage: 'youngAdult',
     category: 'money',
     weight: 4,
-    text: 'Your car made a noise it\'s never made before. Then it made it again. Then the check engine light came on.',
+    text: `Your car made a noise it's never made before. Then it made it again. Then the check engine light came on.`,
     choices: [
       { id: 'mechanic', label: 'Take it to a mechanic', effects: { money: -15, stress: 8, smarts: 2 }, resultText: '$1,800 for a "gasket thing." You nodded like you understood.' },
       { id: 'youtube', label: 'Try to fix it yourself with YouTube tutorials', effects: { money: -3, smarts: 5, health: -3, stress: 8 }, resultText: 'You successfully changed the wrong part. But you learned a lot.' },
-      { id: 'ignore', label: 'Turn the music up louder', effects: { stress: 3, money: -2 }, resultText: 'The noise went away! Just kidding, you just can\'t hear it over Beyoncé anymore.' },
+      { id: 'ignore', label: 'Turn the music up louder', effects: { stress: 3, money: -2 }, resultText: `The noise went away! Just kidding, you just can't hear it over Beyoncé anymore.` },
     ],
   },
   {
@@ -333,8 +333,8 @@ export const youngAdultEvents: GameEvent[] = [
     weight: 3,
     text: 'You moved to a new city for a job. You know zero people. Your weekend plans are "grocery store and existential dread."',
     choices: [
-      { id: 'apps', label: 'Download Bumble BFF', effects: { happiness: 5, stress: 5, relationshipDelta: 5 }, resultText: 'You met someone who also moved here alone. You both pretended you weren\'t desperate. Beautiful friendship born.' },
-      { id: 'hobby', label: 'Join a random club or class', effects: { happiness: 8, money: -3, smarts: 3 }, resultText: 'You joined a pottery class. You\'re terrible at pottery. But you have 3 new friends.' },
+      { id: 'apps', label: 'Download Bumble BFF', effects: { happiness: 5, stress: 5, relationshipDelta: 5 }, resultText: `You met someone who also moved here alone. You both pretended you weren't desperate. Beautiful friendship born.` },
+      { id: 'hobby', label: 'Join a random club or class', effects: { happiness: 8, money: -3, smarts: 3 }, resultText: `You joined a pottery class. You're terrible at pottery. But you have 3 new friends.` },
       { id: 'isolate', label: 'Just stay home with your comfort shows', effects: { happiness: -8, stress: 5, health: -3 }, resultText: 'You watched all 9 seasons of The Office in 2 weeks. Jim and Pam are your friends now.' },
     ],
   },
@@ -345,7 +345,7 @@ export const youngAdultEvents: GameEvent[] = [
     weight: 3,
     text: 'Your parents are visiting your apartment for the first time. You have 4 hours to make it look like an adult lives here.',
     choices: [
-      { id: 'clean', label: 'Speed clean and buy fake plants', effects: { money: -5, stress: 10, happiness: 3, reputation: 5 }, resultText: 'Mom said "it\'s... cozy." Dad said "where\'s your toolbox?" You don\'t own a toolbox.' },
+      { id: 'clean', label: 'Speed clean and buy fake plants', effects: { money: -5, stress: 10, happiness: 3, reputation: 5 }, resultText: `Mom said "it's... cozy." Dad said "where's your toolbox?" You don't own a toolbox.` },
       { id: 'honest', label: 'Let them see the real you', effects: { stress: 5, reputation: -5, relationshipDelta: 3 }, resultText: 'Mom cleaned your kitchen while sighing. Dad fixed your wobbly shelf. They left you $200 "for groceries."' },
       { id: 'restaurant', label: 'Meet them at a restaurant instead', effects: { money: -8, stress: -5, happiness: 5 }, resultText: 'They never saw the apartment. You won this round.' },
     ],
@@ -356,11 +356,11 @@ export const youngAdultEvents: GameEvent[] = [
     category: 'work',
     weight: 3,
     requirements: { stressMin: 50 },
-    text: 'You\'re burnt out. Like, actually burnt out. Not "I need a weekend" burnt out. Like "I stared at my laptop for 40 minutes without moving" burnt out.',
+    text: `You're burnt out. Like, actually burnt out. Not "I need a weekend" burnt out. Like "I stared at my laptop for 40 minutes without moving" burnt out.`,
     choices: [
       { id: 'quit', label: 'Put in your two weeks', effects: { stress: -20, money: -15, happiness: 15 }, resultText: 'Scariest email you ever sent. Slept 11 hours that night. Felt human for the first time in months.' },
       { id: 'break', label: 'Take a mental health week', effects: { stress: -15, health: 8, happiness: 10 }, resultText: 'You told them it was COVID. It was burnout. You hiked, slept, and remembered what joy feels like.' },
-      { id: 'push', label: 'Push through. Bills don\'t stop.', effects: { stress: 10, health: -10, happiness: -10, money: 5 }, resultText: 'You started getting headaches every day. Your eye twitches in meetings. This is fine.' },
+      { id: 'push', label: `Push through. Bills don't stop.`, effects: { stress: 10, health: -10, happiness: -10, money: 5 }, resultText: 'You started getting headaches every day. Your eye twitches in meetings. This is fine.' },
     ],
   },
   {
@@ -380,7 +380,7 @@ export const youngAdultEvents: GameEvent[] = [
     stage: 'youngAdult',
     category: 'romance',
     weight: 3,
-    text: 'Your ex texted "hey" at 1 AM. Just "hey." That\'s the whole text.',
+    text: `Your ex texted "hey" at 1 AM. Just "hey." That's the whole text.`,
     choices: [
       { id: 'ignore', label: 'Leave them on read like royalty', effects: { happiness: 5, stress: -3, reputation: 5 }, resultText: 'They sent a follow-up "?" two hours later. You were already asleep. Power.' },
       { id: 'reply', label: 'Reply "hey" back', effects: { stress: 10, happiness: -5 }, resultText: 'You stayed up until 4 AM in the most emotionally devastating conversation of your life.' },
@@ -392,7 +392,7 @@ export const youngAdultEvents: GameEvent[] = [
     stage: 'youngAdult',
     category: 'health',
     weight: 3,
-    text: 'Your screen time report says you averaged 7 hours and 42 minutes per day this week. That\'s more than you slept.',
+    text: `Your screen time report says you averaged 7 hours and 42 minutes per day this week. That's more than you slept.`,
     choices: [
       { id: 'detox', label: 'Do a digital detox weekend', effects: { health: 8, happiness: 5, stress: -10 }, resultText: 'You read a book. An actual book. Remembered what your own thoughts sound like.' },
       { id: 'limits', label: 'Set app time limits', effects: { smarts: 3, health: 3 }, resultText: 'You hit "Ignore Limit" within 30 seconds every single time. But you tried.' },
@@ -406,9 +406,9 @@ export const youngAdultEvents: GameEvent[] = [
     weight: 1,
     text: 'You ordered a desk from IKEA. The instructions are 47 pages long. You have one Allen wrench and the will of a broken person.',
     choices: [
-      { id: 'build', label: 'Spend 5 hours building it yourself', effects: { stress: 10, smarts: 3, happiness: 5 }, resultText: 'It\'s done. It wobbles. There are 3 extra screws. But it\'s YOUR wobbly desk.' },
+      { id: 'build', label: 'Spend 5 hours building it yourself', effects: { stress: 10, smarts: 3, happiness: 5 }, resultText: `It's done. It wobbles. There are 3 extra screws. But it's YOUR wobbly desk.` },
       { id: 'pay', label: 'Pay someone on TaskRabbit to build it', effects: { money: -5, happiness: 5, stress: -5 }, resultText: 'A man named Craig built it in 20 minutes. Craig is a better person than you.' },
-      { id: 'floor', label: 'Just put your laptop on the floor', effects: { health: -5, happiness: -3 }, resultText: 'You\'ve been working from the floor for 3 weeks. Your back has filed a formal complaint.' },
+      { id: 'floor', label: 'Just put your laptop on the floor', effects: { health: -5, happiness: -3 }, resultText: `You've been working from the floor for 3 weeks. Your back has filed a formal complaint.` },
     ],
   },
   {
@@ -418,7 +418,7 @@ export const youngAdultEvents: GameEvent[] = [
     weight: 3,
     text: 'You just found out the new hire makes $15K more than you. They asked you to train them.',
     choices: [
-      { id: 'negotiate', label: 'March into your manager\'s office and negotiate', effects: { stress: 10, money: 10, reputation: 5, smarts: 3 }, resultText: 'Got a raise to match. Should have asked sooner. Years of underpaying: recouped in one awkward meeting.' },
+      { id: 'negotiate', label: `March into your manager's office and negotiate`, effects: { stress: 10, money: 10, reputation: 5, smarts: 3 }, resultText: 'Got a raise to match. Should have asked sooner. Years of underpaying: recouped in one awkward meeting.' },
       { id: 'train', label: 'Train them while quietly dying inside', effects: { stress: 10, happiness: -10, reputation: 3 }, resultText: 'You smiled through every training session. Your therapist heard about this one.' },
       { id: 'job_hunt', label: 'Update your resume that night', effects: { stress: 5, smarts: 3, happiness: 3 }, resultText: 'Got an offer for $25K more a month later. The betrayal was the catalyst.' },
     ],
@@ -432,7 +432,7 @@ export const youngAdultEvents: GameEvent[] = [
     choices: [
       { id: 'ask', label: 'Leave a polite note on their door', effects: { stress: 3, reputation: 3 }, resultText: 'They turned it down for one week. Then bought a subwoofer.' },
       { id: 'war', label: 'Start playing bagpipe music at 6 AM on Fridays', effects: { happiness: 8, reputation: -5, stress: 5 }, resultText: 'The noise war escalated. Your other neighbors are caught in the crossfire.' },
-      { id: 'earplugs', label: 'Buy industrial earplugs and accept your fate', effects: { money: -2, stress: -3, happiness: -3 }, resultText: 'You can\'t hear the EDM anymore. You also can\'t hear your alarm. You were late to the meeting.' },
+      { id: 'earplugs', label: 'Buy industrial earplugs and accept your fate', effects: { money: -2, stress: -3, happiness: -3 }, resultText: `You can't hear the EDM anymore. You also can't hear your alarm. You were late to the meeting.` },
     ],
   },
   {
@@ -440,7 +440,7 @@ export const youngAdultEvents: GameEvent[] = [
     stage: 'youngAdult',
     category: 'social',
     weight: 3,
-    text: 'Your college friend group chat just planned a trip to Mexico. It costs $1,200. Everyone says "it\'ll be so fun!" like money grows on trees.',
+    text: `Your college friend group chat just planned a trip to Mexico. It costs $1,200. Everyone says "it'll be so fun!" like money grows on trees.`,
     choices: [
       { id: 'go', label: 'Put it on the credit card. Future you problem.', effects: { money: -15, happiness: 15, stress: -5, health: -3 }, resultText: 'It was genuinely the best trip of your life. The credit card bill made you genuinely ill.' },
       { id: 'skip', label: 'Sit this one out', effects: { happiness: -8, money: 3, stress: 5 }, resultText: 'They sent 847 photos to the group chat. You muted it after photo 12.' },
@@ -468,7 +468,7 @@ export const youngAdultEvents: GameEvent[] = [
     choices: [
       { id: 'cut', label: 'Start drinking less', effects: { health: 8, happiness: 3, money: 5, stress: -3 }, resultText: 'Sober weekends feel weird at first. Then they feel like a superpower.' },
       { id: 'hydrate', label: 'Just hydrate better next time', effects: { health: 2, smarts: -2 }, resultText: 'You drank Pedialyte before going out. It helped. You still felt 60 years old the next day.' },
-      { id: 'deny', label: 'Blame the cheap tequila, not your aging body', effects: { happiness: -3, health: -3 }, resultText: 'It happened again with expensive tequila. It\'s you. It\'s definitely you.' },
+      { id: 'deny', label: 'Blame the cheap tequila, not your aging body', effects: { happiness: -3, health: -3 }, resultText: `It happened again with expensive tequila. It's you. It's definitely you.` },
     ],
   },
   {
@@ -480,7 +480,7 @@ export const youngAdultEvents: GameEvent[] = [
     choices: [
       { id: 'participate', label: 'Go full send and actually try', effects: { happiness: 5, reputation: 5, health: 3 }, resultText: 'You did the ropes course. Kevin from accounting caught you in the trust fall. You felt something. Team spirit, probably.' },
       { id: 'minimum', label: 'Do the bare minimum and hide', effects: { stress: -3, reputation: -2 }, resultText: 'You spent most of it near the snack table. Strategic positioning.' },
-      { id: 'sick', label: 'Call in sick', effects: { stress: -5, reputation: -5, happiness: 5 }, resultText: 'You stayed home and played video games. Your coworkers posted team photos. You weren\'t missed.' },
+      { id: 'sick', label: 'Call in sick', effects: { stress: -5, reputation: -5, happiness: 5 }, resultText: `You stayed home and played video games. Your coworkers posted team photos. You weren't missed.` },
     ],
   },
   {
@@ -501,9 +501,9 @@ export const youngAdultEvents: GameEvent[] = [
     category: 'romance',
     weight: 3,
     requirements: { hasPartner: false },
-    text: 'You\'ve been single for a while and your married friends keep saying "it\'ll happen when you least expect it!" at every gathering.',
+    text: `You've been single for a while and your married friends keep saying "it'll happen when you least expect it!" at every gathering.`,
     choices: [
-      { id: 'content', label: 'Actually learn to enjoy being single', effects: { happiness: 10, smarts: 5, stress: -5 }, resultText: 'You took yourself to dinner, traveled alone, and realized you\'re pretty good company.' },
+      { id: 'content', label: 'Actually learn to enjoy being single', effects: { happiness: 10, smarts: 5, stress: -5 }, resultText: `You took yourself to dinner, traveled alone, and realized you're pretty good company.` },
       { id: 'apps', label: 'Download every dating app known to humanity', effects: { stress: 10, happiness: -3 }, resultText: 'Hinge, Bumble, Tinder, Coffee Meets Bagel, Raya rejection. You are now professionally dating.' },
       { id: 'snap', label: '"Please stop saying that"', effects: { reputation: -3, happiness: 5, stress: -3 }, resultText: 'Awkward silence at brunch. But they stopped saying it. Boundaries work.' },
     ],
@@ -515,7 +515,7 @@ export const youngAdultEvents: GameEvent[] = [
     weight: 1,
     text: 'You accidentally joined a pyramid scheme because the girl from high school was really convincing on Facebook. You now own 47 units of essential oils.',
     choices: [
-      { id: 'sell', label: 'Actually try to sell them', effects: { money: -5, reputation: -8, stress: 10 }, resultText: 'You cornered 3 friends at brunch. They all said "I\'ll think about it." They didn\'t.' },
+      { id: 'sell', label: 'Actually try to sell them', effects: { money: -5, reputation: -8, stress: 10 }, resultText: `You cornered 3 friends at brunch. They all said "I'll think about it." They didn't.` },
       { id: 'cut', label: 'Accept the loss and get out', effects: { money: -8, smarts: 5, stress: -5 }, resultText: 'Expensive lesson. You now have a lavender collection and trust issues with DMs.' },
       { id: 'gift', label: 'Give them as gifts for every occasion', effects: { money: 3, reputation: -3, happiness: 3 }, resultText: 'Everyone got peppermint oil for Christmas. Your family staged an intervention.' },
     ],
@@ -525,11 +525,11 @@ export const youngAdultEvents: GameEvent[] = [
     stage: 'youngAdult',
     category: 'work',
     weight: 3,
-    text: 'Your side hustle Etsy shop is getting traction. You sold 15 things this month. Your day job is getting suspicious about your "doctor\'s appointments."',
+    text: `Your side hustle Etsy shop is getting traction. You sold 15 things this month. Your day job is getting suspicious about your "doctor's appointments."`,
     choices: [
       { id: 'scale', label: 'Go all in on the Etsy shop', effects: { money: -5, happiness: 10, stress: 15, smarts: 5 }, resultText: 'You quit your job. Month 1 was terrifying. Month 3 you matched your old salary. Month 6 you exceeded it.' },
       { id: 'balance', label: 'Keep both and sleep less', effects: { health: -8, money: 10, stress: 15 }, resultText: 'You slept 4 hours a night for 3 months. Made good money. Developed a caffeine dependency.' },
-      { id: 'hobby', label: 'Keep it as a hobby, don\'t ruin it', effects: { happiness: 5, money: 3, stress: -3 }, resultText: 'Smart call. You still enjoy it because it\'s not your whole life. The Etsy reviews bring you joy.' },
+      { id: 'hobby', label: `Keep it as a hobby, don't ruin it`, effects: { happiness: 5, money: 3, stress: -3 }, resultText: `Smart call. You still enjoy it because it's not your whole life. The Etsy reviews bring you joy.` },
     ],
   },
   {
@@ -537,9 +537,9 @@ export const youngAdultEvents: GameEvent[] = [
     stage: 'youngAdult',
     category: 'health',
     weight: 3,
-    text: 'You just discovered therapy and now you analyze everything. Your friends are concerned you\'ve replaced a personality with psychology terms.',
+    text: `You just discovered therapy and now you analyze everything. Your friends are concerned you've replaced a personality with psychology terms.`,
     choices: [
-      { id: 'continue', label: 'Keep going, you\'re finally processing things', effects: { happiness: 8, smarts: 5, stress: -8, money: -5 }, resultText: 'Turns out childhood stuff affects adult stuff. Wild. You\'re growing and your relationships are better.' },
+      { id: 'continue', label: `Keep going, you're finally processing things`, effects: { happiness: 8, smarts: 5, stress: -8, money: -5 }, resultText: `Turns out childhood stuff affects adult stuff. Wild. You're growing and your relationships are better.` },
       { id: 'chill', label: 'Maybe dial back the armchair psychology', effects: { reputation: 3, happiness: 3, relationshipDelta: 3 }, resultText: 'You stopped diagnosing your friends at dinner. They invited you back.' },
       { id: 'evangelize', label: 'Tell everyone they need therapy', effects: { reputation: -5, happiness: 3, stress: 3 }, resultText: '"Have you considered that your attachment style is—" "Please stop."' },
     ],
@@ -564,9 +564,9 @@ export const youngAdultEvents: GameEvent[] = [
     requirements: { moneyMin: 30 },
     text: 'You finally have some savings. A financial advisor says you should invest. Your coworker says crypto. Your dad says gold. TikTok says options trading.',
     choices: [
-      { id: 'index', label: 'Put it in boring index funds', effects: { money: 8, smarts: 5, stress: -3 }, resultText: 'Boring. Responsible. You\'ll barely notice it growing. But in 20 years you\'ll be the smart one.' },
-      { id: 'crypto', label: 'YOLO into crypto', effects: { money: -10, stress: 15, happiness: -5 }, resultText: 'It went up 40%. You didn\'t sell. It went down 60%. Classic.' },
-      { id: 'savings', label: 'Just leave it in savings where it\'s safe', effects: { money: 2, smarts: -2, stress: -5 }, resultText: 'Inflation ate 3% of it. But you slept well at night. That\'s worth something.' },
+      { id: 'index', label: 'Put it in boring index funds', effects: { money: 8, smarts: 5, stress: -3 }, resultText: `Boring. Responsible. You'll barely notice it growing. But in 20 years you'll be the smart one.` },
+      { id: 'crypto', label: 'YOLO into crypto', effects: { money: -10, stress: 15, happiness: -5 }, resultText: `It went up 40%. You didn't sell. It went down 60%. Classic.` },
+      { id: 'savings', label: `Just leave it in savings where it's safe`, effects: { money: 2, smarts: -2, stress: -5 }, resultText: `Inflation ate 3% of it. But you slept well at night. That's worth something.` },
     ],
   },
   {
@@ -577,7 +577,7 @@ export const youngAdultEvents: GameEvent[] = [
     text: 'Your upstairs neighbor is either doing CrossFit or moving furniture at midnight. Every. Single. Night.',
     choices: [
       { id: 'confront', label: 'Knock on their door at midnight', effects: { stress: 5, reputation: -2 }, resultText: 'They were doing an "at-home bootcamp." They apologized. It stopped for a week. Then started again.' },
-      { id: 'complain', label: 'File a noise complaint', effects: { stress: 3, reputation: 3 }, resultText: 'The building manager said they\'d "look into it." They did not look into it.' },
+      { id: 'complain', label: 'File a noise complaint', effects: { stress: 3, reputation: 3 }, resultText: `The building manager said they'd "look into it." They did not look into it.` },
       { id: 'ceiling', label: 'Start tapping your ceiling with a broom', effects: { happiness: 3, reputation: -5, stress: 3 }, resultText: 'A passive-aggressive tapping war began. You are now in a toxic relationship with your ceiling.' },
     ],
   },
@@ -588,8 +588,8 @@ export const youngAdultEvents: GameEvent[] = [
     weight: 2,
     text: 'You have imposter syndrome so bad you Googled "can you get fired for being bad at your job" during a meeting about your promotion.',
     choices: [
-      { id: 'accept', label: 'Take the promotion and fake confidence', effects: { money: 10, stress: 10, reputation: 5 }, resultText: 'Fake it till you make it actually worked. You\'re good at this. Who knew? (Everyone except you.)' },
-      { id: 'decline', label: 'Say you\'re not ready', effects: { reputation: -5, stress: -5, happiness: -5 }, resultText: 'Your manager was confused. They gave it to someone less qualified. You watched them struggle.' },
+      { id: 'accept', label: 'Take the promotion and fake confidence', effects: { money: 10, stress: 10, reputation: 5 }, resultText: `Fake it till you make it actually worked. You're good at this. Who knew? (Everyone except you.)` },
+      { id: 'decline', label: `Say you're not ready`, effects: { reputation: -5, stress: -5, happiness: -5 }, resultText: 'Your manager was confused. They gave it to someone less qualified. You watched them struggle.' },
       { id: 'therapy', label: 'Talk to your therapist about it', effects: { money: -3, smarts: 5, stress: -8, happiness: 5 }, resultText: 'Turns out most competent people feel like frauds. It has a name and everything. You took the promotion.' },
     ],
   },
@@ -600,9 +600,9 @@ export const youngAdultEvents: GameEvent[] = [
     weight: 1,
     text: 'Your smart home went rogue. Alexa started playing jazz at 3 AM, the thermostat hit 85°F, and the smart lights turned red. Your apartment looks like a dystopian nightclub.',
     choices: [
-      { id: 'unplug', label: 'Unplug everything and go analog', effects: { stress: -5, happiness: 3, smarts: 2 }, resultText: 'You bought a regular alarm clock and light switches. It feels like 2005 and it\'s peaceful.' },
-      { id: 'fix', label: 'Spend 4 hours debugging your smart home', effects: { smarts: 5, stress: 8 }, resultText: 'Turned out your neighbor\'s Wi-Fi was controlling your lights. Technology is chaos.' },
-      { id: 'vibe', label: 'Leave it. The jazz is actually good.', effects: { happiness: 5, health: -3 }, resultText: 'You slept in a red-lit, 85-degree jazz club for a week. Your friends think you\'re going through something.' },
+      { id: 'unplug', label: 'Unplug everything and go analog', effects: { stress: -5, happiness: 3, smarts: 2 }, resultText: `You bought a regular alarm clock and light switches. It feels like 2005 and it's peaceful.` },
+      { id: 'fix', label: 'Spend 4 hours debugging your smart home', effects: { smarts: 5, stress: 8 }, resultText: `Turned out your neighbor's Wi-Fi was controlling your lights. Technology is chaos.` },
+      { id: 'vibe', label: 'Leave it. The jazz is actually good.', effects: { happiness: 5, health: -3 }, resultText: `You slept in a red-lit, 85-degree jazz club for a week. Your friends think you're going through something.` },
     ],
   },
   {
@@ -612,7 +612,7 @@ export const youngAdultEvents: GameEvent[] = [
     weight: 2,
     text: 'The family group chat just got political. Uncle Gary sent a "hot take." Your cousin responded with a Wikipedia link. Your mom sent a prayer emoji.',
     choices: [
-      { id: 'mute', label: 'Mute the chat immediately', effects: { stress: -5, happiness: 3 }, resultText: 'Best decision you\'ve made all year. You unmuted it at Thanksgiving. Mistake.' },
+      { id: 'mute', label: 'Mute the chat immediately', effects: { stress: -5, happiness: 3 }, resultText: `Best decision you've made all year. You unmuted it at Thanksgiving. Mistake.` },
       { id: 'engage', label: 'Enter the debate with facts', effects: { stress: 10, smarts: 2, relationshipDelta: -5 }, resultText: 'You cited three sources. Uncle Gary sent a YouTube video from 2014. Nobody won.' },
       { id: 'meme', label: 'Send a meme to defuse it', effects: { happiness: 5, reputation: 3 }, resultText: 'The meme worked. Everyone laughed. Crisis averted until next week.' },
     ],
@@ -623,7 +623,7 @@ export const youngAdultEvents: GameEvent[] = [
     category: 'romance',
     weight: 2,
     requirements: { hasPartner: true },
-    text: 'Your partner\'s love language is "quality time" and yours is "being left alone for 3 hours." This is becoming a problem.',
+    text: `Your partner's love language is "quality time" and yours is "being left alone for 3 hours." This is becoming a problem.`,
     choices: [
       { id: 'compromise', label: 'Parallel hang: same room, different activities', effects: { happiness: 8, relationshipDelta: 8, stress: -5 }, resultText: 'You read a book. They watched a show. Feet touching on the couch. Perfect.' },
       { id: 'their_way', label: 'Do what they want all weekend', effects: { stress: 10, relationshipDelta: 5, happiness: -5 }, resultText: 'Board games, cooking together, a walk. You need a vacation from your weekend.' },
@@ -635,7 +635,7 @@ export const youngAdultEvents: GameEvent[] = [
     stage: 'youngAdult',
     category: 'health',
     weight: 4,
-    text: 'You realized you\'ve been eating the same 4 meals on rotation for 8 months. Chicken, rice, pasta, and "whatever\'s in the fridge."',
+    text: `You realized you've been eating the same 4 meals on rotation for 8 months. Chicken, rice, pasta, and "whatever's in the fridge."`,
     choices: [
       { id: 'variety', label: 'Challenge yourself to cook something new weekly', effects: { health: 8, smarts: 3, happiness: 5, money: -3 }, resultText: 'Week 1: Thai curry. Week 2: homemade pizza. Week 3: back to chicken. But you tried.' },
       { id: 'fine', label: 'If it works it works', effects: { health: -3, happiness: -2 }, resultText: 'Your body is technically alive. Your soul is beige.' },
@@ -671,11 +671,11 @@ export const youngAdultEvents: GameEvent[] = [
     stage: 'youngAdult',
     category: 'social',
     weight: 2,
-    text: 'You just realized you haven\'t made a new friend in 3 years. Your social circle is exactly the same people from college plus one work friend.',
+    text: `You just realized you haven't made a new friend in 3 years. Your social circle is exactly the same people from college plus one work friend.`,
     choices: [
       { id: 'try', label: 'Actively try to make new friends', effects: { happiness: 8, stress: 5, reputation: 3, relationshipDelta: 5 }, resultText: 'You joined a run club. Made 2 new friends. Turns out adults CAN make friends. It just takes embarrassing effort.' },
-      { id: 'fine', label: 'Quality over quantity. You\'re good.', effects: { happiness: 3, stress: -3 }, resultText: 'Your 5 friends are solid. But you told the same stories at every hangout. Everyone laughed anyway.' },
-      { id: 'online', label: 'Join online communities', effects: { smarts: 3, happiness: 5, reputation: 2 }, resultText: 'You found your people in a niche Discord server. You\'ve never met them. They know your deepest thoughts.' },
+      { id: 'fine', label: `Quality over quantity. You're good.`, effects: { happiness: 3, stress: -3 }, resultText: 'Your 5 friends are solid. But you told the same stories at every hangout. Everyone laughed anyway.' },
+      { id: 'online', label: 'Join online communities', effects: { smarts: 3, happiness: 5, reputation: 2 }, resultText: `You found your people in a niche Discord server. You've never met them. They know your deepest thoughts.` },
     ],
   },
   {
@@ -685,7 +685,7 @@ export const youngAdultEvents: GameEvent[] = [
     weight: 1,
     text: 'Your meal prep Sunday went wrong. You now have 14 containers of the exact same sad chicken and broccoli staring at you from the fridge.',
     choices: [
-      { id: 'eat', label: 'Eat it all week like a disciplined machine', effects: { health: 5, happiness: -5 }, resultText: 'By Thursday you couldn\'t look at broccoli. Friday you ordered pizza and felt alive again.' },
+      { id: 'eat', label: 'Eat it all week like a disciplined machine', effects: { health: 5, happiness: -5 }, resultText: `By Thursday you couldn't look at broccoli. Friday you ordered pizza and felt alive again.` },
       { id: 'give', label: 'Give half to your coworkers', effects: { reputation: 3, happiness: 3, money: 3 }, resultText: 'Kevin said it was "actually good." You peaked.' },
       { id: 'trash', label: 'Throw it out and order DoorDash', effects: { money: -8, happiness: 5, health: -3 }, resultText: 'The guilt lasted 10 minutes. The pad thai lasted 5. No regrets.' },
     ],
@@ -698,7 +698,7 @@ export const youngAdultEvents: GameEvent[] = [
     text: 'Your company just mandated return-to-office 5 days a week. Your commute is 90 minutes each way. Your productivity was higher at home.',
     choices: [
       { id: 'comply', label: 'Comply and start a podcast for the commute', effects: { stress: 10, happiness: -5, smarts: 5 }, resultText: 'You listened to 47 podcasts and now have opinions about everything. Still hate the commute.' },
-      { id: 'negotiate', label: 'Negotiate a hybrid schedule', effects: { stress: 5, happiness: 5, reputation: 3 }, resultText: 'Got 3 days in office. Better than 5. Your manager thinks you\'re "difficult." You think you\'re reasonable.' },
+      { id: 'negotiate', label: 'Negotiate a hybrid schedule', effects: { stress: 5, happiness: 5, reputation: 3 }, resultText: `Got 3 days in office. Better than 5. Your manager thinks you're "difficult." You think you're reasonable.` },
       { id: 'quit', label: 'Find a remote job', effects: { stress: 15, money: 5, happiness: 10 }, resultText: 'Took 2 months but you found one. Now you work in pajamas and life makes sense.' },
     ],
   },
@@ -711,7 +711,7 @@ export const youngAdultEvents: GameEvent[] = [
     choices: [
       { id: 'approach', label: 'Go say hi like a confident person', effects: { happiness: 8, reputation: 3, stress: 5 }, resultText: 'They were smiling at you. You exchanged numbers. Your hands were shaking the entire time.' },
       { id: 'nothing', label: 'Do nothing and think about it for 3 weeks', effects: { happiness: -5, stress: 5 }, resultText: 'You went back to that coffee shop every day for a month. Never saw them again.' },
-      { id: 'trip', label: 'Walk past them and trip on a chair', effects: { happiness: -3, looks: -2, reputation: -3 }, resultText: 'They asked if you were okay. You said "I\'m fine" while bleeding from your shin. They gave you a napkin. Romance.' },
+      { id: 'trip', label: 'Walk past them and trip on a chair', effects: { happiness: -3, looks: -2, reputation: -3 }, resultText: `They asked if you were okay. You said "I'm fine" while bleeding from your shin. They gave you a napkin. Romance.` },
     ],
   },
   {
@@ -719,11 +719,11 @@ export const youngAdultEvents: GameEvent[] = [
     stage: 'youngAdult',
     category: 'family',
     weight: 3,
-    text: 'Thanksgiving dinner. Your aunt asks what you\'re doing with your life. Your cousin just got into med school. All eyes on you.',
+    text: `Thanksgiving dinner. Your aunt asks what you're doing with your life. Your cousin just got into med school. All eyes on you.`,
     choices: [
-      { id: 'honest', label: 'Be honest about where you are', effects: { stress: 5, reputation: 3, happiness: 3, relationshipDelta: 3 }, resultText: 'You said "I\'m figuring it out." Grandma said "that\'s what your 20s are for." She gets it.' },
-      { id: 'lie', label: 'Exaggerate wildly', effects: { stress: 8, reputation: 5, happiness: -3 }, resultText: '"I\'m pursuing opportunities in the innovation space." Nobody knew what that meant. Including you. But they nodded.' },
-      { id: 'redirect', label: 'Ask about cousin\'s debt from med school', effects: { happiness: 8, reputation: -5, stress: -5 }, resultText: 'Cousin went silent. Aunt changed the subject. Petty? Yes. Satisfying? Also yes.' },
+      { id: 'honest', label: 'Be honest about where you are', effects: { stress: 5, reputation: 3, happiness: 3, relationshipDelta: 3 }, resultText: `You said "I'm figuring it out." Grandma said "that's what your 20s are for." She gets it.` },
+      { id: 'lie', label: 'Exaggerate wildly', effects: { stress: 8, reputation: 5, happiness: -3 }, resultText: `"I'm pursuing opportunities in the innovation space." Nobody knew what that meant. Including you. But they nodded.` },
+      { id: 'redirect', label: `Ask about cousin's debt from med school`, effects: { happiness: 8, reputation: -5, stress: -5 }, resultText: 'Cousin went silent. Aunt changed the subject. Petty? Yes. Satisfying? Also yes.' },
     ],
   },
   {
@@ -747,7 +747,7 @@ export const youngAdultEvents: GameEvent[] = [
     choices: [
       { id: 'spoil', label: 'Become a full dog parent', effects: { happiness: 15, money: -10, health: 5 }, resultText: `Beans has a bed in every room, a subscription treat box, and his own Instagram. You are the happiest you've been in years. Beans ate another shoe.` },
       { id: 'train', label: 'Invest in proper training', effects: { money: -8, happiness: 10, stress: 5, smarts: 3 }, resultText: `Six weeks of classes. Beans learned "sit." Only "sit." But he does it beautifully. The trainer said he's "a character." You agreed.` },
-      { id: 'overwhelmed', label: 'Realize you\'re in over your head', effects: { stress: 15, happiness: -5 }, resultText: `Beans peed on the rug, barked at the mailman, and stole a burrito off the counter. But when he fell asleep on your lap, you knew you'd figure it out.` },
+      { id: 'overwhelmed', label: `Realize you're in over your head`, effects: { stress: 15, happiness: -5 }, resultText: `Beans peed on the rug, barked at the mailman, and stole a burrito off the counter. But when he fell asleep on your lap, you knew you'd figure it out.` },
     ],
   },
   {
@@ -890,7 +890,7 @@ export const youngAdultEvents: GameEvent[] = [
     text: `A friend from college texted after two years of silence: "Hey! I'm in town this weekend. We should catch up!" Last time you "caught up" they asked for money.`,
     choices: [
       { id: 'go', label: 'Meet up and give them a chance', effects: { happiness: 5, stress: 5, relationshipDelta: 5 }, resultText: `They actually just wanted to hang out. You had a great time. You felt guilty for being suspicious. Then they asked for money at the end. Instincts confirmed.` },
-      { id: 'busy', label: 'Say you\'re busy', effects: { happiness: 3, stress: -5, relationshipDelta: -5 }, resultText: `"Ah man, I have a thing!" You did not have a thing. But your peace of mind was intact. Boundaries are a form of self-care.` },
+      { id: 'busy', label: `Say you're busy`, effects: { happiness: 3, stress: -5, relationshipDelta: -5 }, resultText: `"Ah man, I have a thing!" You did not have a thing. But your peace of mind was intact. Boundaries are a form of self-care.` },
       { id: 'group', label: 'Suggest a group hangout instead', effects: { happiness: 5, stress: -3, smarts: 5 }, resultText: `Safety in numbers. They couldn't pitch anything weird with witnesses. It was actually fun. Group settings: the adult safety net.` },
     ],
   },

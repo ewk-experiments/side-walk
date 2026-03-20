@@ -7,6 +7,7 @@ import { ConditionChips } from './components/common/ConditionChips';
 import { TimelineCard } from './components/cards/TimelineCard';
 import { EventModal } from './components/event/EventModal';
 import { formatMoney, getLifeStage, getLifeStageTransition } from './utils/format';
+import { isSoundEnabled, toggleSound } from './utils/audio';
 import { jobs } from './content/jobs';
 import { getAvailableJobs, getHousingOptions } from './engine/progression';
 import { hasSave } from './utils/save';
@@ -33,6 +34,7 @@ function App() {
   const [toast, setToast] = React.useState<string | null>(null);
   const [stageTransition, setStageTransition] = React.useState<{ emoji: string; message: string } | null>(null);
   const [deathDrama, setDeathDrama] = React.useState(false);
+  const [soundOn, setSoundOn] = React.useState(isSoundEnabled);
   const deathHandledRef = React.useRef(false);
   const prevAgeRef = React.useRef(store.player.age);
 
@@ -109,6 +111,17 @@ function App() {
               {store.currentYear}
             </span>
             {screen !== 'summary' && (
+            <div style={{ display: 'flex', gap: 6 }}>
+            <button
+              onClick={() => setSoundOn(toggleSound())}
+              style={{
+                fontSize: 14, padding: '4px 8px', borderRadius: 8,
+                background: 'var(--bg-elevated)', color: 'var(--text-muted)',
+                border: '1px solid rgba(255,255,255,0.06)', cursor: 'pointer',
+              }}
+            >
+              {soundOn ? '🔊' : '🔇'}
+            </button>
             <button
               onClick={() => { handleSave(); }}
               style={{
@@ -119,6 +132,7 @@ function App() {
             >
               💾 Save
             </button>
+            </div>
             )}
             {screen === 'summary' && <span style={{ width: 52 }} />}
           </header>
