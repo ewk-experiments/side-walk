@@ -3,12 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/side-walk/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>side-walk</title>
-    <script type="module" crossorigin src="/side-walk/assets/index-BZ07NBwb.js"></script>
-    <link rel="stylesheet" crossorigin href="/side-walk/assets/index-DlTv3l1N.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#0A0A0B" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="manifest" href="/side-walk/manifest.json" />
+    <title>Side Walk</title>
+    <script type="module" crossorigin src="/side-walk/assets/index-BLKg08h-.js"></script>
+    <link rel="stylesheet" crossorigin href="/side-walk/assets/index-BG9cpY7H.css">
   </head>
   <body>
+    <!-- Splash screen -->
+    <div id="splash" style="position:fixed;inset:0;z-index:9999;background:#0A0A0B;display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity 0.4s ease;opacity:1;">
+      <div style="font-size:48px;margin-bottom:12px;">🌆</div>
+      <div style="font-size:28px;font-weight:900;font-family:'Space Grotesk',system-ui,sans-serif;background:linear-gradient(90deg,#60A5FA,#A78BFA,#F87171);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Side Walk</div>
+    </div>
     <div id="root"></div>
   </body>
 </html>
