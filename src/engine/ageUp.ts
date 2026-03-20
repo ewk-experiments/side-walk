@@ -228,6 +228,7 @@ export function ageUp(state: GameState): GameState {
       drama: 0,
       status: 'alive',
       age: p.age + Math.floor(Math.random() * 5) - 2,
+      metAtAge: p.age,
     };
     updatedRelationships.push(newFriend);
     newTimeline = [...newTimeline, {
@@ -254,6 +255,7 @@ export function ageUp(state: GameState): GameState {
         drama: Math.floor(Math.random() * 15),
         status: 'alive',
         age: p.age + Math.floor(Math.random() * 7) - 3,
+        metAtAge: p.age,
       };
       updatedRelationships.push(romantic);
       newTimeline = [...newTimeline, {
@@ -338,6 +340,65 @@ export function ageUp(state: GameState): GameState {
 
   if (p.familyWealth === 'poor' && p.money >= 50000) addAchievement('📈 Rags to Riches');
 
+  // Track happiness history
+  const happinessHistory = [...(state.happinessHistory || []), p.happiness].slice(-80);
+
+  // Track peak net worth
+  const peakNetWorth = Math.max(state.peakNetWorth || 0, p.money);
+
+  // Career progression: check job tenure for special events
+  let jobStartAge = state.jobStartAge ?? null;
+  // If job changed, reset tenure tracking
+  if (p.jobId !== state.player.jobId) {
+    jobStartAge = p.jobId ? p.age : null;
+  }
+  const jobTenure = (jobStartAge !== null && p.jobId) ? (p.age - jobStartAge) : 0;
+
+  // Career progression events at 5+ year tenure
+  if (jobTenure > 0 && jobTenure % 5 === 0 && p.jobId) {
+    const job = getJobById(p.jobId);
+    if (job) {
+      const roll = Math.random();
+      if (roll < 0.5) {
+        // Promotion offer
+        const raise = Math.round(job.salary * 0.2);
+        p.money += raise;
+        p.stress = clampStat(p.stress + 8);
+        p.reputation = clampStat(p.reputation + 5);
+        newTimeline = [...newTimeline, {
+          age: p.age,
+          year,
+          text: `After ${jobTenure} years as a ${job.title}, you got promoted! Salary bumped by $${raise.toLocaleString()}/yr.`,
+          category: 'work',
+          isMilestone: true,
+        }];
+      } else if (roll < 0.8) {
+        // Burnout
+        p.stress = clampStat(p.stress + 20);
+        p.happiness = clampStat(p.happiness - 10);
+        p.health = clampStat(p.health - 5);
+        newTimeline = [...newTimeline, {
+          age: p.age,
+          year,
+          text: `${jobTenure} years of the same grind as a ${job.title}. Burnout is hitting hard.`,
+          category: 'work',
+          isMilestone: true,
+        }];
+      } else {
+        // Headhunted
+        const newSalary = Math.round(job.salary * 1.35);
+        p.reputation = clampStat(p.reputation + 10);
+        newTimeline = [...newTimeline, {
+          age: p.age,
+          year,
+          text: `A recruiter reached out — another company wants you. The offer is ${newSalary.toLocaleString()}/yr. Tempting.`,
+          category: 'work',
+          isMilestone: true,
+        }];
+      }
+    }
+  }
+
   return {
     ...state,
     player: p,
@@ -345,6 +406,9 @@ export function ageUp(state: GameState): GameState {
     timeline: newTimeline,
     currentYear: year,
     achievements,
+    happinessHistory,
+    peakNetWorth,
+    jobStartAge,
   };
 }
 

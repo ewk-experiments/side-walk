@@ -21,6 +21,8 @@ export interface Relationship {
   status: 'alive' | 'estranged' | 'deceased';
   occupation?: string;
   age: number;
+  metAtAge?: number;
+  lastInteraction?: { type: string; age: number };
 }
 
 export interface Player {
@@ -67,4 +69,7 @@ export interface GameState {
   activeChains: Record<string, string>; // chainId -> current stepId
   seenEventIds: string[];
   achievements: string[];
+  happinessHistory: number[];
+  peakNetWorth: number;
+  jobStartAge: number | null;
 }

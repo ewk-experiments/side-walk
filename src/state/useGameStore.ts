@@ -22,6 +22,7 @@ import { lifeChains } from '../content/chains/life';
 import { jobs, type Job } from '../content/jobs';
 import { getLifeStage } from '../utils/format';
 import { playAgeUp, playChoice, playPositive, playNegative, playMilestone, playDeath, playNewLife, playMicroEvent } from '../utils/audio';
+import { hapticAgeUp, hapticChoice, hapticDeath } from '../utils/haptics';
 
 // Fallback flavor texts per life stage
 const fallbackFlavor: Record<string, string[]> = {
@@ -177,6 +178,9 @@ function getStateSnapshot(store: GameStore): GameState {
     activeChains: store.activeChains,
     seenEventIds: store.seenEventIds,
     achievements: store.achievements,
+    happinessHistory: store.happinessHistory,
+    peakNetWorth: store.peakNetWorth,
+    jobStartAge: store.jobStartAge,
   };
 }
 
@@ -191,6 +195,9 @@ export const useGameStore = create<GameStore>((set, get) => ({
   activeChains: {},
   seenEventIds: [],
   achievements: [],
+  happinessHistory: [],
+  peakNetWorth: 0,
+  jobStartAge: null,
 
   currentEvent: null,
   showEventModal: false,
@@ -217,6 +224,7 @@ export const useGameStore = create<GameStore>((set, get) => ({
     const store = get();
     if (store.gameOver) return;
     playAgeUp();
+    hapticAgeUp();
 
     // 1. Apply passive age-up (income, costs, drift, education progression)
     let state = getStateSnapshot(store);
@@ -226,6 +234,7 @@ export const useGameStore = create<GameStore>((set, get) => ({
     const deathCheck = checkDeath(state);
     if (deathCheck.died) {
       playDeath();
+      hapticDeath();
       const summary = generateLifeSummary(state);
       // Find matching ending
       const hasPartner = state.relationships.some(r => (r.type === 'spouse' || r.type === 'romantic') && r.status === 'alive');
@@ -333,6 +342,7 @@ export const useGameStore = create<GameStore>((set, get) => ({
     const event = store.currentEvent;
     if (!event) return;
     playChoice();
+    hapticChoice();
 
     const state = getStateSnapshot(store);
     const { newState, resultText } = resolveChoice(state, event, choiceId);
@@ -496,13 +506,13 @@ export const useGameStore = create<GameStore>((set, get) => ({
       if (r.id !== relId) return r;
       switch (action) {
         case 'call':
-          return { ...r, closeness: Math.min(100, r.closeness + 5), drama: Math.max(0, r.drama - 2) };
+          return { ...r, closeness: Math.min(100, r.closeness + 5), drama: Math.max(0, r.drama - 2), lastInteraction: { type: 'call', age: store.player.age } };
         case 'compliment':
-          return { ...r, closeness: Math.min(100, r.closeness + 8) };
+          return { ...r, closeness: Math.min(100, r.closeness + 8), lastInteraction: { type: 'compliment', age: store.player.age } };
         case 'argue':
-          return { ...r, closeness: Math.max(0, r.closeness - 10), drama: Math.min(100, r.drama + 15) };
+          return { ...r, closeness: Math.max(0, r.closeness - 10), drama: Math.min(100, r.drama + 15), lastInteraction: { type: 'argue', age: store.player.age } };
         case 'hangout':
-          return { ...r, closeness: Math.min(100, r.closeness + 10), drama: Math.max(0, r.drama - 5) };
+          return { ...r, closeness: Math.min(100, r.closeness + 10), drama: Math.max(0, r.drama - 5), lastInteraction: { type: 'hangout', age: store.player.age } };
         default:
           return r;
       }

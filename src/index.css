@@ -291,3 +291,36 @@ button:active { transform: scale(0.97); }
   border: 1px solid var(--glass-border);
   border-radius: 16px;
 }
+
+/* ── Mobile touch optimizations ── */
+button {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+a, [role="button"], input, select, textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+#root {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Allow text selection on readable content */
+.summary-text, p, .timeline-text {
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+/* Smooth scroll for main content */
+main {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Body scroll lock when modal is open */
+body.modal-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}

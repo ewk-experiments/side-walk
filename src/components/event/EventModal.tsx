@@ -30,6 +30,16 @@ const categoryColors: Record<EventCategory, string> = {
 export const EventModal: React.FC = () => {
   const { currentEvent, showEventModal, showResult, selectChoice, dismissResult } = useGameStore();
 
+  // Lock background scroll when modal is open
+  React.useEffect(() => {
+    if (showEventModal) {
+      document.body.classList.add('modal-open');
+    } else {
+      document.body.classList.remove('modal-open');
+    }
+    return () => { document.body.classList.remove('modal-open'); };
+  }, [showEventModal]);
+
   if (!showEventModal || !currentEvent) return null;
 
   const color = categoryColors[currentEvent.category];

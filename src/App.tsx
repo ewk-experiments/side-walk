@@ -92,7 +92,7 @@ function App() {
       {screen !== 'title' && (
         <>
           <header style={{
-            padding: '12px 20px 0', textAlign: 'center',
+            padding: 'calc(12px + env(safe-area-inset-top)) 20px 0', textAlign: 'center',
             background: 'linear-gradient(180deg, var(--bg-card) 0%, var(--bg-deep) 100%)',
             display: 'flex', justifyContent: 'space-between', alignItems: 'center',
           }}>
@@ -332,7 +332,7 @@ function TitleScreen() {
 
 /* ── Home Screen ── */
 function HomeScreen() {
-  const { timeline } = useGameStore();
+  const { timeline, happinessHistory } = useGameStore();
   const reversed = [...timeline].reverse();
   const timelineEndRef = React.useRef<HTMLDivElement>(null);
   const prevLen = React.useRef(timeline.length);
@@ -344,10 +344,44 @@ function HomeScreen() {
     prevLen.current = timeline.length;
   }, [timeline.length]);
 
+  const history = happinessHistory || [];
+  const displayHistory = history.slice(-80);
+
   return (
     <div className="fade-in">
       <ProfileHeader />
       <StatBars />
+      {displayHistory.length > 1 && (
+        <div style={{ padding: '0 20px 12px' }}>
+          <div className="section-header" style={{ marginBottom: 8 }}>Life Graph</div>
+          <div style={{
+            background: 'rgba(255,255,255,0.03)', borderRadius: 14, padding: '16px 12px 12px',
+            border: '1px solid rgba(255,255,255,0.06)',
+          }}>
+            <div style={{
+              display: 'flex', alignItems: 'flex-end', gap: 1, height: 48,
+            }}>
+              {displayHistory.map((val, i) => {
+                const prev = i > 0 ? displayHistory[i - 1] : val;
+                const color = val >= prev ? '#34D399' : '#F87171';
+                const height = Math.max(2, (val / 100) * 48);
+                return (
+                  <div key={i} style={{
+                    flex: 1, minWidth: 2, maxWidth: 6, height, borderRadius: 2,
+                    background: color, opacity: 0.8,
+                    transition: 'height 0.3s ease',
+                  }} />
+                );
+              })}
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 6 }}>
+              <span style={{ fontSize: 10, color: 'var(--text-muted)' }}>Birth</span>
+              <span style={{ fontSize: 10, color: 'var(--text-muted)' }}>Happiness over time</span>
+              <span style={{ fontSize: 10, color: 'var(--text-muted)' }}>Now</span>
+            </div>
+          </div>
+        </div>
+      )}
       <ConditionChips />
       <div className="section-header" style={{ padding: '0 20px 8px', marginBottom: 8 }}>
         Timeline
@@ -364,7 +398,7 @@ function HomeScreen() {
 
 /* ── Relationships Screen ── */
 function RelationshipsScreen() {
-  const { relationships, interactRelationship } = useGameStore();
+  const { relationships, interactRelationship, player } = useGameStore();
 
   const typeColors: Record<string, string> = {
     mother: '#A78BFA', father: '#60A5FA', sibling: '#34D399',
@@ -425,6 +459,22 @@ function RelationshipsScreen() {
                 }} />
               </div>
               <span style={{ fontSize: 11, color: 'var(--text-muted)', fontFamily: 'var(--font-mono)', width: 24, textAlign: 'right' }}>{Math.round(r.closeness)}</span>
+            </div>
+            {/* Relationship depth info */}
+            <div style={{ fontSize: 11, color: 'var(--text-muted)', marginBottom: isDeceased ? 0 : 8, lineHeight: 1.6 }}>
+              {r.metAtAge !== undefined && (
+                <span>Met at age {r.metAtAge}{player.age > r.metAtAge ? ` · ${player.age - r.metAtAge} years` : ''}</span>
+              )}
+              {r.lastInteraction && (
+                <span> · Last {r.lastInteraction.type} at age {r.lastInteraction.age}</span>
+              )}
+              {r.metAtAge !== undefined && player.age > r.metAtAge && (
+                <div style={{ fontSize: 10, color: 'var(--text-muted)', opacity: 0.7, marginTop: 2 }}>
+                  {r.metAtAge === 0
+                    ? `Known since birth, ${r.type} for ${player.age} years`
+                    : `Met at ${r.metAtAge}, ${r.type === 'romantic' || r.type === 'spouse' ? 'together' : r.type === 'friend' ? 'friends' : r.type} for ${player.age - r.metAtAge} years`}
+                </div>
+              )}
             </div>
             {!isDeceased && (
             <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
@@ -623,11 +673,24 @@ function CareerScreen() {
 
 /* ── Summary Screen ── */
 function SummaryScreen() {
-  const { player, timeline, relationships, restartGame, lifeSummary, deathCause } = useGameStore();
+  const { player, timeline, relationships, restartGame, lifeSummary, deathCause, achievements, happinessHistory, peakNetWorth } = useGameStore();
   const milestones = timeline.filter(t => t.isMilestone);
   const lifeRating = Math.round(
     (player.health + player.happiness + player.smarts + player.looks + player.reputation + (100 - player.stress)) / 6
   );
+
+  // Legacy Score calculation
+  const yearsPoints = Math.min(30, Math.round((player.age / 100) * 30));
+  const wealthPoints = Math.min(20, Math.round(Math.min(1, (peakNetWorth || 0) / 1000000) * 20));
+  const relPoints = Math.min(15, Math.round((relationships.length / 10) * 15));
+  const achievePoints = Math.min(20, Math.round(((achievements || []).length / 10) * 20));
+  const avgHappiness = (happinessHistory || []).length > 0
+    ? (happinessHistory || []).reduce((a: number, b: number) => a + b, 0) / (happinessHistory || []).length
+    : player.happiness;
+  const happyPoints = Math.min(15, Math.round((avgHappiness / 100) * 15));
+  const legacyScore = yearsPoints + wealthPoints + relPoints + achievePoints + happyPoints;
+  const legacyGrade = legacyScore >= 90 ? 'S' : legacyScore >= 75 ? 'A' : legacyScore >= 60 ? 'B' : legacyScore >= 45 ? 'C' : legacyScore >= 30 ? 'D' : 'F';
+  const gradeColors: Record<string, string> = { S: '#FFD700', A: '#34D399', B: '#60A5FA', C: '#FBBF24', D: '#FB923C', F: '#F87171' };
 
   return (
     <div className="fade-in" style={{ padding: '40px 20px', textAlign: 'center' }}>
@@ -673,6 +736,46 @@ function SummaryScreen() {
           {lifeRating}
         </div>
         <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>out of 100</div>
+      </div>
+
+      {/* Legacy Score */}
+      <div style={{
+        background: 'var(--bg-card)', borderRadius: 16, padding: 24, marginBottom: 24,
+        border: '1px solid rgba(255,255,255,0.04)', textAlign: 'center',
+      }}>
+        <div style={{ fontSize: 11, color: 'var(--text-muted)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: 1, marginBottom: 8 }}>Legacy Score</div>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 16, marginBottom: 12 }}>
+          <div style={{
+            fontSize: 56, fontWeight: 900, fontFamily: 'var(--font-display)',
+            color: gradeColors[legacyGrade],
+          }}>
+            {legacyScore}
+          </div>
+          <div style={{
+            fontSize: 36, fontWeight: 900, fontFamily: 'var(--font-display)',
+            width: 56, height: 56, borderRadius: 14,
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            background: `${gradeColors[legacyGrade]}22`,
+            color: gradeColors[legacyGrade],
+            border: `2px solid ${gradeColors[legacyGrade]}44`,
+          }}>
+            {legacyGrade}
+          </div>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 6, fontSize: 12, textAlign: 'left' }}>
+          {[
+            { label: 'Years Lived', pts: yearsPoints, max: 30 },
+            { label: 'Peak Wealth', pts: wealthPoints, max: 20 },
+            { label: 'Relationships', pts: relPoints, max: 15 },
+            { label: 'Achievements', pts: achievePoints, max: 20 },
+            { label: 'Avg Happiness', pts: happyPoints, max: 15 },
+          ].map(s => (
+            <div key={s.label} style={{ display: 'flex', justifyContent: 'space-between', padding: '2px 4px' }}>
+              <span style={{ color: 'var(--text-secondary)' }}>{s.label}</span>
+              <span style={{ fontFamily: 'var(--font-mono)', color: 'var(--text-muted)' }}>{s.pts}/{s.max}</span>
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Gradient divider */}

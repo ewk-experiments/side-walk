@@ -442,10 +442,450 @@ const accidentalParenthood: ChainEvent[] = [
   }
 ];
 
+// Chain 6: Health Scare (3 steps)
+const healthScare: ChainEvent[] = [
+  {
+    id: 'life-health-scare-1',
+    chainId: 'health-scare',
+    chainStep: 1,
+    chainTotal: 3,
+    stage: 'adult',
+    category: 'health',
+    weight: 0.4,
+    requirements: { minAge: 35, maxAge: 65 },
+    text: `A routine checkup turns not-so-routine. The doctor pauses mid-sentence, squints at the screen, and says, "I'd like to run some more tests." Those seven words rearrange your entire week.`,
+    choices: [
+      {
+        id: 'health-scare-face',
+        label: 'Schedule every test immediately',
+        effects: { stress: 20, money: -5, happiness: -10 },
+        nextChainId: 'life-health-scare-2',
+        resultText: 'You spend a week in waiting rooms. Every Google search makes it worse. You promise yourself you\'ll stop Googling. You don\'t.',
+      },
+      {
+        id: 'health-scare-deny',
+        label: 'Put it off — you feel fine',
+        effects: { stress: 10, happiness: -5 },
+        nextChainId: 'life-health-scare-2',
+        resultText: 'You ignore it for two months. The anxiety doesn\'t go away. It just moves into the background, humming.',
+      },
+    ],
+  },
+  {
+    id: 'life-health-scare-2',
+    chainId: 'health-scare',
+    chainStep: 2,
+    chainTotal: 3,
+    stage: 'adult',
+    category: 'health',
+    weight: 0.7,
+    text: `The results come back. It's not the worst-case scenario, but it's not nothing either. Treatment is recommended — pills, lifestyle changes, regular monitoring. "Manageable," the doctor says. You hate that word.`,
+    choices: [
+      {
+        id: 'health-scare-commit',
+        label: 'Overhaul your life — diet, exercise, everything',
+        effects: { health: 10, happiness: 5, stress: 10, money: -3 },
+        addConditions: ['fit'],
+        nextChainId: 'life-health-scare-3',
+        resultText: 'You become the person who brings salads to BBQs. Your friends are concerned. But the numbers improve.',
+      },
+      {
+        id: 'health-scare-minimum',
+        label: 'Take the pills, do the minimum',
+        effects: { health: 3, stress: -5 },
+        nextChainId: 'life-health-scare-3',
+        resultText: 'You take the medication. Mostly remember it. Life goes on, but with a new pill organizer on the nightstand.',
+      },
+    ],
+  },
+  {
+    id: 'life-health-scare-3',
+    chainId: 'health-scare',
+    chainStep: 3,
+    chainTotal: 3,
+    stage: 'adult',
+    category: 'health',
+    weight: 0.7,
+    text: `A year later. Follow-up appointment. The doctor looks at the chart, then at you. A small nod.`,
+    choices: [
+      {
+        id: 'health-scare-clear',
+        label: '"Looking good. Really good, actually."',
+        effects: { health: 15, happiness: 20, stress: -15 },
+        resultText: 'Relief hits you in the parking lot. You sit in your car and cry. Then you call someone you love.',
+      },
+      {
+        id: 'health-scare-chronic',
+        label: '"We\'ll need to keep monitoring this."',
+        effects: { health: 5, happiness: -5, stress: 5 },
+        addConditions: ['chronic condition'],
+        resultText: 'It\'s not going away. But you\'re here. You learn to live with the uncertainty. Most days, you forget about it.',
+      },
+    ],
+  },
+];
+
+// Chain 7: Starting a Business (4 steps)
+const startingBusiness: ChainEvent[] = [
+  {
+    id: 'life-business-1',
+    chainId: 'starting-business',
+    chainStep: 1,
+    chainTotal: 4,
+    stage: 'adult',
+    category: 'money',
+    weight: 0.4,
+    requirements: { minAge: 25, maxAge: 50, moneyMin: 5000 },
+    text: `3 AM. You can't sleep. Not from anxiety — from excitement. You've been sketching this idea for months. A business. YOUR business. The spreadsheet says it could work. Your gut says it will.`,
+    choices: [
+      {
+        id: 'business-go',
+        label: 'Quit your job and go all in',
+        effects: { happiness: 15, stress: 20, money: -10 },
+        nextChainId: 'life-business-2',
+        resultText: 'You file the LLC paperwork with shaking hands. Your family thinks you\'re crazy. Maybe you are.',
+      },
+      {
+        id: 'business-safe',
+        label: 'Start it on the side first',
+        effects: { happiness: 10, stress: 15 },
+        nextChainId: 'life-business-2',
+        resultText: 'Nights and weekends. Every spare hour goes into this. It\'s exhausting but the dream stays alive.',
+      },
+    ],
+  },
+  {
+    id: 'life-business-2',
+    chainId: 'starting-business',
+    chainStep: 2,
+    chainTotal: 4,
+    stage: 'adult',
+    category: 'money',
+    weight: 0.7,
+    text: `Launch day. You put it out into the world. The first day: 3 sales. You thought there'd be more. The second week: silence. The imposter syndrome hits like a truck.`,
+    choices: [
+      {
+        id: 'business-pivot',
+        label: 'Listen to feedback and pivot hard',
+        effects: { smarts: 5, stress: 10, happiness: -5 },
+        nextChainId: 'life-business-3',
+        resultText: 'You rebuild half of it. It hurts to kill your darlings, but the new version is better. People notice.',
+      },
+      {
+        id: 'business-persist',
+        label: 'Stay the course — it needs time',
+        effects: { stress: 15, happiness: -10 },
+        nextChainId: 'life-business-3',
+        resultText: 'You keep showing up. Every day. Some weeks the revenue barely covers coffee. But you keep showing up.',
+      },
+    ],
+  },
+  {
+    id: 'life-business-3',
+    chainId: 'starting-business',
+    chainStep: 3,
+    chainTotal: 4,
+    stage: 'adult',
+    category: 'money',
+    weight: 0.7,
+    text: `Month 8. You're running out of savings. A competitor launches something similar with 10x the funding. Your partner asks when the business will "start working." The walls are closing in.`,
+    choices: [
+      {
+        id: 'business-double-down',
+        label: 'Take a loan and double down',
+        effects: { money: -15, stress: 25, happiness: -5 },
+        nextChainId: 'life-business-4',
+        resultText: 'All chips on the table. If this doesn\'t work, you\'re in real trouble.',
+      },
+      {
+        id: 'business-lean',
+        label: 'Cut everything to the bone and survive',
+        effects: { money: -3, stress: 15 },
+        nextChainId: 'life-business-4',
+        resultText: 'Ramen budget. Cancel every subscription. But the runway extends. Barely.',
+      },
+    ],
+  },
+  {
+    id: 'life-business-4',
+    chainId: 'starting-business',
+    chainStep: 4,
+    chainTotal: 4,
+    stage: 'adult',
+    category: 'money',
+    weight: 0.7,
+    text: `One year in. You look at the numbers. Really look at them.`,
+    choices: [
+      {
+        id: 'business-success',
+        label: 'It\'s working. Actually working.',
+        effects: { money: 30, happiness: 25, stress: -10, reputation: 15 },
+        addConditions: ['self-employed'],
+        resultText: 'Profitability. The word tastes like champagne. You built something real. From nothing. From a 3 AM idea.',
+      },
+      {
+        id: 'business-fail',
+        label: 'It\'s not. Time to close up shop.',
+        effects: { money: -10, happiness: -15, stress: -10, smarts: 10 },
+        resultText: 'Shutting it down is the hardest thing you\'ve done. But the lessons? Nobody can take those from you. You\'ll be back.',
+      },
+    ],
+  },
+];
+
+// Chain 8: Moving Abroad (3 steps)
+const movingAbroad: ChainEvent[] = [
+  {
+    id: 'life-abroad-1',
+    chainId: 'moving-abroad',
+    chainStep: 1,
+    chainTotal: 3,
+    stage: 'youngAdult',
+    category: 'social',
+    weight: 0.35,
+    requirements: { minAge: 22, maxAge: 40 },
+    text: `An opportunity lands in your inbox. A job offer — or maybe just a wild idea from a friend. Either way, it's in another country. Another continent. Everything in your life would change.`,
+    choices: [
+      {
+        id: 'abroad-go',
+        label: 'Take the leap. Book the one-way ticket.',
+        effects: { happiness: 10, stress: 20, money: -8 },
+        nextChainId: 'life-abroad-2',
+        resultText: 'You sell half your stuff. The airport goodbye is brutal. The plane takes off and suddenly you\'re someone new.',
+      },
+      {
+        id: 'abroad-stay',
+        label: 'Too much to leave behind right now',
+        effects: { happiness: -5, stress: -5 },
+        resultText: 'You close the tab. Life goes on. Sometimes you wonder what would have happened.',
+      },
+    ],
+  },
+  {
+    id: 'life-abroad-2',
+    chainId: 'moving-abroad',
+    chainStep: 2,
+    chainTotal: 3,
+    stage: 'adult',
+    category: 'social',
+    weight: 0.7,
+    text: `Month 3 abroad. The honeymoon phase is over. You can't read the labels at the grocery store. You miss your friends at 3 AM. The loneliness is a physical thing, sitting on your chest.`,
+    choices: [
+      {
+        id: 'abroad-embrace',
+        label: 'Push through — join local groups, learn the language',
+        effects: { smarts: 10, happiness: 5, stress: 10, reputation: 5 },
+        nextChainId: 'life-abroad-3',
+        resultText: 'You butcher the language beautifully. Locals love it. You find your people — a weird mix of expats and kind strangers.',
+      },
+      {
+        id: 'abroad-bubble',
+        label: 'Stick to the expat bubble — comfort first',
+        effects: { happiness: 5, stress: -5 },
+        nextChainId: 'life-abroad-3',
+        resultText: 'You find other foreigners fast. The comfort is real, but sometimes it feels like you\'re living abroad without actually living there.',
+      },
+    ],
+  },
+  {
+    id: 'life-abroad-3',
+    chainId: 'moving-abroad',
+    chainStep: 3,
+    chainTotal: 3,
+    stage: 'adult',
+    category: 'social',
+    weight: 0.7,
+    text: `A year in. The place feels like home now — or close to it. Then your mom calls. Something in her voice. "We miss you." Your old life is pulling.`,
+    choices: [
+      {
+        id: 'abroad-settle',
+        label: 'Stay. This is your life now.',
+        effects: { happiness: 15, smarts: 5, reputation: 10 },
+        addConditions: ['expat'],
+        resultText: 'You renew the lease. Learn to make the local dish. Your accent starts changing. Home is where you build it.',
+      },
+      {
+        id: 'abroad-return',
+        label: 'Go home. You proved you could do it.',
+        effects: { happiness: 10, stress: -10, smarts: 5 },
+        resultText: 'The airport return hits different. Everything looks smaller. You\'re not the same person who left. That part is permanent.',
+      },
+    ],
+  },
+];
+
+// Chain 9: Writing a Book (3 steps)
+const writingBook: ChainEvent[] = [
+  {
+    id: 'life-book-1',
+    chainId: 'writing-book',
+    chainStep: 1,
+    chainTotal: 3,
+    stage: 'adult',
+    category: 'social',
+    weight: 0.35,
+    requirements: { minAge: 28, maxAge: 65 },
+    text: `The idea has been rattling around in your head for years. A book. YOUR book. Maybe a novel, maybe a memoir, maybe something that doesn't have a genre yet. You open a blank document.`,
+    choices: [
+      {
+        id: 'book-start',
+        label: 'Start writing. Every day. No excuses.',
+        effects: { happiness: 10, stress: 10, smarts: 5 },
+        nextChainId: 'life-book-2',
+        resultText: 'Chapter one pours out of you. It\'s messy and alive. You haven\'t felt this way about anything in a long time.',
+      },
+      {
+        id: 'book-outline',
+        label: 'Plan it out first — research, outline, structure',
+        effects: { smarts: 5, stress: 5 },
+        nextChainId: 'life-book-2',
+        resultText: 'The outline grows to 40 pages. It\'s a beautiful outline. You haven\'t written a single sentence of the actual book yet.',
+      },
+    ],
+  },
+  {
+    id: 'life-book-2',
+    chainId: 'writing-book',
+    chainStep: 2,
+    chainTotal: 3,
+    stage: 'adult',
+    category: 'social',
+    weight: 0.7,
+    text: `Month 6. You're deep in the middle. The "messy middle" they warned you about. Some days the words flow. Most days they don't. You've rewritten chapter 4 eleven times.`,
+    choices: [
+      {
+        id: 'book-push',
+        label: 'Push through — finish the ugly first draft',
+        effects: { stress: 15, happiness: 5, smarts: 5 },
+        nextChainId: 'life-book-3',
+        resultText: 'You write "THE END" at 2 AM on a Tuesday. It\'s terrible. It\'s done. You cry a little.',
+      },
+      {
+        id: 'book-perfect',
+        label: 'Keep polishing — it has to be perfect',
+        effects: { stress: 20, happiness: -5, smarts: 3 },
+        nextChainId: 'life-book-3',
+        resultText: 'A year later, you\'re still on chapter 12 of 20. Every sentence is beautiful. At this rate, you\'ll finish in 2035.',
+      },
+    ],
+  },
+  {
+    id: 'life-book-3',
+    chainId: 'writing-book',
+    chainStep: 3,
+    chainTotal: 3,
+    stage: 'adult',
+    category: 'social',
+    weight: 0.7,
+    text: `The manuscript is done. You send it out. Query letters to agents, or straight to publishers. Then you wait. And wait. And check your email 47 times a day.`,
+    choices: [
+      {
+        id: 'book-published',
+        label: 'An agent writes back. "I loved it."',
+        effects: { happiness: 25, money: 15, reputation: 20, stress: -10 },
+        resultText: 'Published. Your name on a spine. You walk into a bookstore and there it is. You stand there for twenty minutes pretending to browse.',
+      },
+      {
+        id: 'book-rejected',
+        label: '47 rejections. The silence is deafening.',
+        effects: { happiness: -10, stress: 5, smarts: 5 },
+        resultText: 'You self-publish. Sales are modest. But strangers read your words. A teenager emails: "Your book changed how I see things." That one email makes it all worth it.',
+      },
+    ],
+  },
+];
+
+// Chain 10: Adopting a Child (3 steps)
+const adoptingChild: ChainEvent[] = [
+  {
+    id: 'life-adopt-1',
+    chainId: 'adopting-child',
+    chainStep: 1,
+    chainTotal: 3,
+    stage: 'adult',
+    category: 'family',
+    weight: 0.3,
+    requirements: { minAge: 28, maxAge: 50, moneyMin: 10000 },
+    text: `You've been thinking about it for a while. Adoption. The idea started small — a passing thought — and grew into something you can't ignore. There are so many kids who need a home.`,
+    choices: [
+      {
+        id: 'adopt-start',
+        label: 'Start the process. You\'re ready.',
+        effects: { happiness: 10, stress: 15, money: -8 },
+        nextChainId: 'life-adopt-2',
+        resultText: 'Paperwork. Background checks. Home visits. Interviews. They want to make sure you\'re worthy. It feels like applying for the most important job in the world.',
+      },
+      {
+        id: 'adopt-wait',
+        label: 'Not yet. But someday.',
+        effects: { happiness: -3 },
+        resultText: 'You bookmark the agency website. Maybe next year. Maybe when things are more stable. The tab stays open for months.',
+      },
+    ],
+  },
+  {
+    id: 'life-adopt-2',
+    chainId: 'adopting-child',
+    chainStep: 2,
+    chainTotal: 3,
+    stage: 'adult',
+    category: 'family',
+    weight: 0.7,
+    text: `The waiting list. Months of silence. You paint the spare room and then worry you painted it too early. What if it doesn't happen? The social worker calls. "We have a match."`,
+    choices: [
+      {
+        id: 'adopt-meet',
+        label: 'Meet the child. Everything changes in one afternoon.',
+        effects: { happiness: 20, stress: 15, money: -5 },
+        nextChainId: 'life-adopt-3',
+        resultText: 'They\'re shy. Smaller than the photo. They hold your finger and something in your chest rearranges itself permanently.',
+      },
+      {
+        id: 'adopt-hesitate',
+        label: 'Hesitate. What if you\'re not enough?',
+        effects: { stress: 20, happiness: -5 },
+        nextChainId: 'life-adopt-3',
+        resultText: 'The doubt is paralyzing. Then you meet them anyway. And the doubt dissolves. Not completely. But enough.',
+      },
+    ],
+  },
+  {
+    id: 'life-adopt-3',
+    chainId: 'adopting-child',
+    chainStep: 3,
+    chainTotal: 3,
+    stage: 'adult',
+    category: 'family',
+    weight: 0.7,
+    text: `The finalization day. A courtroom. A judge. Your child — YOUR child — sitting on your lap in an outfit you picked out three days ago. The judge signs the paper and bangs the gavel.`,
+    choices: [
+      {
+        id: 'adopt-celebrate',
+        label: 'You have a family. It\'s official.',
+        effects: { happiness: 30, stress: -10, money: -5 },
+        addConditions: ['parent'],
+        resultText: 'Everyone in the courtroom claps. Your kid looks confused and then giggles. You will remember this sound for the rest of your life.',
+      },
+      {
+        id: 'adopt-quiet',
+        label: 'Take a quiet moment. Just the two of you.',
+        effects: { happiness: 25, stress: -15 },
+        addConditions: ['parent'],
+        resultText: 'In the car, you look in the rearview mirror. They\'re asleep in their car seat. You drive home at exactly the speed limit. Your family is in this car.',
+      },
+    ],
+  },
+];
+
 export const lifeChains: ChainEvent[] = [
   ...giftedStudent,
   ...scholarship,
   ...badRoommate,
   ...creativeSideHustle,
   ...accidentalParenthood,
+  ...healthScare,
+  ...startingBusiness,
+  ...movingAbroad,
+  ...writingBook,
+  ...adoptingChild,
 ];

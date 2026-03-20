@@ -85,6 +85,7 @@ export function generateNewLife(seed?: number): { player: Player; relationships:
     drama: stability === 'chaotic' ? 60 : stability === 'emotionallyDistant' ? 40 : stability === 'stable' ? 5 + Math.floor(rng() * 6) : 15,
     status: 'alive',
     age: 25 + Math.floor(rng() * 10),
+    metAtAge: 0,
   });
 
   // Father
@@ -97,6 +98,7 @@ export function generateNewLife(seed?: number): { player: Player; relationships:
     drama: stability === 'chaotic' ? 55 : stability === 'stable' ? 5 + Math.floor(rng() * 6) : 10,
     status: 'alive',
     age: 27 + Math.floor(rng() * 12),
+    metAtAge: 0,
   });
 
   // Optional sibling (~60% chance)
@@ -111,6 +113,7 @@ export function generateNewLife(seed?: number): { player: Player; relationships:
       drama: Math.floor(rng() * 30),
       status: 'alive',
       age: Math.floor(rng() * 5),
+      metAtAge: 0,
     });
   }
 
@@ -126,6 +129,9 @@ export function generateNewLife(seed?: number): { player: Player; relationships:
     activeChains: {},
     seenEventIds: [],
     achievements: [],
+    happinessHistory: [player.happiness],
+    peakNetWorth: player.money,
+    jobStartAge: null,
   };
 
   return { player, relationships, initialState };
